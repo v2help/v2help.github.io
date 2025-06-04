@@ -142,7 +142,7 @@ header {
   font-size: 2rem;
   font-weight: bold;
   color: var(--accent);
-  min-height: 2.5rem;
+  min-height: 1.5rem;
 }
 
 /* Tutorials */
