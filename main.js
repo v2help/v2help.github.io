@@ -51,12 +51,12 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       title: 'iOS (V2Box)',
-      icon: '',
+      icon: '🍏',
       desc: 'تنظیمات V2Box برای iOS'
     },
     {
       title: 'iOS (Streisand)',
-      icon: '',
+      icon: '🍏',
       desc: 'راهنمای استفاده از Streisand'
     },
     {
