@@ -3,43 +3,45 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="دانشنامه جامع V2Ray" />
   <title>V2 Help</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div class="menu-overlay" id="menuOverlay">
+    <button class="close-menu" id="closeMenu">✕</button>
+    <nav class="fullscreen-menu">
+      <ul>
+        <li><a href="#">خانه</a></li>
+        <li><a href="#tutorials">آموزش‌ها</a></li>
+        <li><a href="#contact">تماس</a></li>
+      </ul>
+    </nav>
+  </div>
 
   <header>
     <div class="container">
-      <button class="menu-toggle" id="menuToggle">☰</button>
-      <a href="#" class="logo">V2 Help</a>
+      <button class="menu-toggle" id="menuToggle">&#9776;</button>
+      <div class="logo">V2 Help</div>
     </div>
   </header>
 
   <main>
-    <div class="globe-animation"></div>
+    <section class="hero">
+      <div class="globe-animation"></div>
+      <div class="typing-effect"></div>
+    </section>
 
     <section id="tutorials" class="section tutorials">
-      <h2 class="typing-effect">به دانشنامه V2Ray خوش آمدید</h2>
-      <h3 class="tutorial-title">آموزش‌های جامع برای پلتفرم‌های مختلف</h3>
+      <h2>آموزش‌های جامع اتصال</h2>
       <div class="tutorial-grid"></div>
     </section>
   </main>
 
   <footer>
-    <p>© 2025 V2 Help</p>
+    <p>© 2025 V2 Help | تمامی حقوق محفوظ است</p>
   </footer>
 
-  <div id="menuOverlay" class="menu-overlay">
-    <div class="fullscreen-menu">
-      <button id="closeMenu" class="close-menu">×</button>
-      <ul>
-        <li><a href="#">صفحه اصلی</a></li>
-        <li><a href="#">آموزش‌ها</a></li>
-        <li><a href="#">ارتباط با ما</a></li>
-      </ul>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>
