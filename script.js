@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // مدیریت منو
   const menuToggle = document.getElementById('menuToggle');
   const menuOverlay = document.getElementById('menuOverlay');
   const closeMenu = document.getElementById('closeMenu');
@@ -25,7 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // آموزش‌ها
   const tutorials = [
     {
       title: 'V2RayNG',
@@ -55,8 +53,11 @@ document.addEventListener('DOMContentLoaded', () => {
   ];
 
   const tutorialGrid = document.querySelector('.tutorial-grid');
-  if (tutorialGrid) {
-    tutorials.forEach(tutorial => {
+  const searchInput = document.getElementById('searchInput');
+
+  function displayTutorials(filtered) {
+    tutorialGrid.innerHTML = '';
+    filtered.forEach(tutorial => {
       const card = document.createElement('div');
       card.className = 'tutorial-card';
       card.innerHTML = `
@@ -66,6 +67,19 @@ document.addEventListener('DOMContentLoaded', () => {
         <a href="#" class="btn">مشاهده آموزش</a>
       `;
       tutorialGrid.appendChild(card);
+    });
+  }
+
+  displayTutorials(tutorials);
+
+  if (searchInput) {
+    searchInput.addEventListener('input', () => {
+      const query = searchInput.value.toLowerCase();
+      const filtered = tutorials.filter(t =>
+        t.title.toLowerCase().includes(query) ||
+        t.desc.toLowerCase().includes(query)
+      );
+      displayTutorials(filtered);
     });
   }
 });
