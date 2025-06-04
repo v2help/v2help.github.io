@@ -1,18 +1,22 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // منو
+  // مدیریت منو موبایل
   const menuToggle = document.getElementById('menuToggle');
   const menuOverlay = document.getElementById('menuOverlay');
   const closeMenu = document.getElementById('closeMenu');
 
-  menuToggle.addEventListener('click', () => {
-    menuOverlay.classList.add('active');
-    document.body.style.overflow = 'hidden';
-  });
+  if (menuToggle) {
+    menuToggle.addEventListener('click', () => {
+      menuOverlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+  }
 
-  closeMenu.addEventListener('click', () => {
-    menuOverlay.classList.remove('active');
-    document.body.style.overflow = '';
-  });
+  if (closeMenu) {
+    closeMenu.addEventListener('click', () => {
+      menuOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+  }
 
   menuOverlay.addEventListener('click', (e) => {
     if (e.target === menuOverlay) {
@@ -21,11 +25,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // افکت تایپینگ
+  // تایپینگ
   const typingText = document.querySelector('.typing-effect');
   if (typingText) {
-    const text = "به دانشنامه v2ray خوش آمدید";
+    const text = "به دانشنامه V2Ray خوش آمدید";
     typingText.textContent = '';
+
     let i = 0;
     const typing = setInterval(() => {
       if (i < text.length) {
@@ -34,35 +39,35 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         clearInterval(typing);
       }
-    }, 90);
+    }, 100);
   }
 
   // آموزش‌ها
   const tutorials = [
     {
-      title: 'اندروید (V2RayNG)',
+      title: 'V2RayNG',
       icon: '🤖',
-      desc: 'آموزش کامل V2RayNG'
+      desc: 'آموزش جامع برنامه V2RayNG برای اندروید'
     },
     {
-      title: 'اندروید (V2RayTUN)',
+      title: 'V2RayTUN',
       icon: '🤖',
-      desc: 'راهنمای V2RayTUN'
+      desc: 'راهنمای استفاده از V2RayTUN در اندروید'
     },
     {
-      title: 'iOS (V2Box)',
+      title: 'V2Box',
       icon: '🍏',
-      desc: 'تنظیمات V2Box برای iOS'
+      desc: 'راهنمای نصب V2Box برای iOS'
     },
     {
-      title: 'iOS (Streisand)',
+      title: 'Streisand',
       icon: '🍏',
-      desc: 'راهنمای استفاده از Streisand'
+      desc: 'آموزش تنظیم Streisand روی iOS'
     },
     {
-      title: 'ویندوز (V2RayN)',
+      title: 'V2RayN',
       icon: '💻',
-      desc: 'آموزش جامع V2RayN'
+      desc: 'آموزش کامل نرم‌افزار V2RayN در ویندوز'
     }
   ];
 
@@ -75,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="tutorial-icon">${tutorial.icon}</div>
         <h3>${tutorial.title}</h3>
         <p>${tutorial.desc}</p>
-        <a href="#" class="btn">مشاهده آموزش</a>
+        <a href="#" class="btn btn-primary">مشاهده آموزش</a>
       `;
       tutorialGrid.appendChild(card);
     });
