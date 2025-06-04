@@ -6,7 +6,6 @@
   --mocha-dark: #2a2318;
   --text: #e0d6c2;
   --accent: #d4a017;
-  --secondary: #8b5a2b;
   --transition: all 0.3s ease;
 }
 
@@ -124,19 +123,22 @@ header {
 .hero {
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 6rem 1rem 2rem;
+  padding-top: 6rem;
+  padding-bottom: 1rem;
   position: relative;
   text-align: center;
+  overflow: hidden;
 }
 
 .typing-effect {
   font-size: 2.5rem;
-  margin-bottom: 0.5rem;
   color: var(--accent);
   font-weight: 800;
   z-index: 2;
+  margin-bottom: 0.3rem;
 }
 
 .subtitle {
@@ -145,23 +147,23 @@ header {
 }
 
 .globe-animation {
-  width: 400px;
-  height: 400px;
+  width: 500px;
+  height: 500px;
   background: radial-gradient(circle at 30% 30%, var(--accent), transparent 70%);
   border-radius: 50%;
   position: absolute;
+  top: 0;
   right: 50%;
-  top: 50%;
-  transform: translate(50%, -50%);
-  animation: float 8s ease-in-out infinite;
+  transform: translate(50%, -20%);
+  animation: float 10s ease-in-out infinite;
   filter: blur(1px);
-  opacity: 0.4;
+  opacity: 0.3;
   z-index: 1;
 }
 
 @keyframes float {
-  0%, 100% { transform: translate(50%, -50%) rotate(0deg); }
-  50% { transform: translate(50%, -52%) rotate(5deg); }
+  0%, 100% { transform: translate(50%, -20%) rotate(0deg); }
+  50% { transform: translate(50%, -22%) rotate(3deg); }
 }
 
 .section {
@@ -172,7 +174,7 @@ header {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 2rem;
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 
 .tutorial-card {
