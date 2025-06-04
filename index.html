@@ -3,30 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>V2Help - اتصال آزاد</title>
+    <meta name="description" content="آموزش کامل اتصال به اینترنت آزاد با V2Ray برای ویندوز، اندروید و iOS - راهنمای تصویری و گام به گام">
+    <meta name="keywords" content="v2ray, vpn, فیلترشکن, آموزش v2ray, v2ray اندروید, v2ray آیفون, v2ray ویندوز, اتصال آزاد">
+    <meta name="author" content="V2Help">
+    <meta property="og:title" content="V2Help - آموزش کامل اتصال به اینترنت آزاد">
+    <meta property="og:description" content="راهنمای تصویری و گام به گام برای تنظیم V2Ray روی تمام دستگاه‌ها">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://v2help.github.io">
+    <meta name="theme-color" content="#0a2540">
+    <link rel="canonical" href="https://v2help.github.io">
+    <title>V2Help - آموزش کامل اتصال به اینترنت آزاد با V2Ray | ویندوز، اندروید، iOS</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700&display=swap');
         
         :root {
-            --primary: #0a2540;
+            /* تم افق شیکاگو */
+            --primary-dark: #0a2540;
+            --primary-light: #1a4b8c;
             --secondary: #00d4ff;
-            --light: #f8f9fa;
-            --dark: #212529;
+            --accent: #ff6b35;
+            --text-dark: #212529;
+            --text-light: #f8f9fa;
+            --bg-light: #ffffff;
+            --bg-dark: #121212;
+        }
+        
+        /* تم پیش‌فرض (روشن) */
+        [data-theme="light"] {
+            --bg-primary: var(--bg-light);
+            --bg-secondary: #f0f4f8;
+            --text-primary: var(--text-dark);
+            --text-secondary: #495057;
+            --nav-bg: rgba(255,255,255,0.95);
+            --card-bg: var(--bg-light);
+        }
+        
+        /* تم تاریک */
+        [data-theme="dark"] {
+            --bg-primary: var(--bg-dark);
+            --bg-secondary: #1e1e1e;
+            --text-primary: var(--text-light);
+            --text-secondary: #adb5bd;
+            --nav-bg: rgba(30,30,30,0.95);
+            --card-bg: #1e1e1e;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s;
         }
         
         body {
             font-family: 'Vazirmatn', sans-serif;
-            background: var(--light);
-            color: var(--dark);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
         }
         
         header {
-            background: white;
+            background-color: var(--nav-bg);
             padding: 1rem;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         
         .nav-container {
@@ -39,8 +83,16 @@
         
         .logo {
             font-weight: 700;
-            color: var(--primary);
-            font-size: 1.2rem;
+            color: var(--secondary);
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+        
+        .logo:hover {
+            opacity: 0.9;
         }
         
         nav ul {
@@ -49,63 +101,278 @@
             gap: 2rem;
             margin: 0;
             padding: 0;
+            align-items: center;
         }
         
         nav a {
             text-decoration: none;
-            color: var(--dark);
+            color: var(--text-primary);
             font-weight: 500;
             transition: color 0.3s;
+            font-size: 0.95rem;
         }
         
         nav a:hover {
-            color: var(--primary);
+            color: var(--secondary);
         }
         
-        .lang-switcher {
-            display: flex;
-            gap: 0.5rem;
-        }
-        
-        .lang-btn {
+        .theme-toggle {
             background: none;
             border: none;
             cursor: pointer;
-            font-family: 'Vazirmatn', sans-serif;
-            font-size: 0.9rem;
-            color: #666;
+            color: var(--text-primary);
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
         }
         
-        .lang-btn.active {
-            color: var(--primary);
-            font-weight: 500;
+        .hero {
+            text-align: center;
+            padding: 5rem 1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+            line-height: 1.3;
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            color: var(--text-secondary);
+        }
+        
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .btn {
+            padding: 0.8rem 1.8rem;
+            border-radius: 30px;
+            border: none;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary);
+            color: var(--primary-dark);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--secondary);
+            border: 2px solid var(--secondary);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
+        }
+        
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 1rem;
+        }
+        
+        .app-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .app-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .app-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+        
+        .app-title {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .app-desc {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(0,0,0,0.1);
+            margin-top: 3rem;
+        }
+        
+        #menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
         }
         
         @media (max-width: 768px) {
             nav ul {
+                display: none;
+                position: fixed;
+                top: 70px;
+                right: 1rem;
+                background-color: var(--card-bg);
+                flex-direction: column;
+                width: 200px;
+                padding: 1rem;
+                border-radius: 10px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                z-index: 999;
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            #menu-toggle {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .buttons {
+                flex-direction: column;
                 gap: 1rem;
             }
+            
+            .btn {
+                width: 100%;
+            }
         }
+        
+        /* انیمیشن‌ها */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .hero {
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        .app-card {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        
+        .app-card:nth-child(1) { animation-delay: 0.1s; }
+        .app-card:nth-child(2) { animation-delay: 0.2s; }
+        .app-card:nth-child(3) { animation-delay: 0.3s; }
+        .app-card:nth-child(4) { animation-delay: 0.4s; }
+        .app-card:nth-child(5) { animation-delay: 0.5s; }
     </style>
 </head>
-<body>
+<body data-theme="light">
     <header>
         <div class="nav-container">
-            <div class="logo">vpnhelp</div>
+            <a href="#" class="logo">
+                <span>V2Help</span>
+            </a>
             
             <nav>
-                <ul>
+                <button id="menu-toggle">☰</button>
+                <ul id="menu">
                     <li><a href="#">خانه</a></li>
-                    <li><a href="#">آموزش‌ها</a></li>
+                    <li><a href="#apps">آموزش‌ها</a></li>
+                    <li><a href="#servers">سرورها</a></li>
                     <li>
-                        <div class="lang-switcher">
-                            <button class="lang-btn active">فارسی</button>
-                            <button class="lang-btn">English</button>
-                        </div>
+                        <button class="theme-toggle" id="themeToggle">
+                            <span id="themeIcon">🌙</span>
+                        </button>
                     </li>
                 </ul>
             </nav>
         </div>
     </header>
-</body>
-</html>
+    
+    <main>
+        <section class="hero">
+            <h1>اتصال آزاد و امن به اینترنت با V2Ray</h1>
+            <p>آموزش تصویری و گام به گام برای راه‌اندازی V2Ray روی ویندوز، اندروید و iOS - بدون نیاز به تخصص فنی</p>
+            
+            <div class="buttons">
+                <a href="#apps" class="btn btn-primary">شروع آموزش</a>
+                <a href="#servers" class="btn btn-secondary">سرورهای فعال</a>
+            </div>
+        </section>
+        
+        <section id="apps" class="apps-grid">
+            <div class="app-card">
+                <div class="app-icon">🖥️</div>
+                <h3 class="app-title">V2RayN برای ویندوز</h3>
+                <p class="app-desc">آموزش کامل نصب و تنظیمات</p>
+                <a href="#v2rayn" class="btn btn-primary">مشاهده آموزش</a>
+            </div>
+            
+            <div class="app-card">
+                <div class="app-icon">🤖</div>
+                <h3 class="app-title">V2RayNG برای اندروید</h3>
+                <p class="app-desc">راهنمای تصویری اتصال</p>
+                <a href="#v2rayng" class="btn btn-primary">مشاهده آموزش</a>
+            </div>
+            
+            <div class="app-card">
+                <div class="app-icon">🤖</div>
+                <h3 class="app-title">V2RayTUN برای اندروید</h3>
+                <p class="app-desc">تنظیمات پیشرفته</p>
+                <a href="#v2raytun" class="btn btn-primary">مشاهده آموزش</a>
+            </div>
+            
+            <div class="app-card">
+                <div class="app-icon">🍏</div>
+                <h3 class="app-title">V2Box برای iOS</h3>
+                <p class="app-desc">آموزش نصب و استفاده</p>
+                <a href="#v2box" class="btn btn-primary">مشاهده آموزش</a>
+            </div>
+            
+            <div class="app-card">
+                <div class="app-icon">🍏</div>
+                <h3 class="app-title">Streisand برای iOS</h3>
+                <p class="app-desc">راهنمای کامل</p>
+                <a href="#streisand" class="btn btn-primary">مشاهده آموزش</a>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>تمامی آموزش‌ها با آخرین بروزرسانی‌ها ارائه شده‌اند - V2Help © 2023</p>
+        <p>ساخته شده با ❤️ برای دسترسی آزاد به اطلاعات</p>
+    </footer>
+    
+    <script>
+        // تغییر
