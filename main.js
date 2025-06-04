@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // تنظیم تم اولیه
   body.setAttribute('data-theme', savedTheme);
+  updateThemeText(savedTheme);
   
   // تغییر تم با کلیدهای چپ/راست
   document.addEventListener('keydown', (e) => {
@@ -25,12 +26,20 @@ document.addEventListener('DOMContentLoaded', () => {
     
     body.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
+    updateThemeText(newTheme);
     
     // انیمیشن تغییر تم
     body.style.transition = 'background-color 0.5s ease, color 0.5s ease';
     setTimeout(() => {
       body.style.transition = '';
     }, 500);
+  }
+  
+  function updateThemeText(theme) {
+    const themeText = document.getElementById('themeText');
+    if (themeText) {
+      themeText.textContent = theme === 'dark' ? 'تیره' : 'روشن';
+    }
   }
   
   // مدیریت منو
@@ -82,22 +91,32 @@ document.addEventListener('DOMContentLoaded', () => {
     {
       title: 'ویندوز',
       icon: '💻',
-      desc: 'آموزش کامل V2RayN'
+      desc: 'آموزش کامل V2RayN با آخرین نسخه'
     },
     {
       title: 'اندروید',
       icon: '📱',
-      desc: 'راهنمای V2RayNG'
+      desc: 'راهنمای جامع V2RayNG'
     },
     {
       title: 'iOS',
       icon: '🍏',
-      desc: 'تنظیمات V2Box'
+      desc: 'تنظیمات پیشرفته V2Box'
     },
     {
       title: 'مک',
       icon: '🖥️',
-      desc: 'آموزش V2RayX'
+      desc: 'آموزش V2RayX برای macOS'
+    },
+    {
+      title: 'لینوکس',
+      icon: '🐧',
+      desc: 'پیکربندی V2Ray در توزیع‌های مختلف'
+    },
+    {
+      title: 'روتر',
+      icon: '📶',
+      desc: 'نصب V2Ray بر روی روترهای خانگی'
     }
   ];
   
@@ -113,6 +132,38 @@ document.addEventListener('DOMContentLoaded', () => {
         <a href="#" class="btn btn-secondary">مشاهده آموزش</a>
       `;
       tutorialGrid.appendChild(card);
+    });
+  }
+  
+  // بارگذاری سرورها
+  const servers = [
+    { name: 'سرور پرسرعت #1', location: 'آلمان', ping: '32ms' },
+    { name: 'سرور اختصاصی #2', location: 'فرانسه', ping: '45ms' },
+    { name: 'سرور ابری #3', location: 'آمریکا', ping: '68ms' },
+    { name: 'سرور پریمیوم #4', location: 'ژاپن', ping: '92ms' }
+  ];
+  
+  const serverGrid = document.querySelector('.server-grid');
+  if (serverGrid) {
+    serverGrid.innerHTML = `
+      <div class="server-header">
+        <span>نام سرور</span>
+        <span>موقعیت</span>
+        <span>پینگ</span>
+        <span>وضعیت</span>
+      </div>
+    `;
+    
+    servers.forEach(server => {
+      const serverItem = document.createElement('div');
+      serverItem.className = 'server-item';
+      serverItem.innerHTML = `
+        <span>${server.name}</span>
+        <span>${server.location}</span>
+        <span>${server.ping}</span>
+        <span class="status active">فعال</span>
+      `;
+      serverGrid.appendChild(serverItem);
     });
   }
 });
