@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // مدیریت منو موبایل
   const menuToggle = document.getElementById('menuToggle');
   const menuOverlay = document.getElementById('menuOverlay');
   const closeMenu = document.getElementById('closeMenu');
@@ -42,16 +41,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 100);
   }
 
-  // آموزش‌ها
   const tutorials = [
     {
       title: 'V2RayNG',
-      icon: '🤖',
+      icon: '📱',
       desc: 'آموزش جامع برنامه V2RayNG برای اندروید'
     },
     {
       title: 'V2RayTUN',
-      icon: '🤖',
+      icon: '📱',
       desc: 'راهنمای استفاده از V2RayTUN در اندروید'
     },
     {
