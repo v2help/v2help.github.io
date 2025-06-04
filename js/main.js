@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // مدیریت منو
   const menuToggle = document.getElementById('menuToggle');
   const menuOverlay = document.getElementById('menuOverlay');
   const closeMenu = document.getElementById('closeMenu');
@@ -25,60 +24,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // افکت تایپینگ
-  const typingText = document.querySelector('.typing-effect');
-  if (typingText) {
-    const text = "به دانشنامه V2Ray خوش آمدید";
-    typingText.textContent = '';
-    let i = 0;
-    const typing = setInterval(() => {
-      if (i < text.length) {
-        typingText.textContent += text.charAt(i);
-        i++;
-      } else {
-        clearInterval(typing);
-      }
-    }, 100);
-  }
-
-  // بارگذاری آموزش‌ها
+  // کارت‌های آموزش
   const tutorials = [
-    {
-      title: 'اندروید - V2RayNG',
-      icon: '🤖',
-      desc: 'راهنمای کامل V2RayNG'
-    },
-    {
-      title: 'اندروید - V2RayTUN',
-      icon: '📱',
-      desc: 'تنظیمات V2RayTUN'
-    },
-    {
-      title: 'iOS - V2Box',
-      icon: '',
-      desc: 'آموزش تنظیم V2Box'
-    },
-    {
-      title: 'iOS - Streisand',
-      icon: '🍏',
-      desc: 'پیکربندی Streisand'
-    },
-    {
-      title: 'ویندوز - V2RayN',
-      icon: '💻',
-      desc: 'نصب و راه‌اندازی V2RayN'
-    }
+    { title: 'V2RayNG', icon: '<i class="fab fa-android"></i>', desc: 'راهنمای کامل استفاده از V2RayNG' },
+    { title: 'V2RayTUN', icon: '<i class="fab fa-android"></i>', desc: 'آموزش تنظیمات V2RayTUN برای اندروید' },
+    { title: 'V2Box (iOS)', icon: '<i class="fab fa-apple"></i>', desc: 'آموزش راه‌اندازی V2Box در آیفون' },
+    { title: 'Streisand (iOS)', icon: '<i class="fab fa-apple"></i>', desc: 'راهنمای استفاده از Streisand در iOS' },
+    { title: 'V2RayN (Windows)', icon: '<i class="fas fa-laptop"></i>', desc: 'آموزش کامل نرم‌افزار V2RayN' }
   ];
 
   const tutorialGrid = document.querySelector('.tutorial-grid');
   if (tutorialGrid) {
-    tutorials.forEach(tutorial => {
+    tutorials.forEach(t => {
       const card = document.createElement('div');
       card.className = 'tutorial-card';
       card.innerHTML = `
-        <div class="tutorial-icon">${tutorial.icon}</div>
-        <h3>${tutorial.title}</h3>
-        <p>${tutorial.desc}</p>
+        <div class="tutorial-icon">${t.icon}</div>
+        <h3>${t.title}</h3>
+        <p>${t.desc}</p>
         <a href="#" class="btn">مشاهده آموزش</a>
       `;
       tutorialGrid.appendChild(card);
