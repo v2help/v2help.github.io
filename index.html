@@ -2,43 +2,37 @@
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>دانشنامه V2Ray</title>
-  <meta name="description" content="راهنمای جامع برای V2Ray در پلتفرم‌های مختلف مانند اندروید، iOS و ویندوز">
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="دانشنامه جامع آموزش V2Ray برای اندروید، ویندوز و iOS">
+  <title>دانشنامه V2Ray | V2 Help</title>
+  <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap" rel="stylesheet">
 </head>
 <body>
-
   <header class="navbar">
-    <div class="container">
-      <div class="site-title">V2 Help</div>
-      <nav class="nav-links">
-        <a href="#">خانه</a>
-        <a href="#">آموزش‌ها</a>
-        <a href="#">درباره ما</a>
-        <a href="#">تماس با ما</a>
-      </nav>
-      <div id="menuToggle" class="menu-icon"><i class="fas fa-bars"></i></div>
-    </div>
+    <div class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></div>
+    <div class="site-title">V2 Help</div>
+    <nav class="menu-overlay" id="menuOverlay">
+      <div id="closeMenu" class="close-menu">×</div>
+      <ul>
+        <li><a href="#">خانه</a></li>
+        <li><a href="#">درباره ما</a></li>
+        <li><a href="#">تماس</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <div id="menuOverlay">
-    <div id="closeMenu"><i class="fas fa-times"></i></div>
-    <nav class="overlay-links">
-      <a href="#">خانه</a>
-      <a href="#">آموزش‌ها</a>
-      <a href="#">درباره ما</a>
-      <a href="#">تماس با ما</a>
-    </nav>
-  </div>
-
   <main>
-    <section class="hero">
+    <section class="intro">
       <h1>دانشنامه V2Ray</h1>
+      <div class="search-container">
+        <input type="text" id="searchInput" placeholder="جستجو در آموزش‌ها..." />
+        <i class="fas fa-search search-icon"></i>
+      </div>
     </section>
 
-    <section class="tutorial-section">
+    <section class="tutorials-section">
       <h2>آموزش‌های جامع</h2>
       <div class="tutorial-grid"></div>
     </section>
