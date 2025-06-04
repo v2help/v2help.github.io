@@ -8,40 +8,30 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body data-theme="dark">
-  <!-- منوی تمام صفحه -->
   <div class="menu-overlay" id="menuOverlay">
     <button class="close-menu" id="closeMenu">✕</button>
     <nav class="fullscreen-menu">
       <ul>
-        <li><a href="#">صفحه اصلی</a></li>
-        <li><a href="#tutorials">آموزش‌های ویدیویی</a></li>
-        <li><a href="#servers">سرورهای اختصاصی</a></li>
-        <li><a href="#configs">کانفیگ‌های روز</a></li>
-        <li><a href="#faq">سوالات متداول</a></li>
-        <li><a href="#contact">تماس با ما</a></li>
-        <li>
-          <button class="theme-toggle" id="themeToggle">
-            تغییر تم: <span id="themeText">تیره</span>
-          </button>
-        </li>
+        <li><a href="#">خانه</a></li>
+        <li><a href="#tutorials">آموزش‌ها</a></li>
+        <li><a href="#servers">سرورها</a></li>
+        <li><a href="#contact">تماس</a></li>
       </ul>
     </nav>
   </div>
 
-  <!-- هدر سایت -->
   <header>
     <div class="container">
       <a href="#" class="logo">V2Ray<span>Pro</span></a>
       <button class="menu-toggle" id="menuToggle">☰</button>
+      <button id="themeToggle" aria-label="تغییر تم">🌓</button>
     </div>
   </header>
 
-  <!-- محتوای اصلی -->
   <main>
-    <!-- بخش قهرمان -->
-    <section class="hero">
-      <div class="hero-content">
-        <h1 class="typing-effect">به دنیای اتصال آزاد خوش آمدید</h1>
+    <section class="hero center">
+      <div class="hero-content center-text">
+        <h1 class="typing-effect" data-text="به دنیای اتصال آزاد خوش آمدید"></h1>
         <p class="subtitle">آموزش‌های تخصصی V2Ray برای همه پلتفرم‌ها</p>
         <div class="cta-buttons">
           <a href="#tutorials" class="btn btn-primary">شروع یادگیری</a>
@@ -53,40 +43,14 @@
       </div>
     </section>
 
-    <!-- بخش آموزش‌ها -->
     <section id="tutorials" class="section tutorials">
-      <h2>آموزش‌های تخصصی</h2>
+      <h2>آموزش‌های اختصاصی</h2>
       <div class="tutorial-grid"></div>
-    </section>
-    
-    <!-- بخش سرورها -->
-    <section id="servers" class="section servers">
-      <h2>سرورهای پرسرعت</h2>
-      <div class="server-grid"></div>
-    </section>
-    
-    <!-- بخش تماس -->
-    <section id="contact" class="section contact">
-      <h2>تماس با ما</h2>
-      <form class="contact-form">
-        <input type="text" placeholder="نام شما" required>
-        <input type="email" placeholder="ایمیل شما" required>
-        <textarea placeholder="پیام شما" required></textarea>
-        <button type="submit" class="btn btn-primary">ارسال پیام</button>
-      </form>
     </section>
   </main>
 
-  <!-- پاورقی -->
   <footer>
-    <div class="container">
-      <p>© 2023 V2Ray Pro | تمامی حقوق محفوظ است</p>
-      <div class="social-links">
-        <a href="#" class="social-icon">📱</a>
-        <a href="#" class="social-icon">📧</a>
-        <a href="#" class="social-icon">📞</a>
-      </div>
-    </div>
+    <p>© 2025 V2Ray Pro | تمامی حقوق محفوظ است</p>
   </footer>
 
   <script src="main.js"></script>
