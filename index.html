@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="آموزش اتصال به اینترنت آزاد با V2Ray برای اندروید، آیفون، ویندوز - بدون سانسور" />
+  <meta name="keywords" content="V2Ray, v2rayNG, v2rayN, فیلترشکن, آیفون, اندروید, Streisand, V2Box" />
+  <meta name="author" content="vpnhelp" />
+  <title>vpnhelp - اتصال به اینترنت آزاد</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Vazirmatn', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(180deg, #f3f6fd, #ffffff);
+      color: #222;
+      line-height: 1.7;
+    }
+
+    header {
+      background-color: #ffffff;
+      padding: 1rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo img {
+      width: 32px;
+      height: auto;
+    }
+
+    nav {
+      position: relative;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 1rem;
+      list-style: none;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+
+    #menu-toggle {
+      display: none;
+      font-size: 1.8rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 3.5rem;
+        right: 0;
+        background: white;
+        padding: 1rem;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      }
+
+      nav ul.show {
+        display: flex;
+      }
+
+      #menu-toggle {
+        display: block;
+      }
+    }
+
+    .hero {
+      text-align: center;
+      padding: 3rem 1rem;
+    }
+
+    .hero h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: 30px;
+      border: none;
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .btn.primary {
+      background-color: #3b82f6;
+      color: white;
+    }
+
+    .btn.secondary {
+      background-color: #f2f2f2;
+      color: #333;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #777;
+      border-top: 1px solid #eee;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="assets/logo.svg" alt="vpnhelp logo">
+      <span><strong>vpnhelp</strong></span>
+    </div>
+    <nav>
+      <button id="menu-toggle">☰</button>
+      <ul id="menu">
+        <li><a href="#">خانه</a></li>
+        <li><a href="#">آموزش‌ها</a></li>
+        <li><a href="#">سرورها</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>اتصال به اینترنت آزاد</h1>
+      <p>آموزش تصویری، گام‌به‌گام و ساده برای راه‌اندازی V2Ray روی موبایل و ویندوز</p>
+      <div class="buttons">
+        <a href="#" class="btn primary">شروع آموزش</a>
+        <a href="#" class="btn secondary">سرور مناسب</a>
+        <a href="#" class="btn secondary">بررسی وضعیت</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    ساخته شده با ❤️ برای دسترسی آزاد به اینترنت — vpnhelp
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('menu');
+    toggle.onclick = () => {
+      menu.classList.toggle('show');
+    };
+  </script>
+</body>
+</html>
