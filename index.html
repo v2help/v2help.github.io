@@ -3,499 +3,573 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="خرید سرویس V2Ray پرسرعت VIP - v2gram بهترین راهکار برای اتصال بدون محدودیت">
-    <title>v2gram | سرویس V2Ray VIP پرسرعت</title>
-    <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAABG0lEQVQ4y52T0UoDQRCGvz3nXjzYEBQJ4hMEQdA8Ql7A4At4lYcQ8Qm8eL0IguBFkIIg2IuCCHoRfAAv5gFyF7GQYJOZ8bCb3c1qLpqFYWfnn/+f2ZkRIQT8JzHc9yf7W5fD3e7tYNi9vR7udm9fD3e7t6+Hk8M2gJQSAJfL8wQwDgGAgZQCQHtB7QUAGsGkA0B7wVJ7AQDnXK0BQHtB7QUAnHPN1r0X1F4AQGvdbN17Qe0FALIsY7FYNFv3XlB7AQCtNcYYwjBstu69oPYCAC6Xy2Xr3gtqLwDgcrlctp6mKdbaZuveC2ovAOCcK1v33qO1RilVa917Qe0FAJRSZeu9Xo8gCOj3+7XWvRfUXgBAa122PhgMiKKIwWBQa917Qe0FALIsK1sfDodEUcRwOKy17r2g9gIAnHOl9dFoRBRFjEajWuveC2ovAOC9L62Px2OiKGI8Htda915QewEAa23Z+mQyIY5jJpNJrXXvBbUXAPDe/2pdKVW27r2g9gIAWZb9al1rXbbuvaD2AgDGmF+ta63L1r0X1F4AwBjzq3Wtddm694LaCwAYY361rrUuW/deUHsBgCRJfrWutS5b915QewGAJEl+ta61Llv3XlB7AYAkSX61rrUuW/deUHsBgCRJfrWutS5b915QewGAJEl+ta61Llv3XlB7AYAkSX61rrUuW/deUHsBgCRJfrWutS5b915QewGAJEl+ta61Llv3XlB7AYAkSX61rrUuW/deUHsBgCRJfrWutS5b915QewGAJEl+ta61Llv3XlB7AYAkSX61rrUuW/deUHsBgCRJfrWutS5b915QewGAJEl+ta61Llv3XlB7AYAkSX61rrUuW/deUHsBgCRJfrWutS5b915QewGAJEl+ta61Llv3XlB7AQDn3K/WtdZl694Lai8A4Jz71brWumzde0HtBQD+ACVQyVUZ6PZtAAAAAElFTkSuQmCC">
-    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet">
+    <title>v2gram | سرویس V2Ray حرفه‌ای و پرسرعت</title>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
     <style>
         :root {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-            --secondary: #4b5563;
-            --light: #f9fafb;
-            --border: #e5e7eb;
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #f59e0b;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gradient: linear-gradient(135deg, var(--primary), var(--primary-dark));
         }
         
         * {
-            font-family: Vazir, sans-serif;
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+            font-family: 'Vazirmatn', sans-serif;
         }
         
         body {
-            background-color: #ffffff;
-            color: #1f2937;
-            line-height: 1.6;
+            background-color: #0f172a;
+            color: var(--light);
+            overflow-x: hidden;
         }
         
-        .container {
+        .hero-section {
+            height: 100vh;
+            background: var(--gradient);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 1.5rem;
         }
         
-        header {
-            background-color: white;
-            box-shadow: var(--shadow);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        
-        .header-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.2rem 0;
-        }
-        
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--primary);
-            text-decoration: none;
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 1.8rem;
-        }
-        
-        nav a {
-            color: var(--secondary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        
-        nav a:hover, nav a.active {
-            color: var(--primary);
-        }
-        
-        .hero {
-            padding: 4rem 0;
-            text-align: center;
-        }
-        
-        .hero h1 {
-            font-size: 2.5rem;
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 700;
             margin-bottom: 1.5rem;
-            color: #111827;
+            text-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--secondary);
-            max-width: 700px;
-            margin: 0 auto 2rem;
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         .cta-button {
             display: inline-block;
-            background-color: var(--primary);
-            color: white;
-            padding: 0.8rem 2rem;
-            border-radius: 0.375rem;
+            background-color: var(--secondary);
+            color: var(--dark);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
             text-decoration: none;
-            font-weight: 600;
-            transition: background-color 0.3s;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
         }
         
         .cta-button:hover {
-            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
         }
         
-        section {
-            padding: 4rem 0;
+        .floating-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            animation: float 15s infinite linear;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            100% {
+                transform: translateY(-1000px) rotate(720deg);
+            }
+        }
+        
+        .section {
+            padding: 8rem 2rem;
+            position: relative;
         }
         
         .section-title {
-            font-size: 1.8rem;
-            text-align: center;
+            font-size: 3rem;
+            font-weight: 700;
             margin-bottom: 3rem;
-            color: #111827;
+            text-align: center;
             position: relative;
-            padding-bottom: 1rem;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
         }
         
         .section-title:after {
-            content: "";
+            content: '';
             position: absolute;
-            bottom: 0;
-            right: 50%;
-            transform: translateX(50%);
-            width: 80px;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
             height: 4px;
-            background-color: var(--primary);
+            background: var(--gradient);
             border-radius: 2px;
         }
         
         .clients-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
         
         .client-card {
-            background-color: var(--light);
-            border-radius: 0.5rem;
-            padding: 2rem;
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
         }
         
         .client-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            border-color: var(--primary);
+        }
+        
+        .client-card:before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+            transition: all 0.5s ease;
+            opacity: 0;
+        }
+        
+        .client-card:hover:before {
+            opacity: 1;
         }
         
         .client-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            color: var(--primary);
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
         }
         
         .client-title {
-            font-size: 1.25rem;
+            font-size: 1.8rem;
             margin-bottom: 1rem;
-            color: #111827;
         }
         
         .client-description {
-            color: var(--secondary);
-            margin-bottom: 1.5rem;
+            opacity: 0.8;
+            margin-bottom: 2rem;
         }
         
         .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
         
         .price-card {
-            border: 1px solid var(--border);
-            border-radius: 0.5rem;
-            padding: 2rem;
-            text-align: center;
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             position: relative;
-            transition: all 0.3s;
-        }
-        
-        .price-card:hover {
-            border-color: var(--primary);
+            overflow: hidden;
         }
         
         .price-card.featured {
-            border: 2px solid var(--primary);
+            border: 2px solid var(--secondary);
         }
         
-        .price-header {
-            margin-bottom: 1.5rem;
+        .price-card.featured:after {
+            content: 'پیشنهاد ویژه';
+            position: absolute;
+            top: 20px;
+            left: -30px;
+            background: var(--secondary);
+            color: var(--dark);
+            padding: 0.3rem 2rem;
+            transform: rotate(-45deg);
+            font-weight: 700;
+            font-size: 0.8rem;
         }
         
         .price-title {
-            font-size: 1.25rem;
+            font-size: 1.5rem;
             margin-bottom: 0.5rem;
-            color: #111827;
         }
         
         .price-duration {
-            color: var(--secondary);
+            opacity: 0.7;
+            margin-bottom: 1.5rem;
         }
         
         .price-amount {
-            font-size: 2rem;
+            font-size: 2.5rem;
             font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
+            margin: 1.5rem 0;
+            color: var(--secondary);
         }
         
         .price-features {
             list-style: none;
             margin-bottom: 2rem;
-            text-align: right;
         }
         
         .price-features li {
-            padding: 0.5rem 0;
-            color: var(--secondary);
+            padding: 0.7rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            padding-right: 1.5rem;
         }
         
         .price-features li:before {
-            content: "✓";
-            color: #10b981;
-            margin-left: 0.5rem;
+            content: '✓';
+            position: absolute;
+            right: 0;
+            color: var(--secondary);
         }
         
         .contact-methods {
             display: flex;
             justify-content: center;
-            gap: 1.5rem;
-            margin-top: 3rem;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
         }
         
         .contact-card {
-            background-color: var(--light);
-            border-radius: 0.5rem;
-            padding: 2rem;
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             text-align: center;
-            max-width: 350px;
-            width: 100%;
+            flex: 1;
+            min-width: 300px;
         }
         
         .contact-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
-        
-        .contact-button {
-            display: inline-block;
-            background-color: var(--primary);
-            color: white;
-            padding: 0.6rem 1.5rem;
-            border-radius: 0.375rem;
-            text-decoration: none;
-            font-weight: 600;
-            margin-top: 1rem;
-            transition: background-color 0.3s;
-        }
-        
-        .contact-button:hover {
-            background-color: var(--primary-dark);
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
         }
         
         footer {
-            background-color: #111827;
-            color: white;
-            padding: 3rem 0;
+            background: var(--gradient);
+            padding: 3rem 2rem;
             text-align: center;
         }
         
-        .footer-content {
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        
         .footer-logo {
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: 700;
             margin-bottom: 1.5rem;
-            color: white;
         }
         
-        .footer-text {
-            color: #d1d5db;
-            margin-bottom: 2rem;
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
         }
         
         @media (max-width: 768px) {
-            nav ul {
-                gap: 1rem;
+            .hero-title {
+                font-size: 2.5rem;
             }
             
-            .hero h1 {
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
                 font-size: 2rem;
-            }
-            
-            .clients-grid, .pricing-grid {
-                grid-template-columns: 1fr;
             }
             
             .contact-methods {
                 flex-direction: column;
-                align-items: center;
+            }
+            
+            .contact-card {
+                min-width: 100%;
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="header-inner">
-                <a href="#" class="logo">v2gram</a>
-                <nav>
-                    <ul>
-                        <li><a href="#clients" class="active">نرم‌افزارها</a></li>
-                        <li><a href="#pricing">تعرفه‌ها</a></li>
-                        <li><a href="#contact">پشتیبانی</a></li>
-                    </ul>
-                </nav>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="floating-shapes">
+            <div class="shape" style="width: 100px; height: 100px; top: 20%; left: 10%;"></div>
+            <div class="shape" style="width: 150px; height: 150px; top: 70%; left: 80%;"></div>
+            <div class="shape" style="width: 200px; height: 200px; top: 40%; left: 60%;"></div>
+            <div class="shape" style="width: 80px; height: 80px; top: 80%; left: 30%;"></div>
+            <div class="shape" style="width: 120px; height: 120px; top: 10%; left: 50%;"></div>
+        </div>
+        
+        <div class="hero-content">
+            <h1 class="hero-title animate__animated animate__fadeInDown">v2gram</h1>
+            <p class="hero-subtitle animate__animated animate__fadeInUp animate__delay-1s">
+                سرویس V2Ray حرفه‌ای با سرعت و پایداری بی‌نظیر برای دسترسی بدون محدودیت به اینترنت
+            </p>
+            <a href="#pricing" class="cta-button animate__animated animate__fadeInUp animate__delay-2s">خرید اشتراک</a>
+        </div>
+    </section>
+
+    <!-- Clients Section -->
+    <section class="section" id="clients">
+        <h2 class="section-title">کلاینت‌های پیشنهادی</h2>
+        <div class="clients-grid">
+            <div class="client-card">
+                <div class="client-icon">📱</div>
+                <h3 class="client-title">V2RayNG (اندروید)</h3>
+                <p class="client-description">بهترین انتخاب برای کاربران اندروید با قابلیت‌های پیشرفته و مصرف بهینه باتری</p>
+                <a href="https://t.me/vpngramsbot" class="cta-button">خرید سرویس</a>
+            </div>
+            
+            <div class="client-card">
+                <div class="client-icon">🍎</div>
+                <h3 class="client-title">V2Box (آیفون)</h3>
+                <p class="client-description">ساده‌ترین راه برای کاربران iOS با رابط کاربری زیبا و نصب آسان</p>
+                <a href="https://t.me/vpngramsbot" class="cta-button">خرید سرویس</a>
+            </div>
+            
+            <div class="client-card">
+                <div class="client-icon">🔒</div>
+                <h3 class="client-title">Streisand (آیفون)</h3>
+                <p class="client-description">راهکار حرفه‌ای برای کاربران آیفون با امنیت و انعطاف‌پذیری بالا</p>
+                <a href="https://t.me/vpngramsbot" class="cta-button">خرید سرویس</a>
+            </div>
+            
+            <div class="client-card">
+                <div class="client-icon">⚡</div>
+                <h3 class="client-title">V2RayTun (اندروید)</h3>
+                <p class="client-description">پیشرفته‌ترین گزینه برای کاربران حرفه‌ای اندروید با تنظیمات کامل</p>
+                <a href="https://t.me/vpngramsbot" class="cta-button">خرید سرویس</a>
             </div>
         </div>
-    </header>
+    </section>
 
-    <main>
-        <section class="hero">
-            <div class="container">
-                <h1>تجربه اینترنت آزاد با سرویس V2Ray VIP</h1>
-                <p>v2gram ارائه‌دهنده سرویس‌های پرسرعت و پایدار V2Ray برای دسترسی بدون محدودیت به اینترنت</p>
-                <a href="#pricing" class="cta-button">خرید اشتراک</a>
+    <!-- Pricing Section -->
+    <section class="section" id="pricing" style="background: rgba(15, 23, 42, 0.8);">
+        <h2 class="section-title">پلن‌های اشتراک</h2>
+        <div class="pricing-grid">
+            <!-- یک ماهه -->
+            <div class="price-card">
+                <h3 class="price-title">پلن یک ماهه</h3>
+                <p class="price-duration">30 گیگابایت - 30 روز</p>
+                <div class="price-amount">150 هزار تومان</div>
+                <ul class="price-features">
+                    <li>سرعت نامحدود</li>
+                    <li>پشتیبانی 24 ساعته</li>
+                    <li>اتصال 2 دستگاه همزمان</li>
+                </ul>
+                <a href="https://t.me/vpngramsbot" class="cta-button">خرید اشتراک</a>
             </div>
-        </section>
-
-        <section id="clients">
-            <div class="container">
-                <h2 class="section-title">نرم‌افزارهای پیشنهادی</h2>
-                <div class="clients-grid">
-                    <div class="client-card">
-                        <div class="client-icon">📱</div>
-                        <h3 class="client-title">V2RayNG برای اندروید</h3>
-                        <p class="client-description">اگر اندروید دارید، V2RayNG انتخاب اول شماست. سریع، پایدار و با مصرف بهینه باتری.</p>
-                        <a href="https://t.me/vpngramsbot" class="cta-button">خرید سرویس</a>
-                    </div>
-                    
-                    <div class="client-card">
-                        <div class="client-icon">🍎</div>
-                        <h3 class="client-title">V2Box برای آیفون</h3>
-                        <p class="client-description">برای کاربران آیفون، V2Box ساده‌ترین راهکار است. نصب آسان، اتصال سریع.</p>
-                        <a href="https://t.me/vpngramsbot" class="cta-button">خرید سرویس</a>
-                    </div>
-                    
-                    <div class="client-card">
-                        <div class="client-icon">🔒</div>
-                        <h3 class="client-title">Streisand برای آیفون</h3>
-                        <p class="client-description">به دنبال امنیت بیشتر در آیفون؟ Streisand با پشتیبانی از چندین پروتکل، انتخاب حرفه‌ای‌تر است.</p>
-                        <a href="https://t.me/vpngramsbot" class="cta-button">خرید سرویس</a>
-                    </div>
-                    
-                    <div class="client-card">
-                        <div class="client-icon">⚡</div>
-                        <h3 class="client-title">V2RayTun برای اندروید</h3>
-                        <p class="client-description">برای کاربران حرفه‌ای اندروید، V2RayTun با تنظیمات پیشرفته، تجربه‌ای متفاوت ارائه می‌دهد.</p>
-                        <a href="https://t.me/vpngramsbot" class="cta-button">خرید سرویس</a>
-                    </div>
-                </div>
+            
+            <div class="price-card">
+                <h3 class="price-title">پلن یک ماهه</h3>
+                <p class="price-duration">60 گیگابایت - 30 روز</p>
+                <div class="price-amount">260 هزار تومان</div>
+                <ul class="price-features">
+                    <li>سرعت نامحدود</li>
+                    <li>پشتیبانی 24 ساعته</li>
+                    <li>اتصال 3 دستگاه همزمان</li>
+                </ul>
+                <a href="https://t.me/vpngramsbot" class="cta-button">خرید اشتراک</a>
             </div>
-        </section>
-
-        <section id="pricing" style="background-color: #f9fafb;">
-            <div class="container">
-                <h2 class="section-title">پلن‌های اشتراک</h2>
-                <div class="pricing-grid">
-                    <!-- یک ماهه -->
-                    <div class="price-card">
-                        <div class="price-header">
-                            <h3 class="price-title">⏳ یک ماهه</h3>
-                            <p class="price-duration">30 گیگابایت (30 روز)</p>
-                        </div>
-                        <div class="price-amount">150 هزار تومان</div>
-                        <ul class="price-features">
-                            <li>سرعت نامحدود</li>
-                            <li>پشتیبانی 24 ساعته</li>
-                            <li>اتصال همزمان 2 دستگاه</li>
-                        </ul>
-                        <a href="https://t.me/vpngramsbot" class="cta-button">خرید اشتراک</a>
-                    </div>
-                    
-                    <div class="price-card">
-                        <div class="price-header">
-                            <h3 class="price-title">⏳ یک ماهه</h3>
-                            <p class="price-duration">60 گیگابایت (30 روز)</p>
-                        </div>
-                        <div class="price-amount">260 هزار تومان</div>
-                        <ul class="price-features">
-                            <li>سرعت نامحدود</li>
-                            <li>پشتیبانی 24 ساعته</li>
-                            <li>اتصال همزمان 3 دستگاه</li>
-                        </ul>
-                        <a href="https://t.me/vpngramsbot" class="cta-button">خرید اشتراک</a>
-                    </div>
-                    
-                    <div class="price-card featured">
-                        <div class="price-header">
-                            <h3 class="price-title">⏳ یک ماهه</h3>
-                            <p class="price-duration">90 گیگابایت (30 روز)</p>
-                        </div>
-                        <div class="price-amount">360 هزار تومان</div>
-                        <ul class="price-features">
-                            <li>سرعت نامحدود</li>
-                            <li>پشتیبانی VIP</li>
-                            <li>اتصال همزمان 5 دستگاه</li>
-                        </ul>
-                        <a href="https://t.me/vpngramsbot" class="cta-button">خرید اشتراک</a>
-                    </div>
-                    
-                    <!-- سه ماهه -->
-                    <div class="price-card">
-                        <div class="price-header">
-                            <h3 class="price-title">📅 سه ماهه</h3>
-                            <p class="price-duration">90 گیگابایت (90 روز)</p>
-                        </div>
-                        <div class="price-amount">400 هزار تومان</div>
-                        <ul class="price-features">
-                            <li>سرعت نامحدود</li>
-                            <li>پشتیبانی 24 ساعته</li>
-                            <li>اتصال همزمان 3 دستگاه</li>
-                        </ul>
-                        <a href="https://t.me/vpngramsbot" class="cta-button">خرید اشتراک</a>
-                    </div>
-                    
-                    <div class="price-card">
-                        <div class="price-header">
-                            <h3 class="price-title">📅 سه ماهه</h3>
-                            <p class="price-duration">180 گیگابایت (90 روز)</p>
-                        </div>
-                        <div class="price-amount">700 هزار تومان</div>
-                        <ul class="price-features">
-                            <li>سرعت نامحدود</li>
-                            <li>پشتیبانی 24 ساعته</li>
-                            <li>اتصال همزمان 5 دستگاه</li>
-                        </ul>
-                        <a href="https://t.me/vpngramsbot" class="cta-button">خرید اشتراک</a>
-                    </div>
-                    
-                    <div class="price-card featured">
-                        <div class="price-header">
-                            <h3 class="price-title">📅 سه ماهه</h3>
-                            <p class="price-duration">450 گیگابایت (90 روز)</p>
-                        </div>
-                        <div class="price-amount">1,400 هزار تومان</div>
-                        <ul class="price-features">
-                            <li>سرعت نامحدود</li>
-                            <li>پشتیبانی VIP</li>
-                            <li>اتصال همزمان 8 دستگاه</li>
-                            <li>سرورهای اختصاصی</li>
-                        </ul>
-                        <a href="https://t.me/vpngramsbot" class="cta-button">خرید اشتراک</a>
-                    </div>
-                </div>
+            
+            <div class="price-card featured">
+                <h3 class="price-title">پلن یک ماهه</h3>
+                <p class="price-duration">90 گیگابایت - 30 روز</p>
+                <div class="price-amount">360 هزار تومان</div>
+                <ul class="price-features">
+                    <li>سرعت نامحدود</li>
+                    <li>پشتیبانی VIP</li>
+                    <li>اتصال 5 دستگاه همزمان</li>
+                </ul>
+                <a href="https://t.me/vpngramsbot" class="cta-button">خرید اشتراک</a>
             </div>
-        </section>
-
-        <section id="contact">
-            <div class="container">
-                <h2 class="section-title">پشتیبانی و ارتباط</h2>
-                <div class="contact-methods">
-                    <div class="contact-card">
-                        <div class="contact-icon">🤖</div>
-                        <h3>پشتیبانی تلگرام</h3>
-                        <p>سریع‌ترین راه برای دریافت پاسخ سوالات شما</p>
-                        <a href="https://t.me/vpngramsbot" class="contact-button">ارتباط با ربات</a>
-                    </div>
-                    
-                    <div class="contact-card">
-                        <div class="contact-icon">💬</div>
-                        <h3>پشتیبانی چت آنلاین</h3>
-                        <p>دریافت راهنمایی و پشتیبانی فنی به صورت زنده</p>
-                        <a href="https://www.goftino.com/c/nBujW9" class="contact-button">شروع گفتگو</a>
-                    </div>
-                </div>
+            
+            <!-- سه ماهه -->
+            <div class="price-card">
+                <h3 class="price-title">پلن سه ماهه</h3>
+                <p class="price-duration">90 گیگابایت - 90 روز</p>
+                <div class="price-amount">400 هزار تومان</div>
+                <ul class="price-features">
+                    <li>سرعت نامحدود</li>
+                    <li>پشتیبانی 24 ساعته</li>
+                    <li>اتصال 3 دستگاه همزمان</li>
+                </ul>
+                <a href="https://t.me/vpngramsbot" class="cta-button">خرید اشتراک</a>
             </div>
-        </section>
-    </main>
+            
+            <div class="price-card">
+                <h3 class="price-title">پلن سه ماهه</h3>
+                <p class="price-duration">180 گیگابایت - 90 روز</p>
+                <div class="price-amount">700 هزار تومان</div>
+                <ul class="price-features">
+                    <li>سرعت نامحدود</li>
+                    <li>پشتیبانی 24 ساعته</li>
+                    <li>اتصال 5 دستگاه همزمان</li>
+                </ul>
+                <a href="https://t.me/vpngramsbot" class="cta-button">خرید اشتراک</a>
+            </div>
+            
+            <div class="price-card featured">
+                <h3 class="price-title">پلن سه ماهه</h3>
+                <p class="price-duration">450 گیگابایت - 90 روز</p>
+                <div class="price-amount">1,400 هزار تومان</div>
+                <ul class="price-features">
+                    <li>سرعت نامحدود</li>
+                    <li>پشتیبانی VIP</li>
+                    <li>اتصال 8 دستگاه همزمان</li>
+                    <li>سرورهای اختصاصی</li>
+                </ul>
+                <a href="https://t.me/vpngramsbot" class="cta-button">خرید اشتراک</a>
+            </div>
+        </div>
+    </section>
 
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <h2 class="section-title">پشتیبانی و ارتباط</h2>
+        <div class="contact-methods">
+            <div class="contact-card">
+                <div class="contact-icon">🤖</div>
+                <h3>پشتیبانی تلگرام</h3>
+                <p>سریع‌ترین راه برای دریافت پاسخ به سوالات شما</p>
+                <a href="https://t.me/vpngramsbot" class="cta-button">ارتباط با ربات</a>
+            </div>
+            
+            <div class="contact-card">
+                <div class="contact-icon">💬</div>
+                <h3>چت آنلاین</h3>
+                <p>پشتیبانی فنی و راهنمایی به صورت زنده</p>
+                <a href="https://www.goftino.com/c/nBujW9" class="cta-button">شروع گفتگو</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">v2gram</div>
-                <p class="footer-text">ارائه سرویس‌های V2Ray پرسرعت و پایدار برای دسترسی آزاد به اینترنت</p>
-                <p>© 2023 v2gram - تمامی حقوق محفوظ است</p>
-            </div>
-        </div>
+        <div class="footer-logo">v2gram</div>
+        <p>سرویس V2Ray حرفه‌ای با بهترین کیفیت و پشتیبانی</p>
+        <p>© 2023 تمامی حقوق محفوظ است</p>
     </footer>
+
+    <script>
+        // GSAP Animations
+        gsap.registerPlugin(ScrollTrigger);
+        
+        // Floating shapes animation
+        document.querySelectorAll('.shape').forEach((shape, i) => {
+            gsap.to(shape, {
+                y: -1000,
+                rotation: 720,
+                duration: 30 + (i * 5),
+                repeat: -1,
+                ease: "none"
+            });
+        });
+        
+        // Scroll animations
+        gsap.utils.toArray('.client-card').forEach(card => {
+            gsap.from(card, {
+                scrollTrigger: {
+                    trigger: card,
+                    start: "top 80%",
+                    toggleActions: "play none none none"
+                },
+                y: 50,
+                opacity: 0,
+                duration: 0.8
+            });
+        });
+        
+        gsap.utils.toArray('.price-card').forEach(card => {
+            gsap.from(card, {
+                scrollTrigger: {
+                    trigger: card,
+                    start: "top 80%",
+                    toggleActions: "play none none none"
+                },
+                y: 50,
+                opacity: 0,
+                duration: 0.8,
+                delay: 0.1 * Array.from(card.parentNode.children).indexOf(card)
+            });
+        });
+        
+        // Hero section particles
+        const heroSection = document.querySelector('.hero-section');
+        for (let i = 0; i < 50; i++) {
+            const particle = document.createElement('div');
+            particle.style.position = 'absolute';
+            particle.style.width = Math.random() * 3 + 1 + 'px';
+            particle.style.height = particle.style.width;
+            particle.style.backgroundColor = 'rgba(255, 255, 255, ' + (Math.random() * 0.5 + 0.1) + ')';
+            particle.style.borderRadius = '50%';
+            particle.style.top = Math.random() * 100 + '%';
+            particle.style.left = Math.random() * 100 + '%';
+            
+            const duration = Math.random() * 20 + 10;
+            const delay = Math.random() * 5;
+            
+            gsap.to(particle, {
+                y: '-=100vh',
+                x: '+=' + (Math.random() * 200 - 100),
+                rotation: Math.random() * 360,
+                duration: duration,
+                delay: delay,
+                repeat: -1,
+                ease: "none"
+            });
+            
+            heroSection.appendChild(particle);
+        }
+    </script>
 </body>
 </html>
