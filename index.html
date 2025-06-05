@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>v2gram | سفر کهکشانی به اینترنت آزاد</title>
+    <title>آموزش نصب و راه‌اندازی Streisand | v2gram</title>
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -67,7 +67,7 @@
             opacity: 0.6;
         }
         
-        /* هدر کهکشانی - کاملاً مرکزچین */
+        /* هدر کهکشانی */
         header {
             background: rgba(11, 13, 33, 0.8);
             backdrop-filter: blur(10px);
@@ -135,265 +135,206 @@
         }
         
         /* بخش اصلی */
-        .hero-section {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
             padding: 8rem 1.5rem 4rem;
-            position: relative;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 2rem;
         }
         
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            margin: 0 auto;
+        /* نوار کناری */
+        .sidebar {
+            position: sticky;
+            top: 120px;
+            height: fit-content;
+            background: rgba(11, 13, 33, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 1.5rem;
+            border: 1px solid rgba(106, 0, 255, 0.2);
         }
         
-        .hero-title {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 700;
+        .sidebar-title {
+            font-size: 1.2rem;
             margin-bottom: 1.5rem;
-            background: linear-gradient(90deg, white, var(--space-blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: float 6s ease-in-out infinite;
+            color: var(--space-blue);
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--space-purple);
         }
         
-        .hero-subtitle {
-            font-size: clamp(1rem, 2vw, 1.5rem);
-            margin-bottom: 2.5rem;
-            opacity: 0.9;
-            line-height: 1.6;
+        .sidebar-menu {
+            list-style: none;
         }
         
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
+        .sidebar-menu li {
+            margin-bottom: 1rem;
         }
         
-        /* دکمه‌های کهکشانی - رنگ‌بندی بهینه */
-        .btn {
-            display: inline-block;
-            padding: 0.9rem 1.8rem;
-            border-radius: 8px;
+        .sidebar-menu a {
+            color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
             transition: all 0.3s ease;
-            margin: 0.5rem;
-            position: relative;
-            overflow: hidden;
-            border: none;
-            cursor: pointer;
+            display: block;
+            padding: 0.5rem 0;
         }
         
-        .btn-telegram {
-            background-color: #0088cc;
+        .sidebar-menu a:hover {
             color: white;
-            box-shadow: 0 4px 15px rgba(0, 136, 204, 0.3);
+            transform: translateX(5px);
         }
         
-        .btn-telegram:hover {
-            background-color: #0077b3;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0, 136, 204, 0.4);
+        .sidebar-menu a.active {
+            color: var(--space-pink);
+            font-weight: 500;
         }
         
-        .btn-goftino {
-            background-color: #4CAF50;
-            color: white;
-            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
-        }
-        
-        .btn-goftino:hover {
-            background-color: #3e8e41;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
-        }
-        
-        .btn-group {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 2rem;
-            gap: 1rem;
-        }
-        
-        /* بخش‌های محتوا */
-        .section {
-            padding: 6rem 1.5rem;
-            position: relative;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        
-        .section-title {
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 700;
-            margin-bottom: 3rem;
-            text-align: center;
-            position: relative;
-            display: inline-block;
-            background: linear-gradient(90deg, var(--space-blue), var(--space-pink));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .section-title:after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            right: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--space-blue), var(--space-pink));
-            border-radius: 3px;
-        }
-        
-        /* کارت‌های کهکشانی */
-        .card {
+        /* محتوای آموزشی */
+        .content {
             background: rgba(11, 13, 33, 0.6);
             backdrop-filter: blur(10px);
             border-radius: 16px;
             padding: 2rem;
-            transition: all 0.4s ease;
             border: 1px solid rgba(106, 0, 255, 0.2);
-            position: relative;
-            overflow: hidden;
         }
         
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 25px rgba(106, 0, 255, 0.2);
-            border-color: var(--space-blue);
-        }
-        
-        .card-icon {
-            font-size: 2.8rem;
-            margin-bottom: 1.5rem;
+        .content-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
             background: linear-gradient(90deg, var(--space-blue), var(--space-pink));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         
-        .card-title {
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-        
-        .card-description {
-            opacity: 0.9;
+        .requirement-card {
+            background: rgba(106, 0, 255, 0.1);
+            border-left: 4px solid var(--space-blue);
+            padding: 1.5rem;
+            border-radius: 8px;
             margin-bottom: 2rem;
-            line-height: 1.6;
-            font-size: 0.95rem;
         }
         
-        /* شبکه‌بندی */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        /* پلن‌های قیمت (بدون نام کهکشانی) */
-        .price-card {
-            background: rgba(11, 13, 33, 0.7);
-            backdrop-filter: blur(10px);
-            border-radius: 16px;
-            padding: 2rem;
-            transition: all 0.4s ease;
-            border: 1px solid rgba(106, 0, 255, 0.3);
-            position: relative;
-        }
-        
-        .price-card.featured {
-            border: 2px solid var(--secondary);
-        }
-        
-        .price-card.featured:after {
-            content: 'پیشنهاد ویژه';
-            position: absolute;
-            top: 15px;
-            left: -30px;
-            background: var(--secondary);
-            color: white;
-            padding: 0.3rem 2rem;
-            transform: rotate(-45deg);
-            font-weight: 600;
-            font-size: 0.8rem;
-        }
-        
-        .price-title {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-        
-        .price-duration {
-            opacity: 0.8;
+        .requirement-title {
+            font-size: 1.2rem;
             margin-bottom: 1rem;
-            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
         
-        .price-amount {
-            font-size: 2rem;
-            font-weight: 700;
-            margin: 1.5rem 0;
+        .requirement-title .icon {
             color: var(--space-blue);
         }
         
-        .price-features {
-            list-style: none;
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--space-purple);
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .download-btn:hover {
+            background: var(--space-pink);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 0, 230, 0.3);
+        }
+        
+        /* کارت‌های آموزشی */
+        .step-card {
+            background: rgba(30, 41, 59, 0.5);
+            border-radius: 12px;
+            padding: 1.5rem;
             margin-bottom: 2rem;
+            border-left: 4px solid var(--space-blue);
+            transition: all 0.3s ease;
         }
         
-        .price-features li {
-            padding: 0.6rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            position: relative;
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .step-number {
+            display: inline-block;
+            background: var(--space-blue);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .step-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--space-blue);
+        }
+        
+        .step-image {
+            max-width: 100%;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border: 1px solid rgba(106, 0, 255, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* نکات مهم */
+        .note-card {
+            background: rgba(245, 158, 11, 0.1);
+            border-left: 4px solid var(--secondary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 3rem;
+        }
+        
+        .note-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .note-list {
+            list-style-type: none;
+        }
+        
+        .note-list li {
+            margin-bottom: 0.8rem;
             padding-right: 1.5rem;
+            position: relative;
         }
         
-        .price-features li:before {
-            content: '✓';
+        .note-list li:before {
+            content: '⚠️';
             position: absolute;
             right: 0;
-            color: var(--space-blue);
-        }
-        
-        /* فوتر کهکشانی */
-        footer {
-            background: linear-gradient(180deg, 
-                      transparent, 
-                      rgba(106, 0, 255, 0.15));
-            padding: 4rem 1.5rem;
-            text-align: center;
-            position: relative;
-        }
-        
-        .footer-logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            background: linear-gradient(90deg, var(--space-blue), var(--space-pink));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .footer-text {
-            max-width: 600px;
-            margin: 0 auto 1.5rem;
-            line-height: 1.6;
-            opacity: 0.9;
         }
         
         /* رسپانسیو */
+        @media (max-width: 992px) {
+            .main-container {
+                grid-template-columns: 1fr;
+                padding-top: 7rem;
+            }
+            
+            .sidebar {
+                position: static;
+                margin-bottom: 2rem;
+            }
+        }
+        
         @media (max-width: 768px) {
             .header-container {
                 padding: 0 1rem;
@@ -402,42 +343,19 @@
             nav {
                 gap: 1rem;
             }
-            
-            .hero-section {
-                padding-top: 10rem;
-            }
-            
-            .btn-group {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .btn {
-                width: 100%;
-                max-width: 280px;
-                margin: 0.5rem 0;
-            }
         }
         
         @media (max-width: 480px) {
             .logo {
-                font-size: 1.6rem;
+                font-size: 1.5rem;
             }
             
             nav a {
                 font-size: 0.9rem;
             }
             
-            .hero-title {
-                font-size: 2.2rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1rem;
-            }
-            
-            .section {
-                padding: 4rem 1rem;
+            .content-title {
+                font-size: 1.5rem;
             }
         }
     </style>
@@ -446,196 +364,132 @@
     <!-- کهکشان متحرک -->
     <div class="space" id="space"></div>
     
-    <!-- هدر کاملاً مرکزچین -->
+    <!-- هدر -->
     <header>
         <div class="header-container">
             <a href="#" class="logo">v2gram</a>
             <nav>
-                <a href="#clients">کلاینت‌ها</a>
-                <a href="#pricing">تعرفه‌ها</a>
-                <a href="#contact">تماس</a>
+                <a href="#">خانه</a>
+                <a href="#">خرید سرویس</a>
+                <a href="#">آموزش‌ها</a>
+                <a href="#">تماس با ما</a>
             </nav>
         </div>
     </header>
 
-    <!-- بخش اصلی -->
-    <section class="hero-section">
-        <div class="hero-content">
-            <h1 class="hero-title">سرویس V2Ray پرسرعت</h1>
-            <p class="hero-subtitle">
-                تجربه اینترنت بدون محدودیت در یک سفر کهکشانی با سرعت و امنیت بالا
-            </p>
-            <div class="btn-group">
-                <a href="#pricing" class="btn btn-telegram">خرید اشتراک</a>
+    <!-- محتوای اصلی -->
+    <main class="main-container">
+        <!-- نوار کناری -->
+        <aside class="sidebar">
+            <h3 class="sidebar-title">آموزش‌های اتصال</h3>
+            <ul class="sidebar-menu">
+                <li><span class="sidebar-title">Android</span></li>
+                <li><a href="#">v2rayNG</a></li>
+                
+                <li><span class="sidebar-title">IOS</span></li>
+                <li><a href="#" class="active">Streisand</a></li>
+                
+                <li><span class="sidebar-title">Windows</span></li>
+                <li><a href="#">v2rayN</a></li>
+                
+                <li><span class="sidebar-title">MacOS</span></li>
+                <li><a href="#">Streisand</a></li>
+                
+                <li><span class="sidebar-title">IPV6</span></li>
+                
+                <li><span class="sidebar-title">SAMSUNG</span></li>
+            </ul>
+        </aside>
+
+        <!-- محتوای آموزشی -->
+        <div class="content">
+            <h1 class="content-title">آموزش نصب و راه‌اندازی Streisand</h1>
+            
+            <div class="requirement-card">
+                <h2 class="requirement-title">
+                    <span class="icon">✔️</span>
+                    نیازمندی‌ها
+                </h2>
+                <p>به iOS 14.0 به بالا یا آخرین نسخه‌ی Mac OS نیاز دارد.</p>
+                <a href="#" class="download-btn">
+                    <span>دانلود از اپ استور</span>
+                    <span>⬇️</span>
+                </a>
+            </div>
+            
+            <h2 style="color: var(--space-blue); margin-bottom: 1.5rem;">اضافه کردن لینک اتصال (subscription)</h2>
+            
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <h3 class="step-title">دریافت لینک اتصال</h3>
+                <p>وارد ربات شوید و با استفاده از دکمه‌ی مدیریت سرویس لینک اتصال (subscription) خود را دریافت کنید. سپس لینک مورد نظر را کپی کنید.</p>
+                <img src="step1.jpg" alt="مرحله ۱" class="step-image">
+            </div>
+            
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <h3 class="step-title">وارد کردن لینک در Streisand</h3>
+                <p>وارد برنامه Streisand شوید، سمت راست بالا روی + کلیک کنید و سپس گزینه Import from Clipboard را انتخاب کنید تا سرور ها اضافه شود.</p>
+                <img src="step2.jpg" alt="مرحله ۲" class="step-image">
+                <img src="step2-2.jpg" alt="مرحله ۲-۲" class="step-image">
+            </div>
+            
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <h3 class="step-title">تأیید اضافه شدن سرورها</h3>
+                <p>در صورت موفقیت آمیز بودن، سرور‌های جدید به لیست سرور‌های شما اضافه می‌گردد.</p>
+                <img src="step3.jpg" alt="مرحله ۳" class="step-image">
+            </div>
+            
+            <div class="step-card">
+                <div class="step-number">4</div>
+                <h3 class="step-title">تنظیمات Subscription</h3>
+                <p>وارد تب Settings شوید، سپس گزینه‌ی Subscription را انتخاب کنید.</p>
+                <img src="step4.jpg" alt="مرحله ۴" class="step-image">
+            </div>
+            
+            <div class="step-card">
+                <div class="step-number">5</div>
+                <h3 class="step-title">فعال‌سازی Update On Open</h3>
+                <p>در صفحه‌ی جدیدی که برای شما باز شده گزینه‌ی Update On Open را فعال کنید.</p>
+                <img src="step5.jpg" alt="مرحله ۵" class="step-image">
+            </div>
+            
+            <div class="step-card">
+                <div class="step-number">6</div>
+                <h3 class="step-title">اتصال به سرور</h3>
+                <p>اکنون به تب Home برگشته و یک سرور را انتخاب و متصل شوید.</p>
+                <img src="step6.jpg" alt="مرحله ۶" class="step-image">
+            </div>
+            
+            <div class="step-card">
+                <div class="step-number">7</div>
+                <h3 class="step-title">اجازه دسترسی VPN</h3>
+                <p>ممکن است برای اتصال به VPN از شما سوال پرسید شود، گزینه‌ی Allow را انتخاب کنید.</p>
+                <img src="step7.jpg" alt="مرحله ۷" class="step-image">
+            </div>
+            
+            <div class="success-message" style="background: rgba(46, 204, 113, 0.1); padding: 1.5rem; border-radius: 8px; border-left: 4px solid #2ecc71; margin-top: 2rem;">
+                <h3 style="color: #2ecc71; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                    <span>🎉</span>
+                    تبریک، شما به اینترنت آزاد متصل شدید!
+                </h3>
+                <p>✅ اگر روی دکمه‌ی اتصال کلیک می‌کنید اما فیلترشکن فعال نمی‌شود کافیست یکبار تلفن‌ همراه خود را خاموش و روشن کنید تا مشکل حل شود!</p>
+            </div>
+            
+            <div class="note-card">
+                <h3 class="note-title">
+                    <span>⚠️</span>
+                    توجه کنید:
+                </h3>
+                <ul class="note-list">
+                    <li>هنگام اضافه کردن لینک آپدیت، فیلترشکن روشنی نداشته باشید.</li>
+                    <li>تنظیمات ساعت و تاریخ گوشی حتما روی اتوماتیک باشد.</li>
+                    <li>متن اضافه‌ای همراه با لینک اتصال خود کپی نکنید! فقط و فقط لینک اتصال را کپی داشته باشید.</li>
+                </ul>
             </div>
         </div>
-    </section>
-
-    <!-- کلاینت‌ها -->
-    <section class="section" id="clients">
-        <h2 class="section-title">کلاینت‌های پیشنهادی</h2>
-        <div class="grid">
-            <div class="card">
-                <div class="card-icon">📱</div>
-                <h3 class="card-title">V2RayNG (اندروید)</h3>
-                <p class="card-description">بهترین انتخاب برای کاربران اندروید با قابلیت‌های پیشرفته و مصرف بهینه باتری</p>
-                <div class="btn-group">
-                    <a href="https://t.me/vpngramsbot" class="btn btn-telegram">ربات تلگرام</a>
-                    <a href="https://www.goftino.com/c/nBujW9" class="btn btn-goftino">چت سایت</a>
-                </div>
-            </div>
-            
-            <div class="card">
-                <div class="card-icon">🍎</div>
-                <h3 class="card-title">V2Box (آیفون)</h3>
-                <p class="card-description">ساده‌ترین راه برای کاربران iOS با رابط کاربری زیبا و نصب آسان</p>
-                <div class="btn-group">
-                    <a href="https://t.me/vpngramsbot" class="btn btn-telegram">ربات تلگرام</a>
-                    <a href="https://www.goftino.com/c/nBujW9" class="btn btn-goftino">چت سایت</a>
-                </div>
-            </div>
-            
-            <div class="card">
-                <div class="card-icon">🔒</div>
-                <h3 class="card-title">Streisand (آیفون)</h3>
-                <p class="card-description">راهکار حرفه‌ای برای کاربران آیفون با امنیت و انعطاف‌پذیری بالا</p>
-                <div class="btn-group">
-                    <a href="https://t.me/vpngramsbot" class="btn btn-telegram">ربات تلگرام</a>
-                    <a href="https://www.goftino.com/c/nBujW9" class="btn btn-goftino">چت سایت</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- تعرفه‌ها -->
-    <section class="section" id="pricing">
-        <h2 class="section-title">پلن‌های اشتراک</h2>
-        <div class="grid">
-            <!-- یک ماهه -->
-            <div class="price-card">
-                <h3 class="price-title">یک ماهه</h3>
-                <p class="price-duration">30 گیگابایت - 30 روز</p>
-                <div class="price-amount">150 هزار تومان</div>
-                <ul class="price-features">
-                    <li>سرعت نامحدود</li>
-                    <li>پشتیبانی 24 ساعته</li>
-                    <li>اتصال 2 دستگاه همزمان</li>
-                </ul>
-                <div class="btn-group">
-                    <a href="https://t.me/vpngramsbot" class="btn btn-telegram">ربات تلگرام</a>
-                    <a href="https://www.goftino.com/c/nBujW9" class="btn btn-goftino">چت سایت</a>
-                </div>
-            </div>
-            
-            <div class="price-card">
-                <h3 class="price-title">یک ماهه</h3>
-                <p class="price-duration">60 گیگابایت - 30 روز</p>
-                <div class="price-amount">260 هزار تومان</div>
-                <ul class="price-features">
-                    <li>سرعت نامحدود</li>
-                    <li>پشتیبانی 24 ساعته</li>
-                    <li>اتصال 3 دستگاه همزمان</li>
-                </ul>
-                <div class="btn-group">
-                    <a href="https://t.me/vpngramsbot" class="btn btn-telegram">ربات تلگرام</a>
-                    <a href="https://www.goftino.com/c/nBujW9" class="btn btn-goftino">چت سایت</a>
-                </div>
-            </div>
-            
-            <div class="price-card featured">
-                <h3 class="price-title">یک ماهه</h3>
-                <p class="price-duration">90 گیگابایت - 30 روز</p>
-                <div class="price-amount">360 هزار تومان</div>
-                <ul class="price-features">
-                    <li>سرعت نامحدود</li>
-                    <li>پشتیبانی VIP</li>
-                    <li>اتصال 5 دستگاه همزمان</li>
-                </ul>
-                <div class="btn-group">
-                    <a href="https://t.me/vpngramsbot" class="btn btn-telegram">ربات تلگرام</a>
-                    <a href="https://www.goftino.com/c/nBujW9" class="btn btn-goftino">چت سایت</a>
-                </div>
-            </div>
-            
-            <!-- سه ماهه -->
-            <div class="price-card">
-                <h3 class="price-title">سه ماهه</h3>
-                <p class="price-duration">90 گیگابایت - 90 روز</p>
-                <div class="price-amount">400 هزار تومان</div>
-                <ul class="price-features">
-                    <li>سرعت نامحدود</li>
-                    <li>پشتیبانی 24 ساعته</li>
-                    <li>اتصال 3 دستگاه همزمان</li>
-                </ul>
-                <div class="btn-group">
-                    <a href="https://t.me/vpngramsbot" class="btn btn-telegram">ربات تلگرام</a>
-                    <a href="https://www.goftino.com/c/nBujW9" class="btn btn-goftino">چت سایت</a>
-                </div>
-            </div>
-            
-            <div class="price-card">
-                <h3 class="price-title">سه ماهه</h3>
-                <p class="price-duration">180 گیگابایت - 90 روز</p>
-                <div class="price-amount">700 هزار تومان</div>
-                <ul class="price-features">
-                    <li>سرعت نامحدود</li>
-                    <li>پشتیبانی 24 ساعته</li>
-                    <li>اتصال 5 دستگاه همزمان</li>
-                </ul>
-                <div class="btn-group">
-                    <a href="https://t.me/vpngramsbot" class="btn btn-telegram">ربات تلگرام</a>
-                    <a href="https://www.goftino.com/c/nBujW9" class="btn btn-goftino">چت سایت</a>
-                </div>
-            </div>
-            
-            <div class="price-card featured">
-                <h3 class="price-title">سه ماهه</h3>
-                <p class="price-duration">450 گیگابایت - 90 روز</p>
-                <div class="price-amount">1,400 هزار تومان</div>
-                <ul class="price-features">
-                    <li>سرعت نامحدود</li>
-                    <li>پشتیبانی VIP</li>
-                    <li>اتصال 8 دستگاه همزمان</li>
-                    <li>سرورهای اختصاصی</li>
-                </ul>
-                <div class="btn-group">
-                    <a href="https://t.me/vpngramsbot" class="btn btn-telegram">ربات تلگرام</a>
-                    <a href="https://www.goftino.com/c/nBujW9" class="btn btn-goftino">چت سایت</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- تماس -->
-    <section class="section" id="contact">
-        <h2 class="section-title">پشتیبانی و ارتباط</h2>
-        <div class="grid">
-            <div class="card">
-                <div class="card-icon">🤖</div>
-                <h3 class="card-title">پشتیبانی تلگرام</h3>
-                <p class="card-description">سریع‌ترین راه برای دریافت پاسخ به سوالات شما</p>
-                <div class="btn-group">
-                    <a href="https://t.me/vpngramsbot" class="btn btn-telegram">ربات تلگرام</a>
-                </div>
-            </div>
-            
-            <div class="card">
-                <div class="card-icon">💬</div>
-                <h3 class="card-title">چت آنلاین</h3>
-                <p class="card-description">پشتیبانی فنی و راهنمایی به صورت زنده</p>
-                <div class="btn-group">
-                    <a href="https://www.goftino.com/c/nBujW9" class="btn btn-goftino">شروع گفتگو</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- فوتر -->
-    <footer>
-        <div class="footer-logo">v2gram</div>
-        <p class="footer-text">سرویس V2Ray پرسرعت با پشتیبانی 24 ساعته</p>
-        <p>© 2023 تمامی حقوق محفوظ است</p>
-    </footer>
+    </main>
 
     <!-- اسکریپت کهکشان -->
     <script>
@@ -689,9 +543,6 @@
             
             space.appendChild(nebula);
         }
-        
-        // اسکریپت Goftino
-        !function(){var i="nBujW9",a=window,d=document;function g(){var g=d.createElement("script"),s="https://www.goftino.com/widget/"+i,l=localStorage.getItem("goftino_"+i);g.async=!0,g.src=l?s+"?o="+l:s;d.getElementsByTagName("head")[0].appendChild(g);}"complete"===d.readyState?g():a.attachEvent?a.attachEvent("onload",g):a.addEventListener("load",g,!1);}();
     </script>
 </body>
 </html>
