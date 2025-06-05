@@ -3,11 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>v2gram | سرویس V2Ray حرفه‌ای و پرسرعت</title>
+    <meta name="description" content="خرید سرویس V2Ray پرسرعت از v2gram - ارائه پلن‌های یک ماهه و سه ماهه با پشتیبانی 24 ساعته - مناسب برای V2RayNG اندروید و V2Box آیفون">
+    <meta name="keywords" content="خرید v2ray, v2ray ارزان, v2ray پرسرعت, v2ray VIP, خرید vpn, v2ray سه ماهه, v2ray یک ماهه, v2ray اندروید, v2ray آیفون">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="v2gram - سرویس V2Ray پرسرعت و بدون قطعی">
+    <meta property="og:description" content="خرید سرویس V2Ray پرسرعت با بهترین قیمت و پشتیبانی 24 ساعته">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fa_IR">
+    <link rel="canonical" href="https://v2gram.com">
+    
+    <!-- ساختار schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "v2gram",
+      "url": "https://v2gram.com",
+      "logo": "https://v2gram.com/logo.png",
+      "description": "ارائه سرویس‌های V2Ray پرسرعت و پایدار"
+    }
+    </script>
+    
+    <title>v2gram | خرید سرویس V2Ray پرسرعت برای اندروید و آیفون</title>
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
     <style>
         :root {
             --primary: #6366f1;
@@ -29,11 +48,12 @@
             background-color: #0f172a;
             color: var(--light);
             overflow-x: hidden;
+            line-height: 1.6;
         }
         
-        /* هدر جدید با مرکزچین کامل */
+        /* هدر بهبود یافته */
         header {
-            background: rgba(15, 23, 42, 0.8);
+            background: rgba(15, 23, 42, 0.9);
             backdrop-filter: blur(10px);
             position: fixed;
             top: 0;
@@ -42,6 +62,7 @@
             z-index: 1000;
             padding: 1rem 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
         }
         
         .header-container {
@@ -107,7 +128,7 @@
             justify-content: center;
             text-align: center;
             padding: 0 1.5rem;
-            margin-top: 80px; /* فاصله از هدر */
+            margin-top: 80px;
         }
         
         .hero-content {
@@ -131,51 +152,48 @@
             line-height: 1.6;
         }
         
-        .cta-button {
+        .btn {
             display: inline-block;
-            background-color: var(--secondary);
-            color: var(--dark);
-            padding: 1rem 2.5rem;
+            padding: 1rem 2rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 700;
-            font-size: 1.1rem;
+            font-size: 1rem;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
-            border: none;
-            cursor: pointer;
+            margin: 0.5rem;
+            text-align: center;
+            min-width: 200px;
         }
         
-        .cta-button:hover {
+        .btn-telegram {
+            background-color: #0088cc;
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 136, 204, 0.3);
+        }
+        
+        .btn-telegram:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
+            box-shadow: 0 6px 20px rgba(0, 136, 204, 0.4);
+            background-color: #006699;
         }
         
-        .floating-shapes {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: 1;
+        .btn-goftino {
+            background-color: #4CAF50;
+            color: white;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
         }
         
-        .shape {
-            position: absolute;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(5px);
-            animation: float 15s infinite linear;
+        .btn-goftino:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+            background-color: #3e8e41;
         }
         
-        @keyframes float {
-            0% {
-                transform: translateY(0) rotate(0deg);
-            }
-            100% {
-                transform: translateY(-1000px) rotate(720deg);
-            }
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
         }
         
         .section {
@@ -395,6 +413,17 @@
                 padding: 0.2rem 1rem;
                 font-size: 0.7rem;
             }
+            
+            .btn-group {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 280px;
+                margin: 0.5rem 0;
+            }
         }
         
         @media (max-width: 480px) {
@@ -411,11 +440,6 @@
             }
             
             .hero-subtitle {
-                font-size: 1rem;
-            }
-            
-            .cta-button {
-                padding: 0.8rem 1.8rem;
                 font-size: 1rem;
             }
             
@@ -438,7 +462,7 @@
     </style>
 </head>
 <body>
-    <!-- هدر جدید با مرکزچین کامل -->
+    <!-- هدر بهبود یافته -->
     <header>
         <div class="header-container">
             <a href="#" class="logo">v2gram</a>
@@ -452,20 +476,14 @@
 
     <!-- Hero Section -->
     <section class="hero-section">
-        <div class="floating-shapes">
-            <div class="shape" style="width: 100px; height: 100px; top: 20%; left: 10%;"></div>
-            <div class="shape" style="width: 150px; height: 150px; top: 70%; left: 80%;"></div>
-            <div class="shape" style="width: 200px; height: 200px; top: 40%; left: 60%;"></div>
-            <div class="shape" style="width: 80px; height: 80px; top: 80%; left: 30%;"></div>
-            <div class="shape" style="width: 120px; height: 120px; top: 10%; left: 50%;"></div>
-        </div>
-        
         <div class="hero-content">
             <h1 class="hero-title animate__animated animate__fadeInDown">v2gram</h1>
             <p class="hero-subtitle animate__animated animate__fadeInUp animate__delay-1s">
                 سرویس V2Ray حرفه‌ای با سرعت و پایداری بی‌نظیر برای دسترسی بدون محدودیت به اینترنت
             </p>
-            <a href="#pricing" class="cta-button animate__animated animate__fadeInUp animate__delay-2s">خرید اشتراک</a>
+            <div class="btn-group">
+                <a href="#pricing" class="btn btn-telegram animate__animated animate__fadeInUp animate__delay-2s">خرید اشتراک</a>
+            </div>
         </div>
     </section>
 
@@ -477,28 +495,40 @@
                 <div class="client-icon">📱</div>
                 <h3 class="client-title">V2RayNG (اندروید)</h3>
                 <p class="client-description">بهترین انتخاب برای کاربران اندروید با قابلیت‌های پیشرفته و مصرف بهینه باتری</p>
-                <a href="https://t.me/vpngramsbot" class="cta-button">خرید سرویس</a>
+                <div class="btn-group">
+                    <a href="https://t.me/vpngramsbot" class="btn btn-telegram">ربات تلگرام</a>
+                    <a href="https://www.goftino.com/c/nBujW9" class="btn btn-goftino">چت سایت</a>
+                </div>
             </div>
             
             <div class="client-card">
                 <div class="client-icon">🍎</div>
                 <h3 class="client-title">V2Box (آیفون)</h3>
                 <p class="client-description">ساده‌ترین راه برای کاربران iOS با رابط کاربری زیبا و نصب آسان</p>
-                <a href="https://t.me/vpngramsbot" class="cta-button">خرید سرویس</a>
+                <div class="btn-group">
+                    <a href="https://t.me/vpngramsbot" class="btn btn-telegram">ربات تلگرام</a>
+                    <a href="https://www.goftino.com/c/nBujW9" class="btn btn-goftino">چت سایت</a>
+                </div>
             </div>
             
             <div class="client-card">
                 <div class="client-icon">🔒</div>
                 <h3 class="client-title">Streisand (آیفون)</h3>
                 <p class="client-description">راهکار حرفه‌ای برای کاربران آیفون با امنیت و انعطاف‌پذیری بالا</p>
-                <a href="https://t.me/vpngramsbot" class="cta-button">خرید سرویس</a>
+                <div class="btn-group">
+                    <a href="https://t.me/vpngramsbot" class="btn btn-telegram">ربات تلگرام</a>
+                    <a href="https://www.goftino.com/c/nBujW9" class="btn btn-goftino">چت سایت</a>
+                </div>
             </div>
             
             <div class="client-card">
                 <div class="client-icon">⚡</div>
                 <h3 class="client-title">V2RayTun (اندروید)</h3>
                 <p class="client-description">پیشرفته‌ترین گزینه برای کاربران حرفه‌ای اندروید با تنظیمات کامل</p>
-                <a href="https://t.me/vpngramsbot" class="cta-button">خرید سرویس</a>
+                <div class="btn-group">
+                    <a href="https://t.me/vpngramsbot" class="btn btn-telegram">ربات تلگرام</a>
+                    <a href="https://www.goftino.com/c/nBujW9" class="btn btn-goftino">چت سایت</a>
+                </div>
             </div>
         </div>
     </section>
@@ -517,7 +547,10 @@
                     <li>پشتیبانی 24 ساعته</li>
                     <li>اتصال 2 دستگاه همزمان</li>
                 </ul>
-                <a href="https://t.me/vpngramsbot" class="cta-button">خرید اشتراک</a>
+                <div class="btn-group">
+                    <a href="https://t.me/vpngramsbot" class="btn btn-telegram">ربات تلگرام</a>
+                    <a href="https://www.goftino.com/c/nBujW9" class="btn btn-goftino">چت سایت</a>
+                </div>
             </div>
             
             <div class="price-card">
@@ -529,7 +562,10 @@
                     <li>پشتیبانی 24 ساعته</li>
                     <li>اتصال 3 دستگاه همزمان</li>
                 </ul>
-                <a href="https://t.me/vpngramsbot" class="cta-button">خرید اشتراک</a>
+                <div class="btn-group">
+                    <a href="https://t.me/vpngramsbot" class="btn btn-telegram">ربات تلگرام</a>
+                    <a href="https://www.goftino.com/c/nBujW9" class="btn btn-goftino">چت سایت</a>
+                </div>
             </div>
             
             <div class="price-card featured">
@@ -541,7 +577,10 @@
                     <li>پشتیبانی VIP</li>
                     <li>اتصال 5 دستگاه همزمان</li>
                 </ul>
-                <a href="https://t.me/vpngramsbot" class="cta-button">خرید اشتراک</a>
+                <div class="btn-group">
+                    <a href="https://t.me/vpngramsbot" class="btn btn-telegram">ربات تلگرام</a>
+                    <a href="https://www.goftino.com/c/nBujW9" class="btn btn-goftino">چت سایت</a>
+                </div>
             </div>
             
             <!-- سه ماهه -->
@@ -554,7 +593,10 @@
                     <li>پشتیبانی 24 ساعته</li>
                     <li>اتصال 3 دستگاه همزمان</li>
                 </ul>
-                <a href="https://t.me/vpngramsbot" class="cta-button">خرید اشتراک</a>
+                <div class="btn-group">
+                    <a href="https://t.me/vpngramsbot" class="btn btn-telegram">ربات تلگرام</a>
+                    <a href="https://www.goftino.com/c/nBujW9" class="btn btn-goftino">چت سایت</a>
+                </div>
             </div>
             
             <div class="price-card">
@@ -566,7 +608,10 @@
                     <li>پشتیبانی 24 ساعته</li>
                     <li>اتصال 5 دستگاه همزمان</li>
                 </ul>
-                <a href="https://t.me/vpngramsbot" class="cta-button">خرید اشتراک</a>
+                <div class="btn-group">
+                    <a href="https://t.me/vpngramsbot" class="btn btn-telegram">ربات تلگرام</a>
+                    <a href="https://www.goftino.com/c/nBujW9" class="btn btn-goftino">چت سایت</a>
+                </div>
             </div>
             
             <div class="price-card featured">
@@ -579,7 +624,10 @@
                     <li>اتصال 8 دستگاه همزمان</li>
                     <li>سرورهای اختصاصی</li>
                 </ul>
-                <a href="https://t.me/vpngramsbot" class="cta-button">خرید اشتراک</a>
+                <div class="btn-group">
+                    <a href="https://t.me/vpngramsbot" class="btn btn-telegram">ربات تلگرام</a>
+                    <a href="https://www.goftino.com/c/nBujW9" class="btn btn-goftino">چت سایت</a>
+                </div>
             </div>
         </div>
     </section>
@@ -592,14 +640,18 @@
                 <div class="contact-icon">🤖</div>
                 <h3>پشتیبانی تلگرام</h3>
                 <p>سریع‌ترین راه برای دریافت پاسخ به سوالات شما</p>
-                <a href="https://t.me/vpngramsbot" class="cta-button">ارتباط با ربات</a>
+                <div class="btn-group">
+                    <a href="https://t.me/vpngramsbot" class="btn btn-telegram">ربات تلگرام</a>
+                </div>
             </div>
             
             <div class="contact-card">
                 <div class="contact-icon">💬</div>
                 <h3>چت آنلاین</h3>
                 <p>پشتیبانی فنی و راهنمایی به صورت زنده</p>
-                <a href="https://www.goftino.com/c/nBujW9" class="cta-button">شروع گفتگو</a>
+                <div class="btn-group">
+                    <a href="https://www.goftino.com/c/nBujW9" class="btn btn-goftino">چت سایت</a>
+                </div>
             </div>
         </div>
     </section>
@@ -607,27 +659,24 @@
     <!-- Footer -->
     <footer>
         <div class="footer-logo">v2gram</div>
-        <p class="footer-text">سرویس V2Ray حرفه‌ای با بهترین کیفیت و پشتیبانی</p>
+        <p class="footer-text">سرویس V2Ray حرفه‌ای با بهترین کیفیت و پشتیبانی 24 ساعته</p>
         <p>© 2023 تمامی حقوق محفوظ است</p>
     </footer>
 
+    <!-- اسکریپت Goftino -->
+    <script type="text/javascript">
+      !function(){var i="nBujW9",a=window,d=document;function g(){var g=d.createElement("script"),s="https://www.goftino.com/widget/"+i,l=localStorage.getItem("goftino_"+i);g.async=!0,g.src=l?s+"?o="+l:s;d.getElementsByTagName("head")[0].appendChild(g);}"complete"===d.readyState?g():a.attachEvent?a.attachEvent("onload",g):a.addEventListener("load",g,!1);}();
+    </script>
+
+    <!-- اسکریپت انیمیشن‌ها -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
     <script>
         // GSAP Animations
         gsap.registerPlugin(ScrollTrigger);
         
-        // Floating shapes animation
-        document.querySelectorAll('.shape').forEach((shape, i) => {
-            gsap.to(shape, {
-                y: -1000,
-                rotation: 720,
-                duration: 30 + (i * 5),
-                repeat: -1,
-                ease: "none"
-            });
-        });
-        
-        // Scroll animations
-        gsap.utils.toArray('.client-card').forEach(card => {
+        // انیمیشن اسکرول برای کارت‌ها
+        gsap.utils.toArray('.client-card, .price-card, .contact-card').forEach(card => {
             gsap.from(card, {
                 scrollTrigger: {
                     trigger: card,
@@ -640,56 +689,14 @@
             });
         });
         
-        gsap.utils.toArray('.price-card').forEach(card => {
-            gsap.from(card, {
-                scrollTrigger: {
-                    trigger: card,
-                    start: "top 80%",
-                    toggleActions: "play none none none"
-                },
-                y: 50,
-                opacity: 0,
-                duration: 0.8,
-                delay: 0.1 * Array.from(card.parentNode.children).indexOf(card)
-            });
-        });
-        
-        // Hero section particles
-        const heroSection = document.querySelector('.hero-section');
-        for (let i = 0; i < 50; i++) {
-            const particle = document.createElement('div');
-            particle.style.position = 'absolute';
-            particle.style.width = Math.random() * 3 + 1 + 'px';
-            particle.style.height = particle.style.width;
-            particle.style.backgroundColor = 'rgba(255, 255, 255, ' + (Math.random() * 0.5 + 0.1) + ')';
-            particle.style.borderRadius = '50%';
-            particle.style.top = Math.random() * 100 + '%';
-            particle.style.left = Math.random() * 100 + '%';
-            
-            const duration = Math.random() * 20 + 10;
-            const delay = Math.random() * 5;
-            
-            gsap.to(particle, {
-                y: '-=100vh',
-                x: '+=' + (Math.random() * 200 - 100),
-                rotation: Math.random() * 360,
-                duration: duration,
-                delay: delay,
-                repeat: -1,
-                ease: "none"
-            });
-            
-            heroSection.appendChild(particle);
-        }
-        
-        // بهبود اسکرول برای هدر ثابت
+        // تغییر هدر هنگام اسکرول
         window.addEventListener('scroll', () => {
             const header = document.querySelector('header');
             if (window.scrollY > 50) {
                 header.style.background = 'rgba(15, 23, 42, 0.95)';
                 header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.2)';
             } else {
-                header.style.background = 'rgba(15, 23, 42, 0.8)';
+                header.style.background = 'rgba(15, 23, 42, 0.9)';
                 header.style.boxShadow = 'none';
             }
         });
