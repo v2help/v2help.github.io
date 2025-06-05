@@ -7,12 +7,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --space-dark: #0B0D21;
-            --space-purple: #6A00FF;
-            --space-blue: #00B4FF;
-            --space-pink: #FF00E6;
-            --star-color: rgba(255, 255, 255, 0.8);
-            --nebula-color: rgba(106, 0, 255, 0.15);
+            --primary: #4361ee;
+            --primary-light: #4895ef;
+            --secondary: #f72585;
+            --dark: #2b2d42;
+            --light: #f8f9fa;
+            --success: #4cc9f0;
+            --warning: #f8961e;
         }
         
         * {
@@ -23,62 +24,33 @@
         }
         
         body {
-            background-color: var(--space-dark);
-            color: white;
-            overflow-x: hidden;
-            line-height: 1.6;
+            background-color: #f8f9fa;
+            color: #2b2d42;
+            line-height: 1.8;
+            text-align: justify;
         }
         
-        /* کهکشان پس‌زمینه */
-        .space {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
+        /* انیمیشن‌ها */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
-        .stars {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
         
-        .star {
-            position: absolute;
-            background-color: var(--star-color);
-            border-radius: 50%;
-            animation: twinkle var(--duration) infinite ease-in-out;
-        }
-        
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.2; }
-            50% { opacity: 1; }
-        }
-        
-        .nebula {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(60px);
-            opacity: 0.6;
-        }
-        
-        /* هدر کهکشانی */
+        /* هدر */
         header {
-            background: rgba(11, 13, 33, 0.8);
-            backdrop-filter: blur(10px);
+            background: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             z-index: 1000;
             padding: 1rem 0;
-            border-bottom: 1px solid rgba(106, 0, 255, 0.3);
-            text-align: center;
         }
         
         .header-container {
@@ -86,133 +58,187 @@
             margin: 0 auto;
             padding: 0 1.5rem;
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
             align-items: center;
         }
         
         .logo {
             font-size: 1.8rem;
             font-weight: 700;
-            background: linear-gradient(90deg, var(--space-blue), var(--space-pink));
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-decoration: none;
-            margin-bottom: 1rem;
         }
         
-        nav {
+        /* ناوبری اصلی */
+        .main-nav {
             display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1.5rem;
+            gap: 2rem;
         }
         
-        nav a {
-            color: rgba(255, 255, 255, 0.8);
+        .main-nav a {
+            color: var(--dark);
             text-decoration: none;
-            font-size: 1rem;
+            font-weight: 500;
             transition: all 0.3s ease;
             position: relative;
         }
         
-        nav a:hover {
-            color: white;
-        }
-        
-        nav a:after {
+        .main-nav a:after {
             content: '';
             position: absolute;
             bottom: -5px;
             right: 0;
             width: 0;
             height: 2px;
-            background: linear-gradient(90deg, var(--space-blue), var(--space-pink));
+            background: var(--primary);
             transition: width 0.3s ease;
         }
         
-        nav a:hover:after {
+        .main-nav a:hover:after {
             width: 100%;
         }
         
-        /* بخش اصلی */
+        /* محتوای اصلی */
         .main-container {
             max-width: 1200px;
-            margin: 0 auto;
-            padding: 8rem 1.5rem 4rem;
+            margin: 8rem auto 4rem;
+            padding: 0 1.5rem;
             display: grid;
-            grid-template-columns: 250px 1fr;
-            gap: 2rem;
+            grid-template-columns: 1fr;
+            gap: 3rem;
         }
         
-        /* نوار کناری */
+        /* نوار کناری ساده */
         .sidebar {
-            position: sticky;
-            top: 120px;
-            height: fit-content;
-            background: rgba(11, 13, 33, 0.6);
-            backdrop-filter: blur(10px);
+            background: white;
             border-radius: 16px;
-            padding: 1.5rem;
-            border: 1px solid rgba(106, 0, 255, 0.2);
+            padding: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            animation: fadeIn 0.6s ease-out;
         }
         
         .sidebar-title {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             margin-bottom: 1.5rem;
-            color: var(--space-blue);
+            color: var(--primary);
+            position: relative;
             padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--space-purple);
         }
         
-        .sidebar-menu {
+        .sidebar-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary);
+        }
+        
+        .platform-list {
             list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
         }
         
-        .sidebar-menu li {
-            margin-bottom: 1rem;
+        .platform-item {
+            background: rgba(67, 97, 238, 0.05);
+            border-radius: 8px;
+            padding: 1rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(67, 97, 238, 0.1);
         }
         
-        .sidebar-menu a {
-            color: rgba(255, 255, 255, 0.8);
+        .platform-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(67, 97, 238, 0.1);
+            border-color: rgba(67, 97, 238, 0.3);
+        }
+        
+        .platform-name {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .platform-name:before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+        
+        .app-list {
+            list-style: none;
+            padding-right: 1rem;
+        }
+        
+        .app-list li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .app-list a {
+            color: var(--dark);
             text-decoration: none;
             transition: all 0.3s ease;
             display: block;
-            padding: 0.5rem 0;
+            padding: 0.3rem 0;
         }
         
-        .sidebar-menu a:hover {
-            color: white;
+        .app-list a:hover {
+            color: var(--primary);
             transform: translateX(5px);
         }
         
-        .sidebar-menu a.active {
-            color: var(--space-pink);
+        .app-list a.active {
+            color: var(--secondary);
             font-weight: 500;
         }
         
         /* محتوای آموزشی */
         .content {
-            background: rgba(11, 13, 33, 0.6);
-            backdrop-filter: blur(10px);
+            background: white;
             border-radius: 16px;
-            padding: 2rem;
-            border: 1px solid rgba(106, 0, 255, 0.2);
+            padding: 3rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            animation: fadeIn 0.8s ease-out;
         }
         
         .content-title {
-            font-size: 2rem;
+            font-size: 2.2rem;
             margin-bottom: 2rem;
-            background: linear-gradient(90deg, var(--space-blue), var(--space-pink));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--dark);
+            position: relative;
+            padding-bottom: 1rem;
         }
         
+        .content-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+        
+        /* کارت نیازمندی */
         .requirement-card {
-            background: rgba(106, 0, 255, 0.1);
-            border-left: 4px solid var(--space-blue);
+            background: rgba(67, 97, 238, 0.05);
+            border-radius: 12px;
             padding: 1.5rem;
-            border-radius: 8px;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
+            border-left: 4px solid var(--primary);
+            animation: fadeIn 0.6s ease-out;
         }
         
         .requirement-title {
@@ -220,94 +246,159 @@
             margin-bottom: 1rem;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.8rem;
+            color: var(--primary);
         }
         
         .requirement-title .icon {
-            color: var(--space-blue);
+            font-size: 1.5rem;
         }
         
         .download-btn {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            background: var(--space-purple);
+            background: var(--primary);
             color: white;
-            padding: 0.7rem 1.5rem;
+            padding: 0.8rem 1.8rem;
             border-radius: 8px;
             text-decoration: none;
             margin-top: 1rem;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(67, 97, 238, 0.2);
         }
         
         .download-btn:hover {
-            background: var(--space-pink);
+            background: var(--primary-light);
             transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(255, 0, 230, 0.3);
+            box-shadow: 0 6px 16px rgba(67, 97, 238, 0.3);
         }
         
-        /* کارت‌های آموزشی */
-        .step-card {
-            background: rgba(30, 41, 59, 0.5);
-            border-radius: 12px;
-            padding: 1.5rem;
+        /* مراحل آموزشی */
+        .step-container {
+            margin-top: 3rem;
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
             margin-bottom: 2rem;
-            border-left: 4px solid var(--space-blue);
+            color: var(--dark);
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--primary);
+        }
+        
+        .step-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
+            animation: fadeIn 0.6s ease-out;
         }
         
         .step-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border-color: rgba(67, 97, 238, 0.3);
+        }
+        
+        .step-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
         }
         
         .step-number {
-            display: inline-block;
-            background: var(--space-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
             color: white;
-            width: 30px;
-            height: 30px;
             border-radius: 50%;
-            text-align: center;
-            line-height: 30px;
-            margin-bottom: 1rem;
             font-weight: 700;
+            margin-left: 1rem;
+            flex-shrink: 0;
+            animation: float 3s ease-in-out infinite;
         }
         
         .step-title {
             font-size: 1.3rem;
-            margin-bottom: 1rem;
-            color: var(--space-blue);
+            color: var(--dark);
+        }
+        
+        .step-content {
+            margin-bottom: 1.5rem;
+            text-align: justify;
         }
         
         .step-image {
             max-width: 100%;
             border-radius: 8px;
             margin: 1rem 0;
-            border: 1px solid rgba(106, 0, 255, 0.3);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .step-image:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* پیام موفقیت */
+        .success-card {
+            background: rgba(76, 201, 240, 0.1);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 3rem 0;
+            border-left: 4px solid var(--success);
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        .success-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--success);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
         }
         
         /* نکات مهم */
         .note-card {
-            background: rgba(245, 158, 11, 0.1);
-            border-left: 4px solid var(--secondary);
-            padding: 1.5rem;
-            border-radius: 8px;
+            background: rgba(248, 150, 30, 0.1);
+            border-radius: 12px;
+            padding: 2rem;
             margin-top: 3rem;
+            border-left: 4px solid var(--warning);
+            animation: fadeIn 0.6s ease-out;
         }
         
         .note-title {
             font-size: 1.3rem;
             margin-bottom: 1rem;
-            color: var(--secondary);
+            color: var(--warning);
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.8rem;
         }
         
         .note-list {
-            list-style-type: none;
+            list-style: none;
         }
         
         .note-list li {
@@ -317,31 +408,39 @@
         }
         
         .note-list li:before {
-            content: '⚠️';
+            content: '•';
             position: absolute;
             right: 0;
+            color: var(--warning);
+            font-weight: bold;
         }
         
         /* رسپانسیو */
         @media (max-width: 992px) {
             .main-container {
                 grid-template-columns: 1fr;
-                padding-top: 7rem;
-            }
-            
-            .sidebar {
-                position: static;
-                margin-bottom: 2rem;
+                margin-top: 6rem;
             }
         }
         
         @media (max-width: 768px) {
             .header-container {
-                padding: 0 1rem;
+                flex-direction: column;
+                gap: 1rem;
             }
             
-            nav {
+            .main-nav {
                 gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .content {
+                padding: 2rem;
+            }
+            
+            .platform-list {
+                grid-template-columns: 1fr 1fr;
             }
         }
         
@@ -350,25 +449,36 @@
                 font-size: 1.5rem;
             }
             
-            nav a {
-                font-size: 0.9rem;
+            .content {
+                padding: 1.5rem;
             }
             
             .content-title {
-                font-size: 1.5rem;
+                font-size: 1.8rem;
+            }
+            
+            .platform-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .step-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .step-number {
+                margin-left: 0;
+                margin-bottom: 1rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- کهکشان متحرک -->
-    <div class="space" id="space"></div>
-    
     <!-- هدر -->
     <header>
         <div class="header-container">
             <a href="#" class="logo">v2gram</a>
-            <nav>
+            <nav class="main-nav">
                 <a href="#">خانه</a>
                 <a href="#">خرید سرویس</a>
                 <a href="#">آموزش‌ها</a>
@@ -379,28 +489,6 @@
 
     <!-- محتوای اصلی -->
     <main class="main-container">
-        <!-- نوار کناری -->
-        <aside class="sidebar">
-            <h3 class="sidebar-title">آموزش‌های اتصال</h3>
-            <ul class="sidebar-menu">
-                <li><span class="sidebar-title">Android</span></li>
-                <li><a href="#">v2rayNG</a></li>
-                
-                <li><span class="sidebar-title">IOS</span></li>
-                <li><a href="#" class="active">Streisand</a></li>
-                
-                <li><span class="sidebar-title">Windows</span></li>
-                <li><a href="#">v2rayN</a></li>
-                
-                <li><span class="sidebar-title">MacOS</span></li>
-                <li><a href="#">Streisand</a></li>
-                
-                <li><span class="sidebar-title">IPV6</span></li>
-                
-                <li><span class="sidebar-title">SAMSUNG</span></li>
-            </ul>
-        </aside>
-
         <!-- محتوای آموزشی -->
         <div class="content">
             <h1 class="content-title">آموزش نصب و راه‌اندازی Streisand</h1>
@@ -417,60 +505,90 @@
                 </a>
             </div>
             
-            <h2 style="color: var(--space-blue); margin-bottom: 1.5rem;">اضافه کردن لینک اتصال (subscription)</h2>
-            
-            <div class="step-card">
-                <div class="step-number">1</div>
-                <h3 class="step-title">دریافت لینک اتصال</h3>
-                <p>وارد ربات شوید و با استفاده از دکمه‌ی مدیریت سرویس لینک اتصال (subscription) خود را دریافت کنید. سپس لینک مورد نظر را کپی کنید.</p>
-                <img src="step1.jpg" alt="مرحله ۱" class="step-image">
+            <div class="step-container">
+                <h2 class="section-title">مراحل نصب و راه‌اندازی</h2>
+                
+                <div class="step-card">
+                    <div class="step-header">
+                        <div class="step-number">1</div>
+                        <h3 class="step-title">دریافت لینک اتصال</h3>
+                    </div>
+                    <div class="step-content">
+                        <p>وارد ربات شوید و با استفاده از دکمه‌ی مدیریت سرویس لینک اتصال (subscription) خود را دریافت کنید. سپس لینک مورد نظر را کپی کنید.</p>
+                    </div>
+                    <img src="step1.jpg" alt="مرحله ۱" class="step-image">
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-header">
+                        <div class="step-number">2</div>
+                        <h3 class="step-title">وارد کردن لینک در Streisand</h3>
+                    </div>
+                    <div class="step-content">
+                        <p>وارد برنامه Streisand شوید، سمت راست بالا روی + کلیک کنید و سپس گزینه Import from Clipboard را انتخاب کنید تا سرور ها اضافه شود.</p>
+                    </div>
+                    <img src="step2.jpg" alt="مرحله ۲" class="step-image">
+                    <img src="step2-2.jpg" alt="مرحله ۲-۲" class="step-image">
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-header">
+                        <div class="step-number">3</div>
+                        <h3 class="step-title">تأیید اضافه شدن سرورها</h3>
+                    </div>
+                    <div class="step-content">
+                        <p>در صورت موفقیت آمیز بودن، سرور‌های جدید به لیست سرور‌های شما اضافه می‌گردد.</p>
+                    </div>
+                    <img src="step3.jpg" alt="مرحله ۳" class="step-image">
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-header">
+                        <div class="step-number">4</div>
+                        <h3 class="step-title">تنظیمات Subscription</h3>
+                    </div>
+                    <div class="step-content">
+                        <p>وارد تب Settings شوید، سپس گزینه‌ی Subscription را انتخاب کنید.</p>
+                    </div>
+                    <img src="step4.jpg" alt="مرحله ۴" class="step-image">
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-header">
+                        <div class="step-number">5</div>
+                        <h3 class="step-title">فعال‌سازی Update On Open</h3>
+                    </div>
+                    <div class="step-content">
+                        <p>در صفحه‌ی جدیدی که برای شما باز شده گزینه‌ی Update On Open را فعال کنید.</p>
+                    </div>
+                    <img src="step5.jpg" alt="مرحله ۵" class="step-image">
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-header">
+                        <div class="step-number">6</div>
+                        <h3 class="step-title">اتصال به سرور</h3>
+                    </div>
+                    <div class="step-content">
+                        <p>اکنون به تب Home برگشته و یک سرور را انتخاب و متصل شوید.</p>
+                    </div>
+                    <img src="step6.jpg" alt="مرحله ۶" class="step-image">
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-header">
+                        <div class="step-number">7</div>
+                        <h3 class="step-title">اجازه دسترسی VPN</h3>
+                    </div>
+                    <div class="step-content">
+                        <p>ممکن است برای اتصال به VPN از شما سوال پرسید شود، گزینه‌ی Allow را انتخاب کنید.</p>
+                    </div>
+                    <img src="step7.jpg" alt="مرحله ۷" class="step-image">
+                </div>
             </div>
             
-            <div class="step-card">
-                <div class="step-number">2</div>
-                <h3 class="step-title">وارد کردن لینک در Streisand</h3>
-                <p>وارد برنامه Streisand شوید، سمت راست بالا روی + کلیک کنید و سپس گزینه Import from Clipboard را انتخاب کنید تا سرور ها اضافه شود.</p>
-                <img src="step2.jpg" alt="مرحله ۲" class="step-image">
-                <img src="step2-2.jpg" alt="مرحله ۲-۲" class="step-image">
-            </div>
-            
-            <div class="step-card">
-                <div class="step-number">3</div>
-                <h3 class="step-title">تأیید اضافه شدن سرورها</h3>
-                <p>در صورت موفقیت آمیز بودن، سرور‌های جدید به لیست سرور‌های شما اضافه می‌گردد.</p>
-                <img src="step3.jpg" alt="مرحله ۳" class="step-image">
-            </div>
-            
-            <div class="step-card">
-                <div class="step-number">4</div>
-                <h3 class="step-title">تنظیمات Subscription</h3>
-                <p>وارد تب Settings شوید، سپس گزینه‌ی Subscription را انتخاب کنید.</p>
-                <img src="step4.jpg" alt="مرحله ۴" class="step-image">
-            </div>
-            
-            <div class="step-card">
-                <div class="step-number">5</div>
-                <h3 class="step-title">فعال‌سازی Update On Open</h3>
-                <p>در صفحه‌ی جدیدی که برای شما باز شده گزینه‌ی Update On Open را فعال کنید.</p>
-                <img src="step5.jpg" alt="مرحله ۵" class="step-image">
-            </div>
-            
-            <div class="step-card">
-                <div class="step-number">6</div>
-                <h3 class="step-title">اتصال به سرور</h3>
-                <p>اکنون به تب Home برگشته و یک سرور را انتخاب و متصل شوید.</p>
-                <img src="step6.jpg" alt="مرحله ۶" class="step-image">
-            </div>
-            
-            <div class="step-card">
-                <div class="step-number">7</div>
-                <h3 class="step-title">اجازه دسترسی VPN</h3>
-                <p>ممکن است برای اتصال به VPN از شما سوال پرسید شود، گزینه‌ی Allow را انتخاب کنید.</p>
-                <img src="step7.jpg" alt="مرحله ۷" class="step-image">
-            </div>
-            
-            <div class="success-message" style="background: rgba(46, 204, 113, 0.1); padding: 1.5rem; border-radius: 8px; border-left: 4px solid #2ecc71; margin-top: 2rem;">
-                <h3 style="color: #2ecc71; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+            <div class="success-card">
+                <h3 class="success-title">
                     <span>🎉</span>
                     تبریک، شما به اینترنت آزاد متصل شدید!
                 </h3>
@@ -489,60 +607,90 @@
                 </ul>
             </div>
         </div>
+
+        <!-- نوار کناری ساده -->
+        <aside class="sidebar">
+            <h3 class="sidebar-title">آموزش‌های اتصال</h3>
+            <ul class="platform-list">
+                <li class="platform-item">
+                    <div class="platform-name">Android</div>
+                    <ul class="app-list">
+                        <li><a href="#">v2rayNG</a></li>
+                    </ul>
+                </li>
+                
+                <li class="platform-item">
+                    <div class="platform-name">IOS</div>
+                    <ul class="app-list">
+                        <li><a href="#" class="active">Streisand</a></li>
+                    </ul>
+                </li>
+                
+                <li class="platform-item">
+                    <div class="platform-name">Windows</div>
+                    <ul class="app-list">
+                        <li><a href="#">v2rayN</a></li>
+                    </ul>
+                </li>
+                
+                <li class="platform-item">
+                    <div class="platform-name">MacOS</div>
+                    <ul class="app-list">
+                        <li><a href="#">Streisand</a></li>
+                    </ul>
+                </li>
+                
+                <li class="platform-item">
+                    <div class="platform-name">IPV6</div>
+                    <ul class="app-list">
+                        <li><a href="#">راهنمای اتصال</a></li>
+                    </ul>
+                </li>
+                
+                <li class="platform-item">
+                    <div class="platform-name">SAMSUNG</div>
+                    <ul class="app-list">
+                        <li><a href="#">راهنمای ویژه</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </aside>
     </main>
 
-    <!-- اسکریپت کهکشان -->
+    <!-- اسکریپت انیمیشن‌ها -->
     <script>
-        // ایجاد ستاره‌ها
-        const space = document.getElementById('space');
-        const stars = document.createElement('div');
-        stars.className = 'stars';
-        space.appendChild(stars);
-        
-        // ایجاد 200 ستاره
-        for (let i = 0; i < 200; i++) {
-            const star = document.createElement('div');
-            star.className = 'star';
+        // انیمیشن برای کارت‌ها هنگام اسکرول
+        const animateOnScroll = () => {
+            const cards = document.querySelectorAll('.step-card, .requirement-card, .success-card, .note-card');
             
-            // اندازه تصادفی
-            const size = Math.random() * 3;
-            star.style.width = `${size}px`;
-            star.style.height = `${size}px`;
+            cards.forEach(card => {
+                const cardPosition = card.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if(cardPosition < screenPosition) {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }
+            });
+        };
+
+        // تنظیم اولیه برای انیمیشن‌ها
+        window.addEventListener('load', () => {
+            const cards = document.querySelectorAll('.step-card, .requirement-card, .success-card, .note-card');
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'all 0.6s ease-out';
+            });
             
-            // موقعیت تصادفی
-            star.style.left = `${Math.random() * 100}%`;
-            star.style.top = `${Math.random() * 100}%`;
-            
-            // مدت زمان سوسو زدن
-            star.style.setProperty('--duration', `${5 + Math.random() * 10}s`);
-            
-            // تأخیر تصادفی
-            star.style.animationDelay = `${Math.random() * 5}s`;
-            
-            stars.appendChild(star);
-        }
-        
-        // ایجاد سحابی‌ها
-        for (let i = 0; i < 5; i++) {
-            const nebula = document.createElement('div');
-            nebula.className = 'nebula';
-            
-            // اندازه و موقعیت تصادفی
-            const size = 200 + Math.random() * 300;
-            nebula.style.width = `${size}px`;
-            nebula.style.height = `${size}px`;
-            nebula.style.left = `${Math.random() * 100}%`;
-            nebula.style.top = `${Math.random() * 100}%`;
-            
-            // رنگ سحابی
-            nebula.style.backgroundColor = `rgba(${
-                Math.floor(Math.random() * 106)}, ${
-                Math.floor(Math.random() * 50)}, ${
-                Math.floor(Math.random() * 255)}, ${
-                Math.random() * 0.2 + 0.1})`;
-            
-            space.appendChild(nebula);
-        }
+            // فعال کردن انیمیشن‌ها با تأخیر
+            setTimeout(() => {
+                animateOnScroll();
+            }, 300);
+        });
+
+        // فعال کردن انیمیشن هنگام اسکرول
+        window.addEventListener('scroll', animateOnScroll);
     </script>
 </body>
 </html>
