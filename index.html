@@ -3,9 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منظومه شمسی</title>
+    <title>دانشنامه V2Ray - منظومه شمسی</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css">
     <style>
+        @font-face {
+            font-family: 'V2Help';
+            src: url('https://fonts.cdnfonts.com/css/v2help') format('woff2');
+        }
+        
         body {
             margin: 0;
             padding: 0;
@@ -16,23 +21,45 @@
         }
         
         header {
-            padding: 15px;
-            background: #111;
-            text-align: center;
-            border-bottom: 1px solid #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background: linear-gradient(90deg, #1a1a2e 0%, #16213e 100%);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
         
-        h1 {
-            margin: 0;
-            font-size: 1.5rem;
+        .logo {
+            font-family: 'V2Help', sans-serif;
+            font-size: 1.8rem;
             color: #4cc9f0;
+            text-shadow: 0 0 8px rgba(76, 201, 240, 0.6);
+            letter-spacing: 1px;
+        }
+        
+        .nav-btn {
+            display: inline-block;
+            padding: 8px 20px;
+            background: linear-gradient(45deg, #4cc9f0, #4361ee);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(76, 201, 240, 0.4);
+        }
+        
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 15px rgba(76, 201, 240, 0.7);
         }
         
         .solar-system {
             position: relative;
             width: 100%;
             height: 80vh;
-            margin: 20px auto;
+            margin: 0 auto;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -69,6 +96,16 @@
             transform: translateX(-50%);
         }
         
+        .planet-name {
+            position: absolute;
+            color: white;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            text-shadow: 0 0 3px #000;
+            font-weight: bold;
+        }
+        
+        /* Mercury */
         .mercury-orbit {
             width: 160px;
             height: 160px;
@@ -81,6 +118,14 @@
             background: #a9a9a9;
         }
         
+        .mercury-name {
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #a9a9a9;
+        }
+        
+        /* Venus */
         .venus-orbit {
             width: 220px;
             height: 220px;
@@ -93,6 +138,14 @@
             background: #e6c229;
         }
         
+        .venus-name {
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #e6c229;
+        }
+        
+        /* Earth */
         .earth-orbit {
             width: 300px;
             height: 300px;
@@ -105,6 +158,14 @@
             background: #1e90ff;
         }
         
+        .earth-name {
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #1e90ff;
+        }
+        
+        /* Mars */
         .mars-orbit {
             width: 380px;
             height: 380px;
@@ -117,6 +178,14 @@
             background: #ff6347;
         }
         
+        .mars-name {
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #ff6347;
+        }
+        
+        /* Jupiter */
         .jupiter-orbit {
             width: 500px;
             height: 500px;
@@ -129,6 +198,14 @@
             background: #f4a460;
         }
         
+        .jupiter-name {
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #f4a460;
+        }
+        
+        /* Saturn */
         .saturn-orbit {
             width: 600px;
             height: 600px;
@@ -139,6 +216,13 @@
             width: 25px;
             height: 25px;
             background: #d2b48c;
+        }
+        
+        .saturn-name {
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #d2b48c;
         }
         
         .saturn-ring {
@@ -152,6 +236,7 @@
             transform: translate(-50%, -50%) rotate(20deg);
         }
         
+        /* Uranus */
         .uranus-orbit {
             width: 700px;
             height: 700px;
@@ -164,6 +249,14 @@
             background: #afeeee;
         }
         
+        .uranus-name {
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #afeeee;
+        }
+        
+        /* Neptune */
         .neptune-orbit {
             width: 800px;
             height: 800px;
@@ -176,20 +269,46 @@
             background: #1e90ff;
         }
         
+        .neptune-name {
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #1e90ff;
+        }
+        
         @keyframes rotate {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
         }
         
         @media (max-width: 768px) {
+            header {
+                padding: 12px 15px;
+                flex-direction: column;
+                gap: 12px;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .nav-btn {
+                padding: 6px 15px;
+                font-size: 0.8rem;
+            }
+            
             .solar-system {
-                height: 60vh;
+                height: 65vh;
             }
             
             .sun {
-                width: 60px;
-                height: 60px;
-                font-size: 0.7rem;
+                width: 70px;
+                height: 70px;
+                font-size: 0.8rem;
+            }
+            
+            .planet-name {
+                font-size: 0.6rem;
             }
             
             .neptune-orbit { width: 300px; height: 300px; }
@@ -209,7 +328,8 @@
 </head>
 <body>
     <header>
-        <h1>منظومه شمسی</h1>
+        <div class="logo">دانشنامه V2Ray</div>
+        <a href="https://v2help.github.io/education-v2.html" class="nav-btn">ورود به آموزش‌ها</a>
     </header>
     
     <div class="solar-system">
@@ -217,36 +337,44 @@
         
         <div class="orbit mercury-orbit">
             <div class="planet mercury"></div>
+            <div class="planet-name mercury-name">تیر (عطارد)</div>
         </div>
         
         <div class="orbit venus-orbit">
             <div class="planet venus"></div>
+            <div class="planet-name venus-name">ناهید (زهره)</div>
         </div>
         
         <div class="orbit earth-orbit">
             <div class="planet earth"></div>
+            <div class="planet-name earth-name">زمین</div>
         </div>
         
         <div class="orbit mars-orbit">
             <div class="planet mars"></div>
+            <div class="planet-name mars-name">بهرام (مریخ)</div>
         </div>
         
         <div class="orbit jupiter-orbit">
             <div class="planet jupiter"></div>
+            <div class="planet-name jupiter-name">هرمز (مشتری)</div>
         </div>
         
         <div class="orbit saturn-orbit">
             <div class="planet saturn">
                 <div class="saturn-ring"></div>
             </div>
+            <div class="planet-name saturn-name">کیوان (زحل)</div>
         </div>
         
         <div class="orbit uranus-orbit">
             <div class="planet uranus"></div>
+            <div class="planet-name uranus-name">اورانوس</div>
         </div>
         
         <div class="orbit neptune-orbit">
             <div class="planet neptune"></div>
+            <div class="planet-name neptune-name">نپتون</div>
         </div>
     </div>
 </body>
