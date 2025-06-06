@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V2 Help - مرکز آموزش</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        
+        .galaxy {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            animation: rotate 120s linear infinite;
+        }
+        
+        .star {
+            position: absolute;
+            background-color: #fff;
+            border-radius: 50%;
+            animation: twinkle 2s infinite alternate;
+        }
+        
+        .solar-system {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            z-index: 1;
+            animation: rotate 60s linear infinite;
+        }
+        
+        .sun {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: radial-gradient(circle, #ffff00, #ff8c00);
+            border-radius: 50%;
+            box-shadow: 0 0 50px #ff8c00;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+        }
+        
+        .planet {
+            position: absolute;
+            border-radius: 50%;
+            transform-origin: center;
+        }
+        
+        .orbit {
+            position: absolute;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .content {
+            z-index: 10;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 80%;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #4fc3f7;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(45deg, #2196F3, #00BCD4);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(33, 150, 243, 0.4);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(33, 150, 243, 0.6);
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        @keyframes twinkle {
+            from { opacity: 0.3; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="galaxy" id="galaxy"></div>
+    
+    <div class="solar-system">
+        <div class="sun"></div>
+        <div class="orbit" style="width: 100px; height: 100px;"></div>
+        <div class="planet" style="width: 10px; height: 10px; background-color: #a59d8d; animation: rotate 5s linear infinite; left: 25px;"></div>
+        
+        <div class="orbit" style="width: 140px; height: 140px;"></div>
+        <div class="planet" style="width: 15px; height: 15px; background-color: #e3b04b; animation: rotate 8s linear infinite; left: 35px;"></div>
+        
+        <div class="orbit" style="width: 180px; height: 180px;"></div>
+        <div class="planet" style="width: 16px; height: 16px; background-color: #4e82c2; animation: rotate 12s linear infinite; left: 45px;"></div>
+        
+        <div class="orbit" style="width: 220px; height: 220px;"></div>
+        <div class="planet" style="width: 12px; height: 12px; background-color: #d35d47; animation: rotate 15s linear infinite; left: 55px;"></div>
+        
+        <div class="orbit" style="width: 260px; height: 260px;"></div>
+        <div class="planet" style="width: 25px; height: 25px; background-color: #d3a947; animation: rotate 20s linear infinite; left: 65px;"></div>
+    </div>
+    
+    <div class="content">
+        <h1>مرکزش V2 Help</h1>
+        <a href="https://v2help.github.io/education-v2.html" class="btn">ورود به آموزش ها</a>
+    </div>
+    
+    <script>
+        // ایجاد ستاره‌های کهکشان
+        const galaxy = document.getElementById('galaxy');
+        for (let i = 0; i < 200; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            
+            // اندازه تصادفی بین 1 تا 3 پیکسل
+            const size = Math.random() * 2 + 1;
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            
+            // موقعیت تصادفی در صفحه
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.top = `${Math.random() * 100}%`;
+            
+            // زمانبندی متغیر برای انیمیشن چشمک زدن
+            star.style.animationDelay = `${Math.random() * 2}s`;
+            
+            galaxy.appendChild(star);
+        }
+    </script>
+</body>
+</html>
