@@ -81,11 +81,11 @@
             color: #000;
             font-weight: bold;
             font-size: 1rem;
-            z-index: 1;
+            z-index: 10;
         }
         
         .orbit {
-            position: relative;
+            position: absolute;
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             animation: rotate linear infinite;
@@ -95,9 +95,9 @@
         .planet {
             position: absolute;
             border-radius: 50%;
-            top: 50%;
+            top: 0;
             left: 50%;
-            transform: translate(-50%, -50%);
+            transform: translateX(-50%);
         }
         
         .planet-name {
@@ -107,9 +107,6 @@
             white-space: nowrap;
             text-shadow: 0 0 3px #000;
             font-weight: bold;
-            top: -20px;
-            left: 50%;
-            transform: translateX(-50%);
         }
         
         /* Mercury */
@@ -125,17 +122,265 @@
             background: #a9a9a9;
         }
         
-        /* بقیه سیارات به همین شکل اصلاح شوند */
+        .mercury-name {
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #a9a9a9;
+        }
+        
+        /* Venus */
+        .venus-orbit {
+            width: 220px;
+            height: 220px;
+            animation-duration: 18s;
+        }
+        
+        .venus {
+            width: 15px;
+            height: 15px;
+            background: #e6c229;
+        }
+        
+        .venus-name {
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #e6c229;
+        }
+        
+        /* Earth */
+        .earth-orbit {
+            width: 300px;
+            height: 300px;
+            animation-duration: 30s;
+        }
+        
+        .earth {
+            width: 16px;
+            height: 16px;
+            background: #1e90ff;
+        }
+        
+        .earth-name {
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #1e90ff;
+        }
+        
+        /* Mars */
+        .mars-orbit {
+            width: 380px;
+            height: 380px;
+            animation-duration: 56s;
+        }
+        
+        .mars {
+            width: 12px;
+            height: 12px;
+            background: #ff6347;
+        }
+        
+        .mars-name {
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #ff6347;
+        }
+        
+        /* Jupiter */
+        .jupiter-orbit {
+            width: 500px;
+            height: 500px;
+            animation-duration: 120s;
+        }
+        
+        .jupiter {
+            width: 30px;
+            height: 30px;
+            background: #f4a460;
+        }
+        
+        .jupiter-name {
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #f4a460;
+        }
+        
+        /* Saturn */
+        .saturn-orbit {
+            width: 600px;
+            height: 600px;
+            animation-duration: 180s;
+        }
+        
+        .saturn {
+            width: 25px;
+            height: 25px;
+            background: #d2b48c;
+            position: relative;
+        }
+        
+        .saturn-name {
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #d2b48c;
+        }
+        
+        .saturn-ring {
+            position: absolute;
+            width: 40px;
+            height: 8px;
+            background: rgba(210, 180, 140, 0.5);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(20deg);
+        }
+        
+        /* Uranus */
+        .uranus-orbit {
+            width: 700px;
+            height: 700px;
+            animation-duration: 240s;
+        }
+        
+        .uranus {
+            width: 20px;
+            height: 20px;
+            background: #afeeee;
+        }
+        
+        .uranus-name {
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #afeeee;
+        }
+        
+        /* Neptune */
+        .neptune-orbit {
+            width: 800px;
+            height: 800px;
+            animation-duration: 300s;
+        }
+        
+        .neptune {
+            width: 18px;
+            height: 18px;
+            background: #1e90ff;
+        }
+        
+        .neptune-name {
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #1e90ff;
+        }
         
         @keyframes rotate {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
         }
         
-        /* بقیه مدیا کوئری‌ها و استایل‌ها */
+        @media (max-width: 768px) {
+            header {
+                padding: 12px 15px;
+                flex-direction: column;
+                gap: 12px;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .nav-btn {
+                padding: 6px 15px;
+                font-size: 0.8rem;
+            }
+            
+            .solar-system {
+                height: 65vh;
+            }
+            
+            .sun {
+                width: 70px;
+                height: 70px;
+                font-size: 0.8rem;
+            }
+            
+            .planet-name {
+                font-size: 0.6rem;
+            }
+            
+            .neptune-orbit { width: 300px; height: 300px; }
+            .uranus-orbit { width: 270px; height: 270px; }
+            .saturn-orbit { width: 240px; height: 240px; }
+            .jupiter-orbit { width: 210px; height: 210px; }
+            .mars-orbit { width: 180px; height: 180px; }
+            .earth-orbit { width: 150px; height: 150px; }
+            .venus-orbit { width: 120px; height: 120px; }
+            .mercury-orbit { width: 90px; height: 90px; }
+            
+            .jupiter { width: 20px; height: 20px; }
+            .saturn { width: 16px; height: 16px; }
+            .saturn-ring { width: 25px; height: 5px; }
+        }
     </style>
 </head>
 <body>
-    <!-- محتوای HTML بدون تغییر -->
+    <header>
+        <div class="logo">دانشنامه V2Ray</div>
+        <a href="https://v2help.github.io/education-v2.html" class="nav-btn">ورود به آموزش‌ها</a>
+    </header>
+    
+    <div class="solar-system">
+        <div class="sun">خورشید</div>
+        
+        <div class="orbit mercury-orbit">
+            <div class="planet mercury"></div>
+            <div class="planet-name mercury-name">تیر (عطارد)</div>
+        </div>
+        
+        <div class="orbit venus-orbit">
+            <div class="planet venus"></div>
+            <div class="planet-name venus-name">ناهید (زهره)</div>
+        </div>
+        
+        <div class="orbit earth-orbit">
+            <div class="planet earth"></div>
+            <div class="planet-name earth-name">زمین</div>
+        </div>
+        
+        <div class="orbit mars-orbit">
+            <div class="planet mars"></div>
+            <div class="planet-name mars-name">بهرام (مریخ)</div>
+        </div>
+        
+        <div class="orbit jupiter-orbit">
+            <div class="planet jupiter"></div>
+            <div class="planet-name jupiter-name">هرمز (مشتری)</div>
+        </div>
+        
+        <div class="orbit saturn-orbit">
+            <div class="planet saturn">
+                <div class="saturn-ring"></div>
+            </div>
+            <div class="planet-name saturn-name">کیوان (زحل)</div>
+        </div>
+        
+        <div class="orbit uranus-orbit">
+            <div class="planet uranus"></div>
+            <div class="planet-name uranus-name">اورانوس</div>
+        </div>
+        
+        <div class="orbit neptune-orbit">
+            <div class="planet neptune"></div>
+            <div class="planet-name neptune-name">نپتون</div>
+        </div>
+    </div>
 </body>
 </html>
