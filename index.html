@@ -3,14 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منظومه شمسی متحرک</title>
+    <title>منظومه شمسی</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css">
     <style>
-        @font-face {
-            font-family: 'V2Help';
-            src: url('https://fonts.cdnfonts.com/css/v2help') format('woff2');
-        }
-        
         body {
             margin: 0;
             padding: 0;
@@ -21,52 +16,23 @@
         }
         
         header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 40px;
-            background: linear-gradient(to bottom, #000000, #1a1a2e);
-            flex-wrap: wrap;
+            padding: 15px;
+            background: #111;
+            text-align: center;
+            border-bottom: 1px solid #333;
         }
         
-        .header-content {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-        }
-        
-        .logo {
-            font-family: 'V2Help', sans-serif;
-            font-size: 2.5rem;
+        h1 {
+            margin: 0;
+            font-size: 1.5rem;
             color: #4cc9f0;
-            text-shadow: 0 0 10px rgba(76, 201, 240, 0.7);
-            letter-spacing: 3px;
-        }
-        
-        .learn-btn {
-            display: inline-block;
-            padding: 10px 25px;
-            background: linear-gradient(45deg, #4cc9f0, #4361ee);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 15px rgba(76, 201, 240, 0.5);
-            white-space: nowrap;
-        }
-        
-        .learn-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 0 25px rgba(76, 201, 240, 0.8);
         }
         
         .solar-system {
             position: relative;
             width: 100%;
             height: 80vh;
-            margin: 0 auto;
+            margin: 20px auto;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -78,24 +44,19 @@
             height: 100px;
             background: radial-gradient(circle at 30% 30%, #fff, #ffde00, #ff8c00, #ff3c00);
             border-radius: 50%;
-            box-shadow: 0 0 50px #ff8c00, 0 0 100px #ff3c00;
-            z-index: 1;
-            animation: pulse 4s infinite alternate;
-        }
-        
-        .sun-name {
-            position: absolute;
-            top: 110px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: #ff8c00;
+            box-shadow: 0 0 50px #ff8c00;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #000;
             font-weight: bold;
-            font-size: 1.2rem;
+            font-size: 1rem;
+            z-index: 1;
         }
         
         .orbit {
             position: absolute;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             animation: rotate linear infinite;
         }
@@ -108,14 +69,6 @@
             transform: translateX(-50%);
         }
         
-        .planet-name {
-            position: absolute;
-            color: white;
-            font-size: 0.9rem;
-            white-space: nowrap;
-            text-shadow: 0 0 5px black;
-        }
-        
         .mercury-orbit {
             width: 160px;
             height: 160px;
@@ -123,16 +76,9 @@
         }
         
         .mercury {
-            width: 15px;
-            height: 15px;
-            background: linear-gradient(to bottom, #a9a9a9, #696969);
-        }
-        
-        .mercury-name {
-            top: -25px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: #a9a9a9;
+            width: 10px;
+            height: 10px;
+            background: #a9a9a9;
         }
         
         .venus-orbit {
@@ -142,16 +88,9 @@
         }
         
         .venus {
-            width: 20px;
-            height: 20px;
-            background: linear-gradient(to bottom, #e6c229, #b8860b);
-        }
-        
-        .venus-name {
-            top: -25px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: #e6c229;
+            width: 15px;
+            height: 15px;
+            background: #e6c229;
         }
         
         .earth-orbit {
@@ -161,16 +100,9 @@
         }
         
         .earth {
-            width: 22px;
-            height: 22px;
-            background: linear-gradient(to bottom, #1e90ff, #006400);
-        }
-        
-        .earth-name {
-            top: -25px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: #1e90ff;
+            width: 16px;
+            height: 16px;
+            background: #1e90ff;
         }
         
         .mars-orbit {
@@ -180,16 +112,9 @@
         }
         
         .mars {
-            width: 18px;
-            height: 18px;
-            background: linear-gradient(to bottom, #ff6347, #8b0000);
-        }
-        
-        .mars-name {
-            top: -25px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: #ff6347;
+            width: 12px;
+            height: 12px;
+            background: #ff6347;
         }
         
         .jupiter-orbit {
@@ -199,16 +124,9 @@
         }
         
         .jupiter {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(to bottom, #f4a460, #cd853f);
-        }
-        
-        .jupiter-name {
-            top: -25px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: #f4a460;
+            width: 30px;
+            height: 30px;
+            background: #f4a460;
         }
         
         .saturn-orbit {
@@ -218,25 +136,17 @@
         }
         
         .saturn {
-            width: 35px;
-            height: 35px;
-            background: linear-gradient(to bottom, #d2b48c, #a0522d);
-        }
-        
-        .saturn-name {
-            top: -25px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: #d2b48c;
+            width: 25px;
+            height: 25px;
+            background: #d2b48c;
         }
         
         .saturn-ring {
             position: absolute;
-            width: 60px;
-            height: 10px;
+            width: 40px;
+            height: 8px;
             background: rgba(210, 180, 140, 0.5);
             border-radius: 50%;
-            transform: rotate(20deg);
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%) rotate(20deg);
@@ -249,16 +159,9 @@
         }
         
         .uranus {
-            width: 30px;
-            height: 30px;
-            background: linear-gradient(to bottom, #afeeee, #5f9ea0);
-        }
-        
-        .uranus-name {
-            top: -25px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: #afeeee;
+            width: 20px;
+            height: 20px;
+            background: #afeeee;
         }
         
         .neptune-orbit {
@@ -268,205 +171,83 @@
         }
         
         .neptune {
-            width: 28px;
-            height: 28px;
-            background: linear-gradient(to bottom, #1e90ff, #00008b);
-        }
-        
-        .neptune-name {
-            top: -25px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: #1e90ff;
-        }
-        
-        .info {
-            padding: 40px;
-            text-align: center;
-            background: rgba(10, 10, 20, 0.8);
-            margin-top: 20px;
-            border-top: 1px solid rgba(76, 201, 240, 0.3);
-        }
-        
-        .info h2 {
-            color: #4cc9f0;
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-        }
-        
-        .info p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            max-width: 800px;
-            margin: 0 auto 20px;
+            width: 18px;
+            height: 18px;
+            background: #1e90ff;
         }
         
         @keyframes rotate {
-            from {
-                transform: rotate(0deg);
-            }
-            to {
-                transform: rotate(360deg);
-            }
-        }
-        
-        @keyframes pulse {
-            0% {
-                box-shadow: 0 0 50px #ff8c00, 0 0 100px #ff3c00;
-            }
-            100% {
-                box-shadow: 0 0 70px #ff8c00, 0 0 140px #ff3c00;
-            }
-        }
-        
-        footer {
-            text-align: center;
-            padding: 20px;
-            background: #000;
-            color: #555;
-            font-size: 0.9rem;
-            border-top: 1px solid rgba(76, 201, 240, 0.1);
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
         
         @media (max-width: 768px) {
-            header {
-                padding: 15px;
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            .header-content {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            .logo {
-                font-size: 2rem;
-            }
-            
-            .learn-btn {
-                padding: 8px 20px;
-                font-size: 0.9rem;
-            }
-            
             .solar-system {
                 height: 60vh;
             }
             
-            .planet-name {
+            .sun {
+                width: 60px;
+                height: 60px;
                 font-size: 0.7rem;
             }
             
-            .neptune-orbit {
-                width: 500px;
-                height: 500px;
-            }
+            .neptune-orbit { width: 300px; height: 300px; }
+            .uranus-orbit { width: 270px; height: 270px; }
+            .saturn-orbit { width: 240px; height: 240px; }
+            .jupiter-orbit { width: 210px; height: 210px; }
+            .mars-orbit { width: 180px; height: 180px; }
+            .earth-orbit { width: 150px; height: 150px; }
+            .venus-orbit { width: 120px; height: 120px; }
+            .mercury-orbit { width: 90px; height: 90px; }
             
-            .uranus-orbit {
-                width: 450px;
-                height: 450px;
-            }
-            
-            .saturn-orbit {
-                width: 400px;
-                height: 400px;
-            }
-            
-            .jupiter-orbit {
-                width: 350px;
-                height: 350px;
-            }
-            
-            .mars-orbit {
-                width: 280px;
-                height: 280px;
-            }
-            
-            .earth-orbit {
-                width: 220px;
-                height: 220px;
-            }
-            
-            .venus-orbit {
-                width: 180px;
-                height: 180px;
-            }
-            
-            .mercury-orbit {
-                width: 140px;
-                height: 140px;
-            }
+            .jupiter { width: 20px; height: 20px; }
+            .saturn { width: 16px; height: 16px; }
+            .saturn-ring { width: 25px; height: 5px; }
         }
     </style>
 </head>
 <body>
     <header>
-        <div class="header-content">
-            <div class="logo">V2Help</div>
-            <a href="#learn" class="learn-btn">ورود به آموزش‌ها</a>
-        </div>
+        <h1>منظومه شمسی</h1>
     </header>
     
     <div class="solar-system">
-        <div class="sun"></div>
-        <div class="sun-name">خورشید</div>
+        <div class="sun">خورشید</div>
         
         <div class="orbit mercury-orbit">
             <div class="planet mercury"></div>
-            <div class="planet-name mercury-name">تیر (عطارد)</div>
         </div>
         
         <div class="orbit venus-orbit">
             <div class="planet venus"></div>
-            <div class="planet-name venus-name">ناهید (زهره)</div>
         </div>
         
         <div class="orbit earth-orbit">
             <div class="planet earth"></div>
-            <div class="planet-name earth-name">زمین</div>
         </div>
         
         <div class="orbit mars-orbit">
             <div class="planet mars"></div>
-            <div class="planet-name mars-name">بهرام (مریخ)</div>
         </div>
         
         <div class="orbit jupiter-orbit">
             <div class="planet jupiter"></div>
-            <div class="planet-name jupiter-name">هرمز (مشتری)</div>
         </div>
         
         <div class="orbit saturn-orbit">
             <div class="planet saturn">
                 <div class="saturn-ring"></div>
             </div>
-            <div class="planet-name saturn-name">کیوان (زحل)</div>
         </div>
         
         <div class="orbit uranus-orbit">
             <div class="planet uranus"></div>
-            <div class="planet-name uranus-name">اورانوس</div>
         </div>
         
         <div class="orbit neptune-orbit">
             <div class="planet neptune"></div>
-            <div class="planet-name neptune-name">نپتون</div>
         </div>
     </div>
-    
-    <div class="info" id="learn">
-        <h2>آشنایی با منظومه شمسی</h2>
-        <p>
-            منظومه شمسی سامانه‌ای متشکل از یک ستاره به نام خورشید و اجرام آسمانی است که در مدارهایی مستقیم یا غیرمستقیم پیرامون آن می‌گردند. این اجرام شامل هشت سیاره، پنج سیاره کوتوله، بیش از ۲۰۰ قمر طبیعی، میلیون‌ها سیارک و دنباله‌دار و تعداد بی‌شماری اجرام کوچک دیگر هستند.
-        </p>
-        <p>
-            سیارات منظومه شمسی به ترتیب فاصله از خورشید عبارتند از: تیر (عطارد)، ناهید (زهره)، زمین، بهرام (مریخ)، هرمز (مشتری)، کیوان (زحل)، اورانوس و نپتون. چهار سیاره نخست، سیارات سنگی و چهار سیاره بعدی، سیارات گازی هستند.
-        </p>
-        <a href="https://fa.wikipedia.org/wiki/%D9%85%D9%86%D8%B8%D9%88%D9%85%D9%87_%D8%B4%D9%85%D8%B3%DB%8C" class="learn-btn" target="_blank">اطلاعات بیشتر</a>
-    </div>
-    
-    <footer>
-        طراحی شده با ❤️ | تمامی حقوق محفوظ است © ۲۰۲۳
-    </footer>
 </body>
 </html>
