@@ -3,7 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>آموزش اتصال به v2ray | v2 help</title>
+    <title>آموزش جامع اتصال به v2ray روی تمام پلتفرم‌ها | v2 help</title>
+    <meta name="description" content="آموزش تصویری و گام به گام نصب و راه‌اندازی v2ray روی iOS, Android, Windows, Mac و Linux - راهنمای کامل اتصال به اینترنت آزاد">
+    <meta name="keywords" content="آموزش v2ray, نصب v2rayNG, راهنمای Streisand, v2rayN, کلاینت v2ray, اتصال VPN, فیلترشکن">
+    <meta property="og:title" content="آموزش جامع اتصال به v2ray روی تمام پلتفرم‌ها | v2 help">
+    <meta property="og:description" content="راهنمای تصویری و گام به گام نصب و راه‌اندازی v2ray روی تمام دستگاه‌ها">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://example.com/education-v2.html">
+    <meta property="og:image" content="https://example.com/images/v2ray-tutorials-preview.jpg">
+    <link rel="canonical" href="https://example.com/education-v2.html">
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -40,7 +48,7 @@
             50% { transform: translateY(-10px); }
         }
         
-        /* هدر */
+        /* هدر بهبود یافته */
         header {
             background: white;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
@@ -68,9 +76,14 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-decoration: none;
+            transition: all 0.3s ease;
         }
         
-        /* ناوبری اصلی */
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        
+        /* ناوبری اصلی بهبود یافته */
         .main-nav {
             display: flex;
             gap: 2rem;
@@ -82,12 +95,13 @@
             font-weight: 500;
             transition: all 0.3s ease;
             position: relative;
+            padding: 0.5rem 0;
         }
         
         .main-nav a:after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: 0;
             right: 0;
             width: 0;
             height: 2px;
@@ -97,6 +111,16 @@
         
         .main-nav a:hover:after {
             width: 100%;
+        }
+        
+        .main-nav a.active {
+            color: var(--primary);
+            font-weight: 700;
+        }
+        
+        .main-nav a.active:after {
+            width: 100%;
+            background: var(--secondary);
         }
         
         /* صفحه اصلی آموزش‌ها */
@@ -136,6 +160,7 @@
             color: #666;
             max-width: 700px;
             margin: 0 auto;
+            font-size: 1.1rem;
         }
         
         /* دسته‌بندی آموزش‌ها */
@@ -278,6 +303,109 @@
             box-shadow: 0 6px 16px rgba(67, 97, 238, 0.3);
         }
         
+        /* فوتر جدید */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+        
+        .footer-links h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-links h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--primary);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-right: 5px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+        
+        /* دکمه بازگشت به بالا */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background: var(--primary-light);
+            transform: translateY(-3px);
+        }
+        
         /* رسپانسیو */
         @media (max-width: 992px) {
             .tutorials-container {
@@ -308,6 +436,10 @@
             .platforms-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
         }
         
         @media (max-width: 480px) {
@@ -328,19 +460,26 @@
                 margin-left: 0;
                 margin-bottom: 1rem;
             }
+            
+            .back-to-top {
+                width: 40px;
+                height: 40px;
+                left: 1rem;
+                bottom: 1rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- هدر -->
+    <!-- هدر بهبود یافته -->
     <header>
         <div class="header-container">
-            <a href="#" class="logo">v2 help</a>
+            <a href="index.html" class="logo">v2 help</a>
             <nav class="main-nav">
-                <a href="#">خانه</a>
-                <a href="#">خرید سرویس</a>
-                <a href="#" class="active">آموزش‌ها</a>
-                <a href="#">تماس با ما</a>
+                <a href="index.html">خانه</a>
+                <a href="pricing.html">خرید سرویس</a>
+                <a href="education-v2.html" class="active">آموزش‌ها</a>
+                <a href="contact.html">تماس با ما</a>
             </nav>
         </div>
     </header>
@@ -350,14 +489,14 @@
         <!-- هدر صفحه -->
         <header class="page-header">
             <h1 class="page-title">آموزش اتصال به v2ray</h1>
-            <p class="page-description">راهنمای جامع نصب و راه‌اندازی کلاینت‌های v2ray بر روی پلتفرم‌های مختلف. آموزش‌های قدم به قدم با تصاویر واضح.</p>
+            <p class="page-description">راهنمای جامع نصب و راه‌اندازی کلاینت‌های v2ray بر روی پلتفرم‌های مختلف. آموزش‌های قدم به قدم با تصاویر واضح و توضیحات کامل.</p>
         </header>
         
         <!-- بخش ویژه -->
         <section class="featured-section">
             <h2 class="featured-title">آموزش‌های جدید و بروزرسانی شده</h2>
             <p class="featured-description">آخرین نسخه‌های کلاینت‌ها و روش‌های جدید اتصال را در اینجا مشاهده کنید. آموزش‌ها به صورت مرتب بروزرسانی می‌شوند.</p>
-            <a href="#" class="featured-btn">
+            <a href="new-tutorials.html" class="featured-btn">
                 <span>مشاهده آموزش‌های جدید</span>
                 <span>→</span>
             </a>
@@ -499,11 +638,55 @@
         </div>
     </main>
 
-    <!-- اسکریپت انیمیشن‌ها -->
+    <!-- فوتر جدید -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-links">
+                <a href="index.html" class="footer-logo">v2 help</a>
+                <p>ارائه دهنده بهترین سرویس‌های امن و پرسرعت برای دسترسی آزاد به اینترنت</p>
+            </div>
+            <div class="footer-links">
+                <h3>لینک‌های سریع</h3>
+                <ul>
+                    <li><a href="index.html">خانه</a></li>
+                    <li><a href="pricing.html">خرید سرویس</a></li>
+                    <li><a href="education-v2.html">آموزش‌ها</a></li>
+                    <li><a href="blog.html">بلاگ</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>پلتفرم‌ها</h3>
+                <ul>
+                    <li><a href="android-tutorials.html">آموزش اندروید</a></li>
+                    <li><a href="ios-tutorials.html">آموزش iOS</a></li>
+                    <li><a href="windows-tutorials.html">آموزش ویندوز</a></li>
+                    <li><a href="mac-tutorials.html">آموزش مک</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>تماس با ما</h3>
+                <ul>
+                    <li><a href="contact.html">پشتیبانی</a></li>
+                    <li><a href="faq.html">سوالات متداول</a></li>
+                    <li><a href="privacy.html">حریم خصوصی</a></li>
+                    <li><a href="terms.html">قوانین و شرایط</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            © 2023 v2 help. تمام حقوق محفوظ است.
+        </div>
+    </footer>
+
+    <!-- دکمه بازگشت به بالا -->
+    <a href="#" class="back-to-top" id="backToTop">↑</a>
+
+    <!-- اسکریپت‌های بهبود یافته -->
     <script>
         // انیمیشن برای کارت‌ها هنگام اسکرول
         const animateOnScroll = () => {
             const cards = document.querySelectorAll('.platform-card');
+            const backToTop = document.getElementById('backToTop');
             
             cards.forEach(card => {
                 const cardPosition = card.getBoundingClientRect().top;
@@ -514,6 +697,13 @@
                     card.style.transform = 'translateY(0)';
                 }
             });
+            
+            // نمایش/پنهان کردن دکمه بازگشت به بالا
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
         };
 
         // تنظیم اولیه برای انیمیشن‌ها
