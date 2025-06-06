@@ -3,68 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>V2 Help - مرکز آموزش</title>
+    <title>V2Help - مرکز آموزش های تخصصی</title>
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/font.css" rel="stylesheet">
     <style>
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.05); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.8; }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        @keyframes twinkle {
+            0% { opacity: 0.3; box-shadow: 0 0 5px #fff; }
+            50% { opacity: 1; box-shadow: 0 0 20px #fff; }
+            100% { opacity: 0.3; box-shadow: 0 0 5px #fff; }
+        }
+        
+        @keyframes comet {
+            0% { transform: translate(-100px, -100px) rotate(45deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translate(calc(100vw + 100px), calc(100vh + 100px)) rotate(45deg); opacity: 0; }
+        }
+        
         body {
             margin: 0;
             padding: 0;
-            background-color: #000;
+            background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
             color: #fff;
-            font-family: Arial, sans-serif;
+            font-family: Vazirmatn, sans-serif;
             overflow: hidden;
             height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            position: relative;
+            perspective: 1000px;
         }
         
-        .galaxy {
-            position: absolute;
+        .universe {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             z-index: 0;
-            animation: rotate 120s linear infinite;
         }
         
         .star {
             position: absolute;
             background-color: #fff;
             border-radius: 50%;
-            animation: twinkle 2s infinite alternate;
+            animation: twinkle var(--duration) infinite ease-in-out;
+            animation-delay: var(--delay);
+        }
+        
+        .comet {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%);
+            border-radius: 50%;
+            filter: blur(1px);
+            animation: comet 15s linear infinite;
+            animation-delay: var(--delay);
+        }
+        
+        .comet::after {
+            content: '';
+            position: absolute;
+            width: 150px;
+            height: 1px;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%);
+            transform: translateX(-50%);
+        }
+        
+        .galaxy {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle at center, rgba(138, 43, 226, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(20px);
+            animation: rotate 300s linear infinite;
+            opacity: 0.6;
         }
         
         .solar-system {
             position: absolute;
-            width: 300px;
-            height: 300px;
-            z-index: 1;
-            animation: rotate 60s linear infinite;
+            width: 400px;
+            height: 400px;
+            animation: rotate 120s linear infinite reverse;
+            z-index: 2;
         }
         
         .sun {
             position: absolute;
-            width: 50px;
-            height: 50px;
-            background: radial-gradient(circle, #ffff00, #ff8c00);
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle, #ffff00 10%, #ff8c00 70%);
             border-radius: 50%;
-            box-shadow: 0 0 50px #ff8c00;
+            box-shadow: 0 0 60px #ff8c00, 0 0 100px rgba(255, 140, 0, 0.5);
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            z-index: 2;
+            z-index: 3;
+            animation: pulse 5s infinite ease-in-out;
         }
         
         .planet {
             position: absolute;
             border-radius: 50%;
             transform-origin: center;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
         
         .orbit {
             position: absolute;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             top: 50%;
             left: 50%;
@@ -74,68 +140,116 @@
         .content {
             z-index: 10;
             text-align: center;
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 30px;
-            border-radius: 15px;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
             max-width: 80%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            animation: float 8s ease-in-out infinite;
+            transform-style: preserve-3d;
         }
         
         h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            color: #4fc3f7;
+            font-size: 3.5rem;
+            margin-bottom: 30px;
+            background: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
+            font-weight: 700;
         }
         
         .btn {
             display: inline-block;
-            padding: 12px 30px;
+            padding: 15px 40px;
             background: linear-gradient(45deg, #2196F3, #00BCD4);
             color: white;
             text-decoration: none;
-            border-radius: 30px;
-            font-size: 1.2rem;
-            margin-top: 20px;
-            transition: all 0.3s ease;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            margin-top: 30px;
+            transition: all 0.4s ease;
             border: none;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(33, 150, 243, 0.4);
+            box-shadow: 0 5px 25px rgba(33, 150, 243, 0.5);
+            position: relative;
+            overflow: hidden;
+            font-weight: 500;
         }
         
         .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(33, 150, 243, 0.6);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(33, 150, 243, 0.7);
         }
         
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
         }
         
-        @keyframes twinkle {
-            from { opacity: 0.3; }
-            to { opacity: 1; }
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .planet-info {
+            position: absolute;
+            color: white;
+            font-size: 0.8rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 5px 10px;
+            border-radius: 5px;
+            white-space: nowrap;
+        }
+        
+        .planet:hover .planet-info {
+            opacity: 1;
         }
     </style>
 </head>
 <body>
-    <div class="galaxy" id="galaxy"></div>
+    <div class="universe" id="universe"></div>
+    
+    <div class="galaxy"></div>
     
     <div class="solar-system">
         <div class="sun"></div>
-        <div class="orbit" style="width: 100px; height: 100px;"></div>
-        <div class="planet" style="width: 10px; height: 10px; background-color: #a59d8d; animation: rotate 5s linear infinite; left: 25px;"></div>
         
-        <div class="orbit" style="width: 140px; height: 140px;"></div>
-        <div class="planet" style="width: 15px; height: 15px; background-color: #e3b04b; animation: rotate 8s linear infinite; left: 35px;"></div>
+        <div class="orbit" style="width: 120px; height: 120px;"></div>
+        <div class="planet" style="width: 12px; height: 12px; background: linear-gradient(to bottom, #A9A9A9, #696969); animation: rotate 5s linear infinite; left: 30px;">
+            <span class="planet-info">سیاره ۱</span>
+        </div>
         
-        <div class="orbit" style="width: 180px; height: 180px;"></div>
-        <div class="planet" style="width: 16px; height: 16px; background-color: #4e82c2; animation: rotate 12s linear infinite; left: 45px;"></div>
+        <div class="orbit" style="width: 170px; height: 170px;"></div>
+        <div class="planet" style="width: 18px; height: 18px; background: linear-gradient(to bottom, #E6C229, #D4A017); animation: rotate 8s linear infinite; left: 42px;">
+            <span class="planet-info">سیاره ۲</span>
+        </div>
         
         <div class="orbit" style="width: 220px; height: 220px;"></div>
-        <div class="planet" style="width: 12px; height: 12px; background-color: #d35d47; animation: rotate 15s linear infinite; left: 55px;"></div>
+        <div class="planet" style="width: 20px; height: 20px; background: linear-gradient(to bottom, #4E82C2, #2A5C9A); animation: rotate 12s linear infinite; left: 55px;">
+            <span class="planet-info">سیاره ۳</span>
+        </div>
         
-        <div class="orbit" style="width: 260px; height: 260px;"></div>
-        <div class="planet" style="width: 25px; height: 25px; background-color: #d3a947; animation: rotate 20s linear infinite; left: 65px;"></div>
+        <div class="orbit" style="width: 270px; height: 270px;"></div>
+        <div class="planet" style="width: 14px; height: 14px; background: linear-gradient(to bottom, #D35D47, #A53E2B); animation: rotate 16s linear infinite; left: 67px;">
+            <span class="planet-info">سیاره ۴</span>
+        </div>
+        
+        <div class="orbit" style="width: 320px; height: 320px;"></div>
+        <div class="planet" style="width: 30px; height: 30px; background: linear-gradient(to bottom, #D3A947, #B58D2C); animation: rotate 25s linear infinite; left: 80px;">
+            <span class="planet-info">سیاره ۵</span>
+        </div>
     </div>
     
     <div class="content">
@@ -145,25 +259,76 @@
     
     <script>
         // ایجاد ستاره‌های کهکشان
-        const galaxy = document.getElementById('galaxy');
-        for (let i = 0; i < 200; i++) {
+        const universe = document.getElementById('universe');
+        
+        // ستاره‌های کوچک
+        for (let i = 0; i < 300; i++) {
             const star = document.createElement('div');
             star.className = 'star';
             
-            // اندازه تصادفی بین 1 تا 3 پیکسل
-            const size = Math.random() * 2 + 1;
+            const size = Math.random() * 2 + 0.5;
             star.style.width = `${size}px`;
             star.style.height = `${size}px`;
             
-            // موقعیت تصادفی در صفحه
             star.style.left = `${Math.random() * 100}%`;
             star.style.top = `${Math.random() * 100}%`;
             
-            // زمانبندی متغیر برای انیمیشن چشمک زدن
-            star.style.animationDelay = `${Math.random() * 2}s`;
+            const duration = Math.random() * 5 + 3;
+            star.style.setProperty('--duration', `${duration}s`);
+            star.style.setProperty('--delay', `${Math.random() * 5}s`);
             
-            galaxy.appendChild(star);
+            universe.appendChild(star);
         }
+        
+        // ستاره‌های بزرگتر
+        for (let i = 0; i < 50; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            
+            const size = Math.random() * 3 + 1;
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.top = `${Math.random() * 100}%`;
+            
+            const duration = Math.random() * 7 + 5;
+            star.style.setProperty('--duration', `${duration}s`);
+            star.style.setProperty('--delay', `${Math.random() * 7}s`);
+            
+            star.style.boxShadow = `0 0 ${size * 5}px white`;
+            
+            universe.appendChild(star);
+        }
+        
+        // شهاب‌سنگ‌ها
+        for (let i = 0; i < 5; i++) {
+            const comet = document.createElement('div');
+            comet.className = 'comet';
+            
+            comet.style.left = `${Math.random() * 100}%`;
+            comet.style.top = `${Math.random() * 100}%`;
+            
+            comet.style.setProperty('--delay', `${Math.random() * 15}s`);
+            
+            universe.appendChild(comet);
+        }
+        
+        // افکت پارالاکس برای محتوا هنگام حرکت موس
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            document.querySelector('.content').style.transform = `
+                rotateY(${(x - 0.5) * 10}deg)
+                rotateX(${(0.5 - y) * 10}deg)
+                translateY(${Math.sin(y * Math.PI * 2) * -20}px)
+            `;
+            
+            document.querySelector('.solar-system').style.transform = `
+                rotate(${x * 360}deg)
+            `;
+        });
     </script>
 </body>
 </html>
