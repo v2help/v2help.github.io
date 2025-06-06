@@ -3,54 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>V2Help - مرکز آموزش های تخصصی</title>
+    <title>V2Help - مرکز آموزش</title>
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/font.css" rel="stylesheet">
     <style>
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); opacity: 0.8; }
-            50% { transform: scale(1.05); opacity: 1; }
-            100% { transform: scale(1); opacity: 0.8; }
-        }
-        
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
-        }
-        
-        @keyframes twinkle {
-            0% { opacity: 0.3; box-shadow: 0 0 5px #fff; }
-            50% { opacity: 1; box-shadow: 0 0 20px #fff; }
-            100% { opacity: 0.3; box-shadow: 0 0 5px #fff; }
-        }
-        
-        @keyframes comet {
-            0% { transform: translate(-100px, -100px) rotate(45deg); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translate(calc(100vw + 100px), calc(100vh + 100px)) rotate(45deg); opacity: 0; }
+        /* Reset و تنظیمات پایه */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         
         body {
-            margin: 0;
-            padding: 0;
-            background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
-            color: #fff;
             font-family: Vazirmatn, sans-serif;
-            overflow: hidden;
-            height: 100vh;
+            background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+            color: white;
+            overflow-x: hidden;
+            min-height: 100vh;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            perspective: 1000px;
+            position: relative;
         }
-        
+
+        /* کهکشان و ستاره‌ها */
         .universe {
             position: fixed;
             top: 0;
@@ -59,132 +34,109 @@
             height: 100%;
             z-index: 0;
         }
-        
+
         .star {
             position: absolute;
-            background-color: #fff;
+            background-color: white;
             border-radius: 50%;
             animation: twinkle var(--duration) infinite ease-in-out;
             animation-delay: var(--delay);
         }
-        
-        .comet {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%);
-            border-radius: 50%;
-            filter: blur(1px);
-            animation: comet 15s linear infinite;
-            animation-delay: var(--delay);
-        }
-        
-        .comet::after {
-            content: '';
-            position: absolute;
-            width: 150px;
-            height: 1px;
-            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%);
-            transform: translateX(-50%);
-        }
-        
-        .galaxy {
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle at center, rgba(138, 43, 226, 0.2) 0%, transparent 70%);
-            border-radius: 50%;
-            filter: blur(20px);
-            animation: rotate 300s linear infinite;
-            opacity: 0.6;
-        }
-        
+
+        /* منظومه شمسی */
         .solar-system {
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            animation: rotate 120s linear infinite reverse;
-            z-index: 2;
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            height: 0;
+            padding-bottom: 100%;
+            margin: 2rem auto;
+            animation: rotate 120s linear infinite;
         }
-        
+
         .sun {
             position: absolute;
-            width: 60px;
-            height: 60px;
-            background: radial-gradient(circle, #ffff00 10%, #ff8c00 70%);
-            border-radius: 50%;
-            box-shadow: 0 0 60px #ff8c00, 0 0 100px rgba(255, 140, 0, 0.5);
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+            width: 15%;
+            height: 15%;
+            max-width: 60px;
+            max-height: 60px;
+            background: radial-gradient(circle, #ffff00 10%, #ff8c00 70%);
+            border-radius: 50%;
+            box-shadow: 0 0 20px #ff8c00;
             z-index: 3;
             animation: pulse 5s infinite ease-in-out;
         }
-        
+
+        .orbit {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
         .planet {
             position: absolute;
             border-radius: 50%;
             transform-origin: center;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
-        
-        .orbit {
-            position: absolute;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-        
-        .content {
+
+        /* محتوای اصلی */
+        .container {
+            position: relative;
             z-index: 10;
+            width: 90%;
+            max-width: 800px;
+            padding: 2rem;
             text-align: center;
-            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .content {
+            background: rgba(0, 0, 0, 0.7);
             backdrop-filter: blur(10px);
-            padding: 40px;
             border-radius: 20px;
-            max-width: 80%;
+            padding: 2rem;
             border: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
             animation: float 8s ease-in-out infinite;
-            transform-style: preserve-3d;
         }
-        
+
         h1 {
-            font-size: 3.5rem;
-            margin-bottom: 30px;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1.5rem;
             background: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            text-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
             font-weight: 700;
         }
-        
+
         .btn {
             display: inline-block;
-            padding: 15px 40px;
+            padding: 0.8rem 2rem;
             background: linear-gradient(45deg, #2196F3, #00BCD4);
             color: white;
             text-decoration: none;
             border-radius: 50px;
-            font-size: 1.3rem;
-            margin-top: 30px;
-            transition: all 0.4s ease;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 5px 25px rgba(33, 150, 243, 0.5);
+            font-size: clamp(1rem, 3vw, 1.3rem);
+            margin-top: 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(33, 150, 243, 0.4);
             position: relative;
             overflow: hidden;
-            font-weight: 500;
+            border: none;
+            cursor: pointer;
         }
-        
+
         .btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 30px rgba(33, 150, 243, 0.7);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(33, 150, 243, 0.6);
         }
-        
+
         .btn::before {
             content: '';
             position: absolute;
@@ -195,84 +147,117 @@
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
             transition: 0.5s;
         }
-        
+
         .btn:hover::before {
             left: 100%;
         }
-        
-        .planet-info {
-            position: absolute;
-            color: white;
-            font-size: 0.8rem;
-            opacity: 0;
-            transition: opacity 0.3s;
-            pointer-events: none;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 5px 10px;
-            border-radius: 5px;
-            white-space: nowrap;
+
+        /* انیمیشن‌ها */
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
-        
-        .planet:hover .planet-info {
-            opacity: 1;
+
+        @keyframes pulse {
+            0% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.05); }
+            100% { transform: translate(-50%, -50%) scale(1); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.3; }
+            50% { opacity: 1; }
+            100% { opacity: 0.3; }
+        }
+
+        /* رسپانسیو برای دستگاه‌های کوچک */
+        @media (max-width: 768px) {
+            .content {
+                padding: 1.5rem;
+            }
+            
+            h1 {
+                margin-bottom: 1rem;
+            }
+            
+            .btn {
+                padding: 0.7rem 1.8rem;
+            }
+            
+            .solar-system {
+                max-width: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .content {
+                padding: 1rem;
+            }
+            
+            .solar-system {
+                max-width: 250px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="universe" id="universe"></div>
     
-    <div class="galaxy"></div>
-    
-    <div class="solar-system">
-        <div class="sun"></div>
-        
-        <div class="orbit" style="width: 120px; height: 120px;"></div>
-        <div class="planet" style="width: 12px; height: 12px; background: linear-gradient(to bottom, #A9A9A9, #696969); animation: rotate 5s linear infinite; left: 30px;">
-            <span class="planet-info">سیاره ۱</span>
+    <div class="container">
+        <div class="content">
+            <h1>مرکزش V2 Help</h1>
+            
+            <div class="solar-system">
+                <div class="sun"></div>
+                
+                <!-- مدارها و سیارات -->
+                <div class="orbit" style="width: 30%; height: 30%;"></div>
+                <div class="planet" style="width: 3%; height: 3%; background: #A9A9A9; animation: rotate 5s linear infinite; left: 15%;"></div>
+                
+                <div class="orbit" style="width: 45%; height: 45%;"></div>
+                <div class="planet" style="width: 4.5%; height: 4.5%; background: #E6C229; animation: rotate 8s linear infinite; left: 22.5%;"></div>
+                
+                <div class="orbit" style="width: 60%; height: 60%;"></div>
+                <div class="planet" style="width: 5%; height: 5%; background: #4E82C2; animation: rotate 12s linear infinite; left: 30%;"></div>
+                
+                <div class="orbit" style="width: 75%; height: 75%;"></div>
+                <div class="planet" style="width: 3.5%; height: 3.5%; background: #D35D47; animation: rotate 16s linear infinite; left: 37.5%;"></div>
+                
+                <div class="orbit" style="width: 90%; height: 90%;"></div>
+                <div class="planet" style="width: 7.5%; height: 7.5%; background: #D3A947; animation: rotate 25s linear infinite; left: 45%;"></div>
+            </div>
+            
+            <a href="https://v2help.github.io/education-v2.html" class="btn">ورود به آموزش ها</a>
         </div>
-        
-        <div class="orbit" style="width: 170px; height: 170px;"></div>
-        <div class="planet" style="width: 18px; height: 18px; background: linear-gradient(to bottom, #E6C229, #D4A017); animation: rotate 8s linear infinite; left: 42px;">
-            <span class="planet-info">سیاره ۲</span>
-        </div>
-        
-        <div class="orbit" style="width: 220px; height: 220px;"></div>
-        <div class="planet" style="width: 20px; height: 20px; background: linear-gradient(to bottom, #4E82C2, #2A5C9A); animation: rotate 12s linear infinite; left: 55px;">
-            <span class="planet-info">سیاره ۳</span>
-        </div>
-        
-        <div class="orbit" style="width: 270px; height: 270px;"></div>
-        <div class="planet" style="width: 14px; height: 14px; background: linear-gradient(to bottom, #D35D47, #A53E2B); animation: rotate 16s linear infinite; left: 67px;">
-            <span class="planet-info">سیاره ۴</span>
-        </div>
-        
-        <div class="orbit" style="width: 320px; height: 320px;"></div>
-        <div class="planet" style="width: 30px; height: 30px; background: linear-gradient(to bottom, #D3A947, #B58D2C); animation: rotate 25s linear infinite; left: 80px;">
-            <span class="planet-info">سیاره ۵</span>
-        </div>
-    </div>
-    
-    <div class="content">
-        <h1>مرکزش V2 Help</h1>
-        <a href="https://v2help.github.io/education-v2.html" class="btn">ورود به آموزش ها</a>
     </div>
     
     <script>
         // ایجاد ستاره‌های کهکشان
         const universe = document.getElementById('universe');
         
-        // ستاره‌های کوچک
-        for (let i = 0; i < 300; i++) {
+        // تعداد ستاره‌ها بر اساس اندازه صفحه
+        const starCount = Math.min(200, Math.floor(window.innerWidth * window.innerHeight / 1000));
+        
+        for (let i = 0; i < starCount; i++) {
             const star = document.createElement('div');
             star.className = 'star';
             
+            // اندازه تصادفی
             const size = Math.random() * 2 + 0.5;
             star.style.width = `${size}px`;
             star.style.height = `${size}px`;
             
+            // موقعیت تصادفی
             star.style.left = `${Math.random() * 100}%`;
             star.style.top = `${Math.random() * 100}%`;
             
+            // تنظیمات انیمیشن
             const duration = Math.random() * 5 + 3;
             star.style.setProperty('--duration', `${duration}s`);
             star.style.setProperty('--delay', `${Math.random() * 5}s`);
@@ -280,54 +265,14 @@
             universe.appendChild(star);
         }
         
-        // ستاره‌های بزرگتر
-        for (let i = 0; i < 50; i++) {
-            const star = document.createElement('div');
-            star.className = 'star';
-            
-            const size = Math.random() * 3 + 1;
-            star.style.width = `${size}px`;
-            star.style.height = `${size}px`;
-            
-            star.style.left = `${Math.random() * 100}%`;
-            star.style.top = `${Math.random() * 100}%`;
-            
-            const duration = Math.random() * 7 + 5;
-            star.style.setProperty('--duration', `${duration}s`);
-            star.style.setProperty('--delay', `${Math.random() * 7}s`);
-            
-            star.style.boxShadow = `0 0 ${size * 5}px white`;
-            
-            universe.appendChild(star);
-        }
-        
-        // شهاب‌سنگ‌ها
-        for (let i = 0; i < 5; i++) {
-            const comet = document.createElement('div');
-            comet.className = 'comet';
-            
-            comet.style.left = `${Math.random() * 100}%`;
-            comet.style.top = `${Math.random() * 100}%`;
-            
-            comet.style.setProperty('--delay', `${Math.random() * 15}s`);
-            
-            universe.appendChild(comet);
-        }
-        
-        // افکت پارالاکس برای محتوا هنگام حرکت موس
-        document.addEventListener('mousemove', (e) => {
-            const x = e.clientX / window.innerWidth;
-            const y = e.clientY / window.innerHeight;
-            
-            document.querySelector('.content').style.transform = `
-                rotateY(${(x - 0.5) * 10}deg)
-                rotateX(${(0.5 - y) * 10}deg)
-                translateY(${Math.sin(y * Math.PI * 2) * -20}px)
-            `;
-            
-            document.querySelector('.solar-system').style.transform = `
-                rotate(${x * 360}deg)
-            `;
+        // تنظیم مجدد ستاره‌ها هنگام تغییر سایز پنجره
+        window.addEventListener('resize', function() {
+            const stars = document.querySelectorAll('.star');
+            stars.forEach(star => {
+                // به‌روزرسانی موقعیت ستاره‌ها
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+            });
         });
     </script>
 </body>
