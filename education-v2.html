@@ -1,0 +1,290 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>آموزش اتصال V2Ray</title>
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Tahoma, sans-serif;
+            margin: 0;
+            background-color: #f4f6f8;
+            color: #333;
+            direction: rtl;
+        }
+
+        :root {
+            --primary: #007BFF;
+            --primary-light: #339DFF;
+            --dark: #222;
+            --light: #fff;
+        }
+
+        header {
+            background: var(--primary);
+            color: var(--light);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        .main-nav a {
+            color: white;
+            margin-left: 1.5rem;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        .main-nav a:hover,
+        .main-nav a.active {
+            text-decoration: underline;
+        }
+
+        .tutorials-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            color: var(--dark);
+        }
+
+        .page-description {
+            color: #666;
+            margin-top: 0.5rem;
+        }
+
+        .platforms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .platform-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .platform-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .platform-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .platform-icon {
+            font-size: 2rem;
+            margin-left: 1rem;
+        }
+
+        .platform-name {
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .tutorials-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .tutorial-item {
+            margin-bottom: 0.8rem;
+        }
+
+        .tutorial-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--dark);
+            padding: 0.5rem;
+            border-radius: 8px;
+            transition: background 0.3s;
+        }
+
+        .tutorial-link:hover {
+            background: #f0f0f0;
+        }
+
+        .icon {
+            font-size: 1.2rem;
+            margin-left: 0.5rem;
+        }
+
+        .tutorial-title {
+            flex-grow: 1;
+        }
+
+        .tutorial-meta {
+            color: #888;
+            font-size: 0.85rem;
+        }
+
+        .featured-section {
+            background: #e9f3ff;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 4rem auto;
+            max-width: 1000px;
+            text-align: center;
+        }
+
+        .featured-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .featured-text {
+            color: #555;
+            margin-bottom: 2rem;
+        }
+
+        .featured-link {
+            display: inline-block;
+            padding: 0.8rem 1.6rem;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+
+        .featured-link:hover {
+            background: var(--primary-light);
+        }
+
+        @media (max-width: 768px) {
+            .main-nav {
+                display: none;
+            }
+
+            .header-container {
+                justify-content: center;
+            }
+
+            .platform-card {
+                padding: 1.5rem;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .platforms-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">V2 Help</a>
+            <nav class="main-nav">
+                <a href="#" class="active">خانه</a>
+                <a href="#">آموزش‌ها</a>
+                <a href="#">تماس با ما</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="tutorials-container">
+        <div class="page-header" data-aos="fade-down">
+            <h1 class="page-title">آموزش اتصال به V2Ray</h1>
+            <p class="page-description">راهنمای گام به گام برای اتصال به V2Ray روی تمام دستگاه‌ها.</p>
+        </div>
+
+        <div class="platforms-grid">
+            <div class="platform-card" data-aos="fade-up">
+                <div class="platform-header">
+                    <div class="platform-icon">📱</div>
+                    <div class="platform-name">اندروید</div>
+                </div>
+                <ul class="tutorials-list">
+                    <li class="tutorial-item">
+                        <a href="#" class="tutorial-link">
+                            <span class="icon">▶</span>
+                            <span class="tutorial-title">آموزش v2rayNG</span>
+                            <span class="tutorial-meta">ویدیو، 5 دقیقه</span>
+                        </a>
+                    </li>
+                    <li class="tutorial-item">
+                        <a href="#" class="tutorial-link">
+                            <span class="icon">📄</span>
+                            <span class="tutorial-title">آموزش متنی v2rayNG</span>
+                            <span class="tutorial-meta">PDF</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="platform-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="platform-header">
+                    <div class="platform-icon">💻</div>
+                    <div class="platform-name">ویندوز</div>
+                </div>
+                <ul class="tutorials-list">
+                    <li class="tutorial-item">
+                        <a href="#" class="tutorial-link">
+                            <span class="icon">▶</span>
+                            <span class="tutorial-title">آموزش v2rayN</span>
+                            <span class="tutorial-meta">ویدیو، 7 دقیقه</span>
+                        </a>
+                    </li>
+                    <li class="tutorial-item">
+                        <a href="#" class="tutorial-link">
+                            <span class="icon">📄</span>
+                            <span class="tutorial-title">راهنمای نصب v2rayN</span>
+                            <span class="tutorial-meta">متنی</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <section class="featured-section" data-aos="fade-up">
+            <h2 class="featured-title">ویژه: مشکل اتصال سامسونگ در IPv6</h2>
+            <p class="featured-text">اگر گوشی سامسونگ شما به سرور وصل نمی‌شود، ممکن است مشکل از IPv6 باشد. راهنمای جامع را مطالعه کنید.</p>
+            <a href="#" class="featured-link">مشاهده آموزش ویژه</a>
+        </section>
+    </main>
+
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            offset: 100,
+        });
+    </script>
+</body>
+</html>
