@@ -1,31 +1,18 @@
-
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>آموزش جامع اتصال به v2ray روی تمام پلتفرم‌ها | v2 help</title>
-    <meta name="description" content="آموزش تصویری و گام به گام نصب و راه‌اندازی v2ray روی iOS, Android, Windows, Mac و Linux - راهنمای کامل اتصال به اینترنت آزاد">
-    <meta name="keywords" content="آموزش v2ray, نصب v2rayNG, راهنمای Streisand, v2rayN, کلاینت v2ray, اتصال VPN, فیلترشکن">
-    <meta property="og:title" content="آموزش جامع اتصال به v2ray روی تمام پلتفرم‌ها | v2 help">
-    <meta property="og:description" content="راهنمای تصویری و گام به گام نصب و راه‌اندازی v2ray روی تمام دستگاه‌ها">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://example.com/education-v2.html">
-    <meta property="og:image" content="https://example.com/images/v2ray-tutorials-preview.jpg">
-    <link rel="canonical" href="https://example.com/education-v2.html">
+    <title>آموزش نصب و راه‌اندازی Streisand روی iOS و MacOS | v2 help</title>
+    <meta name="description" content="آموزش تصویری و گام به گام نصب و راه‌اندازی Streisand برای اتصال به اینترنت آزاد روی دستگاه‌های iOS و MacOS - راهنمای کامل تنظیمات و رفع مشکلات">
+    <meta name="keywords" content="آموزش Streisand, نصب Streisand, راهنمای Streisand, اتصال VPN, فیلترشکن iOS, فیلترشکن Mac">
+    <meta property="og:title" content="آموزش نصب و راه‌اندازی Streisand روی iOS و MacOS | v2 help">
+    <meta property="og:description" content="آموزش تصویری و گام به گام نصب و راه‌اندازی Streisand برای اتصال به اینترنت آزاد">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://example.com/education-streisand.html">
+    <meta property="og:image" content="https://example.com/images/streisand-tutorial-preview.jpg">
+    <link rel="canonical" href="https://example.com/education-streisand.html">
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700&display=swap" rel="stylesheet">
-
-    <!-- ✅ Structured Data برای سئو -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "آموزش v2ray روی همه دستگاه‌ها",
-      "description": "راهنمای کامل تصویری و متنی برای نصب و اتصال به v2ray روی اندروید، iOS، ویندوز، مک و لینوکس.",
-      "url": "https://example.com/education-v2.html"
-    }
-    </script>
-
     <style>
         :root {
             --primary: #4361ee;
@@ -36,23 +23,885 @@
             --success: #4cc9f0;
             --warning: #f8961e;
         }
-
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Vazirmatn', sans-serif;
         }
-
+        
         body {
             background-color: #f8f9fa;
             color: #2b2d42;
             line-height: 1.8;
-            padding-top: 100px; /* ✅ اصلاح مشکل افتادن زیر header */
+            text-align: justify;
+            padding-top: 80px; /* برای هدر ثابت */
+        }
+        
+        /* انیمیشن‌ها */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        /* هدر بهبود یافته */
+        header {
+            background: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 0;
+            height: 80px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        
+        /* ناوبری اصلی بهبود یافته */
+        .main-nav {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .main-nav a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+        
+        .main-nav a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .main-nav a:hover:after {
+            width: 100%;
+        }
+        
+        .main-nav a.active {
+            color: var(--primary);
+            font-weight: 700;
+        }
+        
+        .main-nav a.active:after {
+            width: 100%;
+            background: var(--secondary);
+        }
+        
+        /* محتوای اصلی */
+        .main-container {
+            max-width: 1200px;
+            margin: 2rem auto 4rem;
+            padding: 0 1.5rem;
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 3rem;
+        }
+        
+        /* نوار کناری */
+        .sidebar {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            animation: fadeIn 0.6s ease-out;
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+        
+        .sidebar-title {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .sidebar-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary);
+        }
+        
+        .platform-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+        
+        .platform-item {
+            background: rgba(67, 97, 238, 0.05);
+            border-radius: 8px;
+            padding: 1rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(67, 97, 238, 0.1);
+        }
+        
+        .platform-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(67, 97, 238, 0.1);
+            border-color: rgba(67, 97, 238, 0.3);
+        }
+        
+        .platform-name {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .platform-name:before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+        
+        .app-list {
+            list-style: none;
+            padding-right: 1rem;
+        }
+        
+        .app-list li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .app-list a {
+            color: var(--dark);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: block;
+            padding: 0.3rem 0;
+        }
+        
+        .app-list a:hover {
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+        
+        .app-list a.active {
+            color: var(--secondary);
+            font-weight: 500;
+        }
+        
+        /* محتوای آموزشی */
+        .content {
+            background: white;
+            border-radius: 16px;
+            padding: 3rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        .content-title {
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            color: var(--dark);
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        .content-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+        
+        /* کارت نیازمندی */
+        .requirement-card {
+            background: rgba(67, 97, 238, 0.05);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 3rem;
+            border-left: 4px solid var(--primary);
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        .requirement-title {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: var(--primary);
+        }
+        
+        .requirement-title .icon {
+            font-size: 1.5rem;
+        }
+        
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--primary);
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(67, 97, 238, 0.2);
+        }
+        
+        .download-btn:hover {
+            background: var(--primary-light);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(67, 97, 238, 0.3);
+        }
+        
+        /* مراحل آموزشی */
+        .step-container {
+            margin-top: 3rem;
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--dark);
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--primary);
+        }
+        
+        .step-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border-color: rgba(67, 97, 238, 0.3);
+        }
+        
+        .step-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .step-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            font-weight: 700;
+            margin-left: 1rem;
+            flex-shrink: 0;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .step-title {
+            font-size: 1.3rem;
+            color: var(--dark);
+        }
+        
+        .step-content {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+        
+        .step-image {
+            max-width: 100%;
+            border-radius: 8px;
+            margin: 1rem 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .step-image:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* پیام موفقیت */
+        .success-card {
+            background: rgba(76, 201, 240, 0.1);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 3rem 0;
+            border-left: 4px solid var(--success);
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        .success-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--success);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        /* نکات مهم */
+        .note-card {
+            background: rgba(248, 150, 30, 0.1);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 3rem;
+            border-left: 4px solid var(--warning);
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        .note-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--warning);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .note-list {
+            list-style: none;
+        }
+        
+        .note-list li {
+            margin-bottom: 0.8rem;
+            padding-right: 1.5rem;
+            position: relative;
+        }
+        
+        .note-list li:before {
+            content: '•';
+            position: absolute;
+            right: 0;
+            color: var(--warning);
+            font-weight: bold;
+        }
+        
+        /* فوتر جدید */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+        
+        .footer-links h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-links h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--primary);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-right: 5px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+        
+        /* دکمه بازگشت به بالا */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background: var(--primary-light);
+            transform: translateY(-3px);
+        }
+        
+        /* رسپانسیو */
+        @media (max-width: 992px) {
+            .main-container {
+                grid-template-columns: 1fr;
+                margin-top: 1rem;
+            }
+            
+            .sidebar {
+                position: static;
+                margin-top: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+            
+            header {
+                height: auto;
+                padding: 0.5rem 0;
+            }
+            
+            body {
+                padding-top: 120px;
+            }
+            
+            .main-nav {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .content {
+                padding: 2rem;
+            }
+            
+            .platform-list {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .content {
+                padding: 1.5rem;
+            }
+            
+            .content-title {
+                font-size: 1.8rem;
+            }
+            
+            .platform-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .step-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .step-number {
+                margin-left: 0;
+                margin-bottom: 1rem;
+            }
+            
+            .back-to-top {
+                width: 40px;
+                height: 40px;
+                left: 1rem;
+                bottom: 1rem;
+            }
         }
     </style>
 </head>
 <body>
-    <p>🔧 لطفاً بقیه محتوای HTML را از فایل اصلی در همین قالب قرار دهید تا به‌صورت کامل منتشر شود.</p>
+    <!-- هدر بهبود یافته -->
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">v2 help</a>
+            <nav class="main-nav">
+                <a href="index.html">خانه</a>
+                <a href="pricing.html">خرید سرویس</a>
+                <a href="education-v2.html" class="active">آموزش‌ها</a>
+                <a href="contact.html">تماس با ما</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- محتوای اصلی -->
+    <main class="main-container">
+        <!-- محتوای آموزشی -->
+        <div class="content">
+            <h1 class="content-title">آموزش نصب و راه‌اندازی Streisand</h1>
+            
+            <div class="requirement-card">
+                <h2 class="requirement-title">
+                    <span class="icon">✔️</span>
+                    نیازمندی‌ها
+                </h2>
+                <p>به iOS 14.0 به بالا یا آخرین نسخه‌ی Mac OS نیاز دارد.</p>
+                <a href="https://apps.apple.com/us/app/streisand/id6450534064" class="download-btn" rel="nofollow noopener noreferrer" target="_blank">
+                    <span>دانلود از اپ استور</span>
+                    <span>⬇️</span>
+                </a>
+            </div>
+            
+            <h2 class="section-title">مراحل نصب و راه‌اندازی</h2>
+
+            <div class="steps-container">
+                <div class="step-card">
+                    <div class="step-header">
+                        <div class="step-number">1</div>
+                        <h3 class="step-title">دریافت لینک اتصال</h3>
+                    </div>
+                    <div class="step-content">
+                        <p>لینک اتصال (subscription) را کپی کنید.</p>
+                    </div>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-header">
+                        <div class="step-number">2</div>
+                        <h3 class="step-title">وارد کردن لینک در Streisand</h3>
+                    </div>
+                    <div class="step-content">
+                        <p>وارد برنامه Streisand شوید، سمت راست بالا روی + کلیک کنید و سپس گزینه Import from Clipboard را انتخاب کنید تا سرور ها اضافه شود.</p>
+                    </div>
+                    <img src="step2.jpg" alt="مرحله ۲ - وارد کردن لینک در Streisand" class="step-image">
+                    <img src="step2-2.jpg" alt="مرحله ۲-۲ - انتخاب گزینه Import from Clipboard" class="step-image">
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-header">
+                        <div class="step-number">3</div>
+                        <h3 class="step-title">تأیید اضافه شدن سرورها</h3>
+                    </div>
+                    <div class="step-content">
+                        <p>در صورت موفقیت آمیز بودن، سرور‌های جدید به لیست سرور‌های شما اضافه می‌گردد.</p>
+                    </div>
+                    <img src="step3.jpg" alt="مرحله ۳ - تأیید اضافه شدن سرورها" class="step-image">
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-header">
+                        <div class="step-number">4</div>
+                        <h3 class="step-title">تنظیمات Subscription</h3>
+                    </div>
+                    <div class="step-content">
+                        <p>وارد تب Settings شوید، سپس گزینه‌ی Subscription را انتخاب کنید.</p>
+                    </div>
+                    <img src="step4.jpg" alt="مرحله ۴ - تنظیمات Subscription" class="step-image">
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-header">
+                        <div class="step-number">5</div>
+                        <h3 class="step-title">فعال‌سازی Update On Open</h3>
+                    </div>
+                    <div class="step-content">
+                        <p>در صفحه‌ی جدیدی که برای شما باز شده گزینه‌ی Update On Open را فعال کنید.</p>
+                    </div>
+                    <img src="step5.jpg" alt="مرحله ۵ - فعال‌سازی Update On Open" class="step-image">
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-header">
+                        <div class="step-number">6</div>
+                        <h3 class="step-title">اتصال به سرور</h3>
+                    </div>
+                    <div class="step-content">
+                        <p>اکنون به تب Home برگشته و یک سرور را انتخاب و متصل شوید.</p>
+                    </div>
+                    <img src="step6.jpg" alt="مرحله ۶ - اتصال به سرور" class="step-image">
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-header">
+                        <div class="step-number">7</div>
+                        <h3 class="step-title">اجازه دسترسی VPN</h3>
+                    </div>
+                    <div class="step-content">
+                        <p>ممکن است برای اتصال به VPN از شما سوال پرسید شود، گزینه‌ی Allow را انتخاب کنید.</p>
+                    </div>
+                    <img src="step7.jpg" alt="مرحله ۷ - اجازه دسترسی VPN" class="step-image">
+                </div>
+            </div>
+            
+            <div class="success-card">
+                <h3 class="success-title">
+                    <span>🎉</span>
+                    تبریک، شما به اینترنت آزاد متصل شدید!
+                </h3>
+                <p>✅ اگر روی دکمه‌ی اتصال کلیک می‌کنید اما فیلترشکن فعال نمی‌شود کافیست یکبار تلفن‌ همراه خود را خاموش و روشن کنید تا مشکل حل شود!</p>
+            </div>
+            
+            <div class="note-card">
+                <h3 class="note-title">
+                    <span>⚠️</span>
+                    توجه کنید:
+                </h3>
+                <ul class="note-list">
+                    <li>هنگام اضافه کردن لینک آپدیت، فیلترشکن روشنی نداشته باشید.</li>
+                    <li>تنظیمات ساعت و تاریخ گوشی حتما روی اتوماتیک باشد.</li>
+                    <li>متن اضافه‌ای همراه با لینک اتصال خود کپی نکنید! فقط و فقط لینک اتصال را کپی داشته باشید.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- نوار کناری -->
+        <aside class="sidebar">
+            <h3 class="sidebar-title">آموزش‌های اتصال</h3>
+            <ul class="platform-list">
+                <li class="platform-item">
+                    <div class="platform-name">Android</div>
+                    <ul class="app-list">
+                        <li><a href="v2rayng-tutorial.html">v2rayNG</a></li>
+                        <li><a href="v2raytun-tutorial.html">v2rayTun</a></li>
+                    </ul>
+                </li>
+                
+                <li class="platform-item">
+                    <div class="platform-name">IOS</div>
+                    <ul class="app-list">
+                        <li><a href="streisand-tutorial.html" class="active">Streisand</a></li>
+                        <li><a href="v2box-tutorial.html">V2Box</a></li>
+                    </ul>
+                </li>
+                
+                <li class="platform-item">
+                    <div class="platform-name">Windows</div>
+                    <ul class="app-list">
+                        <li><a href="v2rayn-tutorial.html">v2rayN</a></li>
+                    </ul>
+                </li>
+                
+                <li class="platform-item">
+                    <div class="platform-name">MacOS</div>
+                    <ul class="app-list">
+                        <li><a href="streisand-mac-tutorial.html">Streisand</a></li>
+                    </ul>
+                </li>
+                
+                <li class="platform-item">
+                    <div class="platform-name">راهنماها</div>
+                    <ul class="app-list">
+                        <li><a href="ipv6-guide.html">راهنمای IPv6</a></li>
+                        <li><a href="samsung-guide.html">ویژه سامسونگ</a></li>
+                        <li><a href="troubleshooting.html">رفع مشکلات</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </aside>
+    </main>
+
+    <!-- فوتر جدید -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-links">
+                <a href="index.html" class="footer-logo">v2 help</a>
+                <p>ارائه دهنده بهترین سرویس‌های امن و پرسرعت برای دسترسی آزاد به اینترنت</p>
+            </div>
+            <div class="footer-links">
+                <h3>لینک‌های سریع</h3>
+                <ul>
+                    <li><a href="index.html">خانه</a></li>
+                    <li><a href="pricing.html">خرید سرویس</a></li>
+                    <li><a href="education-v2.html">آموزش‌ها</a></li>
+                    <li><a href="blog.html">بلاگ</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>پلتفرم‌ها</h3>
+                <ul>
+                    <li><a href="android-tutorials.html">آموزش اندروید</a></li>
+                    <li><a href="ios-tutorials.html">آموزش iOS</a></li>
+                    <li><a href="windows-tutorials.html">آموزش ویندوز</a></li>
+                    <li><a href="mac-tutorials.html">آموزش مک</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>تماس با ما</h3>
+                <ul>
+                    <li><a href="contact.html">پشتیبانی</a></li>
+                    <li><a href="faq.html">سوالات متداول</a></li>
+                    <li><a href="privacy.html">حریم خصوصی</a></li>
+                    <li><a href="terms.html">قوانین و شرایط</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            © <span id="currentYear">2023</span> v2 help. تمام حقوق محفوظ است.
+        </div>
+    </footer>
+
+    <!-- دکمه بازگشت به بالا -->
+    <a href="#" class="back-to-top" id="backToTop">↑</a>
+
+    <!-- اسکریپت‌های بهبود یافته -->
+    <script>
+        // انیمیشن برای کارت‌ها هنگام اسکرول
+        const animateOnScroll = () => {
+            const cards = document.querySelectorAll('.step-card, .requirement-card, .success-card, .note-card');
+            const backToTop = document.getElementById('backToTop');
+            
+            cards.forEach(card => {
+                const cardPosition = card.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if(cardPosition < screenPosition) {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }
+            });
+            
+            // نمایش/پنهان کردن دکمه بازگشت به بالا
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        };
+
+        // تنظیم اولیه برای انیمیشن‌ها
+        window.addEventListener('load', () => {
+            const cards = document.querySelectorAll('.step-card, .requirement-card, .success-card, .note-card');
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'all 0.6s ease-out';
+            });
+            
+            // فعال کردن انیمیشن‌ها با تأخیر
+            setTimeout(() => {
+                animateOnScroll();
+            }, 300);
+            
+            // تنظیم سال جاری در فوتر
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+        });
+
+        // فعال کردن انیمیشن هنگام اسکرول
+        window.addEventListener('scroll', animateOnScroll);
+    </script>
 </body>
 </html>
