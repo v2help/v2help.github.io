@@ -3,33 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>V2Help - مرکز آموزش های تخصصی</title>
-    
-    <!-- پیش‌بارگذاری و تعریف فونت Vazirmatn -->
-    <link rel="preload" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/fonts/webfonts/Vazirmatn-Regular.woff2" as="font" type="font/woff2" crossorigin>
-    <style>
-        @font-face {
-            font-family: 'Vazirmatn';
-            src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/fonts/webfonts/Vazirmatn-Regular.woff2') format('woff2'),
-                 local('Vazirmatn'),
-                 local('Vazirmatn-Regular');
-            font-weight: 400;
-            font-style: normal;
-            font-display: swap;
-        }
-        
-        @font-face {
-            font-family: 'Vazirmatn';
-            src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/fonts/webfonts/Vazirmatn-Bold.woff2') format('woff2'),
-                 local('Vazirmatn Bold'),
-                 local('Vazirmatn-Bold');
-            font-weight: 700;
-            font-style: normal;
-            font-display: swap;
-        }
-    </style>
-
-    <!-- استایل‌های اصلی -->
+    <title>V2Help - مرکز آموزش</title>
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/font.css" rel="stylesheet">
     <style>
         /* Reset و تنظیمات پایه */
         * {
@@ -39,20 +14,20 @@
         }
         
         body {
-            font-family: Vazirmatn, Tahoma, sans-serif;
-            background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
-            color: white;
-            overflow-x: hidden;
+            font-family: Vazirmatn, sans-serif;
+            background: #000 url('https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?q=80&w=2071&auto=format&fit=crop') no-repeat center/cover;
+            color: #fff;
+            overflow: hidden;
             min-height: 100vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            position: relative;
-            line-height: 1.6;
+            perspective: 1000px;
         }
 
         /* کهکشان و ستاره‌ها */
-        .universe {
+        .stars {
             position: fixed;
             top: 0;
             left: 0;
@@ -63,46 +38,29 @@
 
         .star {
             position: absolute;
-            background-color: white;
+            background-color: #fff;
             border-radius: 50%;
             animation: twinkle var(--duration) infinite ease-in-out;
-            animation-delay: var(--delay);
         }
 
-        /* منظومه شمسی */
+        /* منظومه شمسی علمی */
         .solar-system {
             position: relative;
             width: 100%;
-            max-width: 400px;
-            height: 0;
-            padding-bottom: 100%;
-            margin: 2rem auto;
-            animation: rotate 120s linear infinite;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .sun {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 15%;
-            height: 15%;
-            max-width: 60px;
-            max-height: 60px;
-            background: radial-gradient(circle, #ffff00 10%, #ff8c00 70%);
+            width: 70px;
+            height: 70px;
+            background: radial-gradient(circle, #ffff00 0%, #ff8c00 70%);
             border-radius: 50%;
-            box-shadow: 0 0 20px #ff8c00;
-            z-index: 3;
-            animation: pulse 5s infinite ease-in-out;
-        }
-
-        .orbit {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
+            box-shadow: 0 0 80px #ff8c00;
+            z-index: 10;
         }
 
         .planet {
@@ -111,73 +69,66 @@
             transform-origin: center;
         }
 
-        /* محتوای اصلی */
-        .container {
-            position: relative;
-            z-index: 10;
-            width: 90%;
-            max-width: 800px;
-            padding: 2rem;
-            text-align: center;
-        }
-
-        .content {
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 2rem;
+        .orbit {
+            position: absolute;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-            animation: float 8s ease-in-out infinite;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
 
-        h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            margin-bottom: 1.5rem;
-            background: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+        /* لوگوی V2Help */
+        .logo {
+            position: relative;
+            z-index: 20;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .logo-text {
+            font-size: 4rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #00b4db, #0083b0);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            font-weight: 700;
-            line-height: 1.3;
+            text-shadow: 0 0 20px rgba(0, 180, 219, 0.3);
+            position: relative;
+            display: inline-block;
         }
 
+        .logo-text::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #00b4db, #0083b0);
+            border-radius: 2px;
+        }
+
+        /* دکمه ورود */
         .btn {
             display: inline-block;
-            padding: 0.8rem 2rem;
-            background: linear-gradient(45deg, #2196F3, #00BCD4);
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, #00b4db, #0083b0);
             color: white;
             text-decoration: none;
             border-radius: 50px;
-            font-size: clamp(1rem, 3vw, 1.3rem);
-            margin-top: 1.5rem;
+            font-size: 1.2rem;
+            margin-top: 2rem;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(33, 150, 243, 0.4);
+            box-shadow: 0 5px 25px rgba(0, 180, 219, 0.5);
             position: relative;
             overflow: hidden;
-            border: none;
-            cursor: pointer;
-            font-family: inherit;
+            z-index: 20;
         }
 
         .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(33, 150, 243, 0.6);
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: 0.5s;
-        }
-
-        .btn:hover::before {
-            left: 100%;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 180, 219, 0.7);
         }
 
         /* انیمیشن‌ها */
@@ -186,91 +137,156 @@
             to { transform: rotate(360deg); }
         }
 
-        @keyframes pulse {
-            0% { transform: translate(-50%, -50%) scale(1); }
-            50% { transform: translate(-50%, -50%) scale(1.05); }
-            100% { transform: translate(-50%, -50%) scale(1); }
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
-        }
-
         @keyframes twinkle {
             0% { opacity: 0.3; }
             50% { opacity: 1; }
             100% { opacity: 0.3; }
         }
 
-        /* رسپانسیو برای دستگاه‌های کوچک */
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+
+        /* تنظیمات سیارات بر اساس مقیاس علمی */
+        #mercury {
+            width: 8px;
+            height: 8px;
+            background: #a59d8d;
+            animation: rotate 2.4s linear infinite;
+        }
+
+        #venus {
+            width: 14px;
+            height: 14px;
+            background: #e3b04b;
+            animation: rotate 6.2s linear infinite;
+        }
+
+        #earth {
+            width: 15px;
+            height: 15px;
+            background: #4e82c2;
+            animation: rotate 10s linear infinite;
+        }
+
+        #mars {
+            width: 12px;
+            height: 12px;
+            background: #d35d47;
+            animation: rotate 18.8s linear infinite;
+        }
+
+        #jupiter {
+            width: 30px;
+            height: 30px;
+            background: #d3a947;
+            animation: rotate 118.6s linear infinite;
+        }
+
+        #saturn {
+            width: 25px;
+            height: 25px;
+            background: #e3d9b0;
+            animation: rotate 294.5s linear infinite;
+        }
+
+        #saturn::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 8px;
+            background: rgba(227, 217, 176, 0.3);
+            border-radius: 4px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(20deg);
+        }
+
+        #uranus {
+            width: 18px;
+            height: 18px;
+            background: #b4e1f1;
+            animation: rotate 840s linear infinite;
+        }
+
+        #neptune {
+            width: 17px;
+            height: 17px;
+            background: #5b5ddf;
+            animation: rotate 1648s linear infinite;
+        }
+
+        /* محتوای اصلی */
+        .content {
+            position: relative;
+            z-index: 15;
+            text-align: center;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        /* رسپانسیو */
         @media (max-width: 768px) {
-            .content {
-                padding: 1.5rem;
-            }
-            
-            h1 {
-                margin-bottom: 1rem;
+            .logo-text {
+                font-size: 3rem;
             }
             
             .btn {
-                padding: 0.7rem 1.8rem;
+                padding: 0.8rem 2rem;
+                font-size: 1rem;
             }
             
-            .solar-system {
-                max-width: 300px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .content {
-                padding: 1rem;
-            }
-            
-            .solar-system {
-                max-width: 250px;
+            .sun {
+                width: 50px;
+                height: 50px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="universe" id="universe"></div>
+    <div class="stars" id="stars"></div>
     
-    <div class="container">
-        <div class="content">
-            <h1>مرکزش V2 Help</h1>
-            
-            <div class="solar-system">
-                <div class="sun"></div>
-                
-                <!-- مدارها و سیارات -->
-                <div class="orbit" style="width: 30%; height: 30%;"></div>
-                <div class="planet" style="width: 3%; height: 3%; background: #A9A9A9; animation: rotate 5s linear infinite; left: 15%;"></div>
-                
-                <div class="orbit" style="width: 45%; height: 45%;"></div>
-                <div class="planet" style="width: 4.5%; height: 4.5%; background: #E6C229; animation: rotate 8s linear infinite; left: 22.5%;"></div>
-                
-                <div class="orbit" style="width: 60%; height: 60%;"></div>
-                <div class="planet" style="width: 5%; height: 5%; background: #4E82C2; animation: rotate 12s linear infinite; left: 30%;"></div>
-                
-                <div class="orbit" style="width: 75%; height: 75%;"></div>
-                <div class="planet" style="width: 3.5%; height: 3.5%; background: #D35D47; animation: rotate 16s linear infinite; left: 37.5%;"></div>
-                
-                <div class="orbit" style="width: 90%; height: 90%;"></div>
-                <div class="planet" style="width: 7.5%; height: 7.5%; background: #D3A947; animation: rotate 25s linear infinite; left: 45%;"></div>
-            </div>
-            
-            <a href="https://v2help.github.io/education-v2.html" class="btn">ورود به آموزش ها</a>
+    <div class="solar-system">
+        <div class="sun"></div>
+        
+        <!-- مدارها و سیارات با مقیاس علمی -->
+        <div class="orbit" style="width: 100px; height: 100px;"></div>
+        <div class="planet" id="mercury" style="left: 50px;"></div>
+        
+        <div class="orbit" style="width: 150px; height: 150px;"></div>
+        <div class="planet" id="venus" style="left: 75px;"></div>
+        
+        <div class="orbit" style="width: 200px; height: 200px;"></div>
+        <div class="planet" id="earth" style="left: 100px;"></div>
+        
+        <div class="orbit" style="width: 260px; height: 260px;"></div>
+        <div class="planet" id="mars" style="left: 130px;"></div>
+        
+        <div class="orbit" style="width: 400px; height: 400px;"></div>
+        <div class="planet" id="jupiter" style="left: 200px;"></div>
+        
+        <div class="orbit" style="width: 600px; height: 600px;"></div>
+        <div class="planet" id="saturn" style="left: 300px;"></div>
+        
+        <div class="orbit" style="width: 750px; height: 750px;"></div>
+        <div class="planet" id="uranus" style="left: 375px;"></div>
+        
+        <div class="orbit" style="width: 850px; height: 850px;"></div>
+        <div class="planet" id="neptune" style="left: 425px;"></div>
+    </div>
+    
+    <div class="content">
+        <div class="logo">
+            <div class="logo-text">V2Help</div>
         </div>
+        <a href="https://v2help.github.io/education-v2.html" class="btn">ورود به آموزش ها</a>
     </div>
     
     <script>
         // ایجاد ستاره‌های کهکشان
-        const universe = document.getElementById('universe');
-        
-        // تعداد ستاره‌ها بر اساس اندازه صفحه
-        const starCount = Math.min(200, Math.floor(window.innerWidth * window.innerHeight / 1000));
+        const starsContainer = document.getElementById('stars');
+        const starCount = 300;
         
         for (let i = 0; i < starCount; i++) {
             const star = document.createElement('div');
@@ -285,26 +301,21 @@
             star.style.left = `${Math.random() * 100}%`;
             star.style.top = `${Math.random() * 100}%`;
             
-            // تنظیمات انیمیشن
+            // مدت زمان انیمیشن تصادفی
             const duration = Math.random() * 5 + 3;
             star.style.setProperty('--duration', `${duration}s`);
-            star.style.setProperty('--delay', `${Math.random() * 5}s`);
             
-            universe.appendChild(star);
+            starsContainer.appendChild(star);
         }
         
-        // تنظیم مجدد ستاره‌ها هنگام تغییر سایز پنجره
-        window.addEventListener('resize', function() {
+        // تنظیم مجدد ستاره‌ها هنگام تغییر سایز
+        window.addEventListener('resize', () => {
             const stars = document.querySelectorAll('.star');
             stars.forEach(star => {
-                // به‌روزرسانی موقعیت ستاره‌ها
                 star.style.left = `${Math.random() * 100}%`;
                 star.style.top = `${Math.random() * 100}%`;
             });
         });
-
-        // نمایش پیام در کنسول برای بررسی فونت
-        console.log('فونت فارسی Vazirmatn بارگذاری شد');
     </script>
 </body>
 </html>
