@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منظومه شمسی هوشمند V2Ray</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css">
+    <style>
+        @font-face {
+            font-family: 'Vazir';
+            src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/Vazir.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Vazir', sans-serif;
+            background-color: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background: linear-gradient(90deg, #1a1a2e 0%, #16213e 100%);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 100;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            color: #4cc9f0;
+            text-shadow: 0 0 8px rgba(76, 201, 240, 0.6);
+        }
+        
+        .nav-btns {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .nav-btn {
+            display: inline-block;
+            padding: 8px 20px;
+            background: linear-gradient(45deg, #4cc9f0, #4361ee);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .nav-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        .solar-system-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            background: radial-gradient(ellipse at center, #0a0e24 0%, #000000 100%);
+        }
+        
+        .solar-system {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+        
+        /* خورشید */
+        .sun {
+            position: absolute;
+            width: 140px;
+            height: 140px;
+            background: radial-gradient(circle at 30% 30%, #fff, #ffde00, #ff8c00, #ff3c00);
+            border-radius: 50%;
+            box-shadow: 0 0 80px #ff8c00;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #000;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.5s ease;
+        }
+        
+        .sun:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+            box-shadow: 0 0 120px #ff8c00;
+        }
+        
+        /* مدارها و سیارات */
+        .orbit {
+            position: absolute;
+            border: 1px dashed rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: rotate linear infinite;
+            transform-origin: center;
+        }
+        
+        .planet {
+            position: absolute;
+            border-radius: 50%;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 5;
+        }
+        
+        .planet:hover {
+            transform: translateX(-50%) scale(1.5);
+            z-index: 20;
+        }
+        
+        .planet-info {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid #4cc9f0;
+            border-radius: 10px;
+            padding: 15px;
+            width: 200px;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            z-index: 30;
+        }
+        
+        .planet:hover .planet-info {
+            opacity: 1;
+            transform: translateY(20px);
+        }
+        
+        .planet-name {
+            position: absolute;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            text-shadow: 0 0 3px #000;
+            font-weight: bold;
+            transform: translateX(-50%);
+            left: 50%;
+            top: -25px;
+        }
+        
+        /* کمربند سیارک‌ها */
+        .asteroid-belt {
+            position: absolute;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: rotate linear infinite reverse;
+            transform-origin: center;
+        }
+        
+        .asteroid {
+            position: absolute;
+            border-radius: 50%;
+            background: #aaa;
+            transition: all 0.5s ease;
+        }
+        
+        /* ستاره دنباله‌دار */
+        .comet {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: #fff;
+            border-radius: 50%;
+            filter: blur(1px);
+            animation: cometOrbit linear infinite;
+            z-index: 4;
+        }
+        
+        .comet-tail {
+            position: absolute;
+            width: 30px;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(255,255,255,0.8), transparent);
+            transform-origin: left center;
+        }
+        
+        /* کهکشان پس‌زمینه */
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            animation: twinkle 2s infinite alternate;
+        }
+        
+        /* انیمیشن‌ها */
+        @keyframes rotate {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        
+        @keyframes cometOrbit {
+            0% { transform: translate(0, 0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translate(-800px, 400px); opacity: 0; }
+        }
+        
+        @keyframes twinkle {
+            0% { opacity: 0.2; }
+            100% { opacity: 1; }
+        }
+        
+        /* پنل اطلاعات */
+        .info-panel {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid #4cc9f0;
+            border-radius: 10px;
+            padding: 15px;
+            max-width: 300px;
+            z-index: 100;
+            backdrop-filter: blur(5px);
+            transform: translateY(120%);
+            transition: transform 0.5s ease;
+        }
+        
+        .info-panel.active {
+            transform: translateY(0);
+        }
+        
+        .info-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #4cc9f0, #4361ee);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 101;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* سیارات به ترتیب فاصله از خورشید */
+        /* عطارد */
+        .mercury-orbit { width: 180px; height: 180px; animation-duration: 8s; }
+        .mercury { width: 8px; height: 8px; background: #a9a9a9; }
+        .mercury-name { top: -20px; color: #a9a9a9; }
+        
+        /* زهره */
+        .venus-orbit { width: 260px; height: 260px; animation-duration: 18s; }
+        .venus { width: 14px; height: 14px; background: #e6c229; }
+        .venus-name { top: -20px; color: #e6c229; }
+        
+        /* زمین */
+        .earth-orbit { width: 360px; height: 360px; animation-duration: 30s; }
+        .earth { width: 16px; height: 16px; background: #1e90ff; }
+        .earth-name { top: -20px; color: #1e90ff; }
+        
+        /* مریخ */
+        .mars-orbit { width: 480px; height: 480px; animation-duration: 56s; }
+        .mars { width: 12px; height: 12px; background: #ff6347; }
+        .mars-name { top: -20px; color: #ff6347; }
+        
+        /* کمربند سیارک‌ها */
+        .asteroid-belt { width: 650px; height: 650px; animation-duration: 200s; }
+        
+        /* مشتری */
+        .jupiter-orbit { width: 800px; height: 800px; animation-duration: 120s; }
+        .jupiter { width: 32px; height: 32px; background: #f4a460; }
+        .jupiter-name { top: -25px; color: #f4a460; }
+        
+        /* زحل */
+        .saturn-orbit { width: 1000px; height: 1000px; animation-duration: 180s; }
+        .saturn { width: 28px; height: 28px; background: #d2b48c; }
+        .saturn-name { top: -25px; color: #d2b48c; }
+        .saturn-ring {
+            position: absolute;
+            width: 50px;
+            height: 10px;
+            background: rgba(210, 180, 140, 0.5);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(25deg);
+        }
+        
+        /* اورانوس */
+        .uranus-orbit { width: 1200px; height: 1200px; animation-duration: 240s; }
+        .uranus { width: 22px; height: 22px; background: #afeeee; }
+        .uranus-name { top: -25px; color: #afeeee; }
+        
+        /* نپتون */
+        .neptune-orbit { width: 1400px; height: 1400px; animation-duration: 300s; }
+        .neptune { width: 20px; height: 20px; background: #1e90ff; }
+        .neptune-name { top: -25px; color: #1e90ff; }
+        
+        /* پلوتو (سیاره کوتوله) */
+        .pluto-orbit { width: 1600px; height: 1600px; animation-duration: 400s; }
+        .pluto { width: 6px; height: 6px; background: #d3d3d3; }
+        .pluto-name { top: -15px; color: #d3d3d3; }
+        
+        /* رسپانسیو */
+        @media (max-width: 1200px) {
+            .sun { width: 100px; height: 100px; }
+            
+            .mercury-orbit { width: 140px; height: 140px; }
+            .venus-orbit { width: 200px; height: 200px; }
+            .earth-orbit { width: 280px; height: 280px; }
+            .mars-orbit { width: 380px; height: 380px; }
+            .asteroid-belt { width: 500px; height: 500px; }
+            .jupiter-orbit { width: 620px; height: 620px; }
+            .saturn-orbit { width: 780px; height: 780px; }
+            .uranus-orbit { width: 940px; height: 940px; }
+            .neptune-orbit { width: 1100px; height: 1100px; }
+            .pluto-orbit { width: 1240px; height: 1240px; }
+        }
+        
+        @media (max-width: 768px) {
+            header { flex-direction: column; padding: 10px; }
+            .logo { font-size: 1.4rem; margin-bottom: 10px; }
+            .nav-btns { flex-direction: column; gap: 10px; }
+            .sun { width: 70px; height: 70px; }
+            
+            .mercury-orbit { width: 100px; height: 100px; }
+            .venus-orbit { width: 150px; height: 150px; }
+            .earth-orbit { width: 200px; height: 200px; }
+            .mars-orbit { width: 270px; height: 270px; }
+            .asteroid-belt { width: 360px; height: 360px; }
+            .jupiter-orbit { width: 450px; height: 450px; }
+            .saturn-orbit { width: 560px; height: 560px; }
+            .uranus-orbit { width: 680px; height: 680px; }
+            .neptune-orbit { width: 800px; height: 800px; }
+            .pluto-orbit { width: 900px; height: 900px; }
+            
+            .planet-name { font-size: 0.7rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">منظومه شمسی هوشمند V2Ray</div>
+        <div class="nav-btns">
+            <a href="https://v2help.github.io/education-v2.html" class="nav-btn">آموزش اتصال</a>
+            <a href="#" class="nav-btn" id="config-btn">دریافت کانفیگ</a>
+            <a href="#" class="nav-btn">پشتیبانی</a>
+        </div>
+    </header>
+    
+    <div class="solar-system-container">
+        <div class="stars" id="stars"></div>
+        
+        <div class="solar-system">
+            <div class="sun" id="sun">خورشید<br><small>کلیک کنید</small></div>
+            
+            <!-- سیارات داخلی -->
+            <div class="orbit mercury-orbit">
+                <div class="planet mercury">
+                    <div class="planet-info">
+                        <strong>تیر (عطارد)</strong><br>
+                        نزدیک‌ترین سیاره به خورشید<br>
+                        سرعت اتصال: بسیار بالا<br>
+                        پایداری: متوسط
+                    </div>
+                </div>
+                <div class="planet-name mercury-name">تیر (عطارد)</div>
+            </div>
+            
+            <div class="orbit venus-orbit">
+                <div class="planet venus">
+                    <div class="planet-info">
+                        <strong>ناهید (زهره)</strong><br>
+                        دومین سیاره منظومه<br>
+                        سرعت اتصال: بالا<br>
+                        پایداری: خوب
+                    </div>
+                </div>
+                <div class="planet-name venus-name">ناهید (زهره)</div>
+            </div>
+            
+            <div class="orbit earth-orbit">
+                <div class="planet earth">
+                    <div class="planet-info">
+                        <strong>زمین</strong><br>
+                        سیاره آبی ما<br>
+                        سرعت اتصال: عالی<br>
+                        پایداری: بسیار خوب<br>
+                        <span class="users-count">0</span> کاربر آنلاین
+                    </div>
+                </div>
+                <div class="planet-name earth-name">زمین</div>
+            </div>
+            
+            <div class="orbit mars-orbit">
+                <div class="planet mars">
+                    <div class="planet-info">
+                        <strong>بهرام (مریخ)</strong><br>
+                        سیاره سرخ<br>
+                        سرعت اتصال: خوب<br>
+                        پایداری: عالی
+                    </div>
+                </div>
+                <div class="planet-name mars-name">بهرام (مریخ)</div>
+            </div>
+            
+            <!-- کمربند سیارک‌ها -->
+            <div class="asteroid-belt" id="asteroid-belt"></div>
+            
+            <!-- سیارات خارجی -->
+            <div class="orbit jupiter-orbit">
+                <div class="planet jupiter">
+                    <div class="planet-info">
+                        <strong>هرمز (مشتری)</strong><br>
+                        بزرگترین سیاره<br>
+                        سرعت اتصال: متوسط<br>
+                        پهنای باند: نامحدود
+                    </div>
+                </div>
+                <div class="planet-name jupiter-name">هرمز (مشتری)</div>
+            </div>
+            
+            <div class="orbit saturn-orbit">
+                <div class="planet saturn">
+                    <div class="saturn-ring"></div>
+                    <div class="planet-info">
+                        <strong>کیوان (زحل)</strong><br>
+                        سیاره حلقه‌دار<br>
+                        سرعت اتصال: پایدار<br>
+                        مناسب برای استریم
+                    </div>
+                </div>
+                <div class="planet-name saturn-name">کیوان (زحل)</div>
+            </div>
+            
+            <div class="orbit uranus-orbit">
+                <div class="planet uranus">
+                    <div class="planet-info">
+                        <strong>اورانوس</strong><br>
+                        سیاره یخی<br>
+                        سرعت اتصال: ویژه<br>
+                        امنیت: بسیار بالا
+                    </div>
+                </div>
+                <div class="planet-name uranus-name">اورانوس</div>
+            </div>
+            
+            <div class="orbit neptune-orbit">
+                <div class="planet neptune">
+                    <div class="planet-info">
+                        <strong>نپتون</strong><br>
+                        دورترین سیاره<br>
+                        سرعت اتصال: پایدار<br>
+                        بدون محدودیت
+                    </div>
+                </div>
+                <div class="planet-name neptune-name">نپتون</div>
+            </div>
+            
+            <!-- پلوتو -->
+            <div class="orbit pluto-orbit">
+                <div class="planet pluto">
+                    <div class="planet-info">
+                        <strong>پلوتو</strong><br>
+                        سیاره کوتوله<br>
+                        سرعت: متغیر<br>
+                        مناسب برای تست
+                    </div>
+                </div>
+                <div class="planet-name pluto-name">پلوتو (سیاره کوتوله)</div>
+            </div>
+            
+            <!-- ستاره دنباله‌دار -->
+            <div class="comet" style="top: 20%; left: 80%; animation-duration: 20s;">
+                <div class="comet-tail"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- پنل اطلاعات -->
+    <div class="info-panel" id="info-panel">
+        <h3>منظومه شمسی V2Ray</h3>
+        <p>هر سیاره نماینده یک سرور با ویژگی‌های خاص است. برای دریافت اطلاعات بیشتر روی سیارات کلیک کنید.</p>
+        <p>سیستم ما با بیش از <span id="total-users">10000</span> کاربر فعال در حال ارائه خدمات است.</p>
+    </div>
+    
+    <div class="info-btn" id="info-btn">i</div>
+    
+    <script>
+        // ایجاد ستاره‌های تصادفی
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            for (let i = 0; i < 200; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.width = (Math.random() * 3) + 'px';
+                star.style.height = star.style.width;
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.opacity = Math.random();
+                star.style.animationDelay = (Math.random() * 2) + 's';
+                star.style.animationDuration = (Math.random() * 3 + 1) + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+        
+        // ایجاد سیارک‌های تصادفی
+        function createAsteroids() {
+            const belt = document.getElementById('asteroid-belt');
+            for (let i = 0; i < 50; i++) {
+                const asteroid = document.createElement('div');
+                asteroid.className = 'asteroid';
+                asteroid.style.top = Math.random() * 100 + '%';
+                asteroid.style.left = Math.random() * 100 + '%';
+                asteroid.style.width = (Math.random() * 4 + 1) + 'px';
+                asteroid.style.height = asteroid.style.width;
+                asteroid.style.opacity = Math.random() * 0.7 + 0.3;
+                asteroid.style.animation = `rotate ${Math.random() * 100 + 50}s linear infinite`;
+                asteroid.style.transformOrigin = 'center';
+                belt.appendChild(asteroid);
+            }
+        }
+        
+        // ایجاد ستاره دنباله‌دار تصادفی
+        function createRandomComet() {
+            const system = document.querySelector('.solar-system');
+            const comet = document.createElement('div');
+            comet.className = 'comet';
+            
+            const startX = Math.random() * 100 + 100;
+            const startY = Math.random() * 100 - 50;
+            
+            comet.style.left = startX + '%';
+            comet.style.top = startY + '%';
+            comet.style.animationDuration = (Math.random() * 10 + 15) + 's';
+            
+            const tail = document.createElement('div');
+            tail.className = 'comet-tail';
+            comet.appendChild(tail);
+            
+            system.appendChild(comet);
+            
+            // حذف ستاره پس از اتمام انیمیشن
+            setTimeout(() => {
+                comet.remove();
+            }, parseFloat(comet.style.animationDuration) * 1000);
+        }
+        
+        // کنترل پنل اطلاعات
+        function setupInfoPanel() {
+            const infoBtn = document.getElementById('info-btn');
+            const infoPanel = document.getElementById('info-panel');
+            
+            infoBtn.addEventListener('click', () => {
+                infoPanel.classList.toggle('active');
+            });
+        }
+        
+        // اطلاعات کاربران آنلاین
+        function updateUserCounts() {
+            // زمین - کاربران آنلاین
+            const earthUsers = Math.floor(Math.random() * 500 + 100);
+            document.querySelector('.earth .users-count').textContent = earthUsers;
+            
+            // کل کاربران
+            const totalUsers = Math.floor(Math.random() * 5000 + 10000);
+            document.getElementById('total-users').textContent = totalUsers;
+        }
+        
+        // کلیک روی خورشید
+        function setupSunClick() {
+            const sun = document.getElementById('sun');
+            sun.addEventListener('click', () => {
+                alert('خورشید نماینده سرور اصلی ماست. تمام سیارات به این سرور متصل هستند.');
+            });
+        }
+        
+        // اجرای توابع پس از لود صفحه
+        document.addEventListener('DOMContentLoaded', function() {
+            createStars();
+            createAsteroids();
+            setupInfoPanel();
+            setupSunClick();
+            updateUserCounts();
+            
+            // ایجاد ستاره دنباله‌دار هر 10 ثانیه
+            setInterval(createRandomComet, 10000);
+            
+            // به‌روزرسانی تعداد کاربران هر 30 ثانیه
+            setInterval(updateUserCounts, 30000);
+        });
+    </script>
+</body>
+</html>
