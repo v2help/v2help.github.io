@@ -674,7 +674,7 @@
                     <div class="step-content">
                         <p>وارد برنامه v2rayNG شوید و روی ➕ بزنید و سپس روی دومین گزینه Import config from Clipboard کلیک کنید.</p>
                     </div>
-                    <img src="step2.jpg" alt="مرحله ۲ - وارد کردن لینک در v2rayNG" class="step-image">
+                    <img src="ngstep2.jpg" alt="مرحله ۲ - وارد کردن لینک در v2rayNG" class="step-image">
                 </div>
                 
                 <div class="step-card">
@@ -685,7 +685,7 @@
                     <div class="step-content">
                         <p>اکنون روی سه نقطه بالا سمت راست بزنید و روی گزینه Update subscription کلیک کنید تا سرور ها اضافه شود.</p>
                     </div>
-                    <img src="step3.jpg" alt="مرحله ۳ - آپدیت کردن سرورها" class="step-image">
+                    <img src="ngstep3.jpg" alt="مرحله ۳ - آپدیت کردن سرورها" class="step-image">
                 </div>
                 
                 <div class="success-card">
