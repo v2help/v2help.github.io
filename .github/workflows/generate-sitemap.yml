@@ -1,0 +1,33 @@
+name: Generate Sitemap
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Generate sitemap.xml
+      run: |
+        echo '<?xml version="1.0" encoding="UTF-8"?>' > sitemap.xml
+        echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' >> sitemap.xml
+        find . -name "*.html" | grep -v "404.html" | while read file; do
+          clean_path=${file#./}
+          url="https://v2help.github.io/${clean_path}"
+          echo "  <url><loc>${url}</loc><changefreq>monthly</changefreq></url>" >> sitemap.xml
+        done
+        echo '</urlset>' >> sitemap.xml
+
+    - name: Commit sitemap.xml
+      run: |
+        git config user.name "GitHub Actions"
+        git config user.email "actions@github.com"
+        git add sitemap.xml
+        git commit -m "Auto-generate sitemap.xml" || echo "No changes to commit"
+        git push
